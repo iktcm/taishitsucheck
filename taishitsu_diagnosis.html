@@ -1,35 +1,11 @@
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中医学体質診断</title>
-  <style>
-    body {
-      font-family: "Hiragino Mincho ProN", serif;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      padding: 20px;
-      color: #333;
-    }
-    .section-taishitsu {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-    }
-    .question {
-      margin-bottom: 15px;
-    }
-    h2 {
-      margin-top: 0;
-    }
-  </style>
-</head>
-<body>
-<h1>中医学 体質診断フォーム</h1>
-<section class="section-taishitsu">
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>中医学体質診断</title><style>
+body { font-family: "Hiragino Mincho ProN", serif; background: url('background.jpg') no-repeat center center fixed; background-size: cover; padding: 20px; color: #333; }
+.section-taishitsu { background-color: rgba(255, 255, 255, 0.9); padding: 20px; margin-bottom: 30px; border-radius: 10px; }
+.question { margin-bottom: 15px; }
+.result-button { display: inline-block; margin: 10px 10px 0 0; padding: 10px 20px; background-color: #a94442; color: white; border: none; border-radius: 8px; text-decoration: none; font-size: 16px; }
+.result-button:hover { background-color: #843534; }
+h2 { margin-top: 0; }
+</style></head><body><h1>中医学 体質診断フォーム</h1><section class="section-taishitsu">
 <h2>【気虚タイプ】</h2>
 <div class="question">
 <label>疲れやすいですか？</label><br>
@@ -82,22 +58,22 @@
 <input type="radio" name="q10" value="0"> NO
 </div>
 <div class="question">
-<label>経血の色は薄いですか？</label><br>
+<label>経血の色は薄いですか？（※女性のみ）</label><br>
 <input type="radio" name="q11" value="1" required> YES
 <input type="radio" name="q11" value="0"> NO
 </div>
 <div class="question">
-<label>経血量が多いですか？</label><br>
+<label>経血量が多いですか？（※女性のみ）</label><br>
 <input type="radio" name="q12" value="1" required> YES
 <input type="radio" name="q12" value="0"> NO
 </div>
 <div class="question">
-<label>生理期間が長めですか？</label><br>
+<label>生理期間が長めですか？（※女性のみ）</label><br>
 <input type="radio" name="q13" value="1" required> YES
 <input type="radio" name="q13" value="0"> NO
 </div>
 <div class="question">
-<label>おりものは多くてサラサラと汁っぽいですか？</label><br>
+<label>おりものは多くてサラサラと汁っぽいですか？（※女性のみ）</label><br>
 <input type="radio" name="q14" value="1" required> YES
 <input type="radio" name="q14" value="0"> NO
 </div>
@@ -155,22 +131,22 @@
 <input type="radio" name="q24" value="0"> NO
 </div>
 <div class="question">
-<label>経血の量が極少ですか？</label><br>
+<label>経血の量が極少ですか？（※女性のみ）</label><br>
 <input type="radio" name="q25" value="1" required> YES
 <input type="radio" name="q25" value="0"> NO
 </div>
 <div class="question">
-<label>色が赤黒いですか？</label><br>
+<label>色が赤黒いですか？（※女性のみ）</label><br>
 <input type="radio" name="q26" value="1" required> YES
 <input type="radio" name="q26" value="0"> NO
 </div>
 <div class="question">
-<label>下腹部疼痛、温めると楽ですか？</label><br>
+<label>下腹部疼痛、温めると楽ですか？（※女性のみ）</label><br>
 <input type="radio" name="q27" value="1" required> YES
 <input type="radio" name="q27" value="0"> NO
 </div>
 <div class="question">
-<label>おりものはサラサラで量が多いですか？</label><br>
+<label>おりものはサラサラで量が多いですか？（※女性のみ）</label><br>
 <input type="radio" name="q28" value="1" required> YES
 <input type="radio" name="q28" value="0"> NO
 </div>
@@ -228,22 +204,22 @@
 <input type="radio" name="q38" value="0"> NO
 </div>
 <div class="question">
-<label>生理の経血が薄いですか？</label><br>
+<label>生理の経血が薄いですか？（※女性のみ）</label><br>
 <input type="radio" name="q39" value="1" required> YES
 <input type="radio" name="q39" value="0"> NO
 </div>
 <div class="question">
-<label>生理の経血が少ないですか？</label><br>
+<label>生理の経血が少ないですか？（※女性のみ）</label><br>
 <input type="radio" name="q40" value="1" required> YES
 <input type="radio" name="q40" value="0"> NO
 </div>
 <div class="question">
-<label>無月経、生理不順ですか？</label><br>
+<label>無月経、生理不順ですか？（※女性のみ）</label><br>
 <input type="radio" name="q41" value="1" required> YES
 <input type="radio" name="q41" value="0"> NO
 </div>
 <div class="question">
-<label>おりものは特にないですか？</label><br>
+<label>おりものは特にないですか？（※女性のみ）</label><br>
 <input type="radio" name="q42" value="1" required> YES
 <input type="radio" name="q42" value="0"> NO
 </div>
@@ -301,22 +277,22 @@
 <input type="radio" name="q52" value="0"> NO
 </div>
 <div class="question">
-<label>経血の量が多いですか？</label><br>
+<label>経血の量が多いですか？（※女性のみ）</label><br>
 <input type="radio" name="q53" value="1" required> YES
 <input type="radio" name="q53" value="0"> NO
 </div>
 <div class="question">
-<label>ねっとりしていますか？</label><br>
+<label>ねっとりしていますか？（※女性のみ）</label><br>
 <input type="radio" name="q54" value="1" required> YES
 <input type="radio" name="q54" value="0"> NO
 </div>
 <div class="question">
-<label>生理不順ですか？</label><br>
+<label>生理不順ですか？（※女性のみ）</label><br>
 <input type="radio" name="q55" value="1" required> YES
 <input type="radio" name="q55" value="0"> NO
 </div>
 <div class="question">
-<label>おりものの量は少なく粘つく方ですか？</label><br>
+<label>おりものの量は少なく粘つく方ですか？（※女性のみ）</label><br>
 <input type="radio" name="q56" value="1" required> YES
 <input type="radio" name="q56" value="0"> NO
 </div>
@@ -374,22 +350,22 @@
 <input type="radio" name="q66" value="0"> NO
 </div>
 <div class="question">
-<label>生理が不順ですか？</label><br>
+<label>生理が不順ですか？（※女性のみ）</label><br>
 <input type="radio" name="q67" value="1" required> YES
 <input type="radio" name="q67" value="0"> NO
 </div>
 <div class="question">
-<label>生理前に胸や下腹部が脹りますか？</label><br>
+<label>生理前に胸や下腹部が脹りますか？（※女性のみ）</label><br>
 <input type="radio" name="q68" value="1" required> YES
 <input type="radio" name="q68" value="0"> NO
 </div>
 <div class="question">
-<label>生理中は憂うつになりますか？</label><br>
+<label>生理中は憂うつになりますか？（※女性のみ）</label><br>
 <input type="radio" name="q69" value="1" required> YES
 <input type="radio" name="q69" value="0"> NO
 </div>
 <div class="question">
-<label>おりものはあまりない方ですか？</label><br>
+<label>おりものはあまりない方ですか？（※女性のみ）</label><br>
 <input type="radio" name="q70" value="1" required> YES
 <input type="radio" name="q70" value="0"> NO
 </div>
@@ -447,22 +423,22 @@
 <input type="radio" name="q80" value="0"> NO
 </div>
 <div class="question">
-<label>生理痛がひどいですか？</label><br>
+<label>生理痛がひどいですか？（※女性のみ）</label><br>
 <input type="radio" name="q81" value="1" required> YES
 <input type="radio" name="q81" value="0"> NO
 </div>
 <div class="question">
-<label>経血の量は多かったり少なかったりですか？</label><br>
+<label>経血の量は多かったり少なかったりですか？（※女性のみ）</label><br>
 <input type="radio" name="q82" value="1" required> YES
 <input type="radio" name="q82" value="0"> NO
 </div>
 <div class="question">
-<label>経血に塊がありますか？</label><br>
+<label>経血に塊がありますか？（※女性のみ）</label><br>
 <input type="radio" name="q83" value="1" required> YES
 <input type="radio" name="q83" value="0"> NO
 </div>
 <div class="question">
-<label>おりものはあまりない方ですか？</label><br>
+<label>おりものはあまりない方ですか？（※女性のみ）</label><br>
 <input type="radio" name="q84" value="1" required> YES
 <input type="radio" name="q84" value="0"> NO
 </div>
@@ -520,22 +496,22 @@
 <input type="radio" name="q94" value="0"> NO
 </div>
 <div class="question">
-<label>経血の量が多くねっとりしていますか？</label><br>
+<label>経血の量が多くねっとりしていますか？（※女性のみ）</label><br>
 <input type="radio" name="q95" value="1" required> YES
 <input type="radio" name="q95" value="0"> NO
 </div>
 <div class="question">
-<label>生理周期が短めですか？</label><br>
+<label>生理周期が短めですか？（※女性のみ）</label><br>
 <input type="radio" name="q96" value="1" required> YES
 <input type="radio" name="q96" value="0"> NO
 </div>
 <div class="question">
-<label>陰部に掻痒感がありますか？</label><br>
+<label>陰部に掻痒感がありますか？（※女性のみ）</label><br>
 <input type="radio" name="q97" value="1" required> YES
 <input type="radio" name="q97" value="0"> NO
 </div>
 <div class="question">
-<label>おりものが黄色く粘つきますか？</label><br>
+<label>おりものが黄色く粘つきますか？（※女性のみ）</label><br>
 <input type="radio" name="q98" value="1" required> YES
 <input type="radio" name="q98" value="0"> NO
 </div>
@@ -593,22 +569,22 @@
 <input type="radio" name="q108" value="0"> NO
 </div>
 <div class="question">
-<label>経血の量が多くねっとりしますか？</label><br>
+<label>経血の量が多くねっとりしますか？（※女性のみ）</label><br>
 <input type="radio" name="q109" value="1" required> YES
 <input type="radio" name="q109" value="0"> NO
 </div>
 <div class="question">
-<label>経血の色は薄いがねっとりするですか？</label><br>
+<label>経血の色は薄いがねっとりするですか？（※女性のみ）</label><br>
 <input type="radio" name="q110" value="1" required> YES
 <input type="radio" name="q110" value="0"> NO
 </div>
 <div class="question">
-<label>生理が遅れやすいですか？</label><br>
+<label>生理が遅れやすいですか？（※女性のみ）</label><br>
 <input type="radio" name="q111" value="1" required> YES
 <input type="radio" name="q111" value="0"> NO
 </div>
 <div class="question">
-<label>おりものは多く粘つきますか？</label><br>
+<label>おりものは多く粘つきますか？（※女性のみ）</label><br>
 <input type="radio" name="q112" value="1" required> YES
 <input type="radio" name="q112" value="0"> NO
 </div>
@@ -619,6 +595,16 @@
 <script>
 function calculateScore() {
   const taishitsuNames = ["気虚", "陽虚", "血虚", "陰虚", "気滞", "血瘀", "湿熱", "湿痰"];
+  const taishitsuUrls = [
+    "https://rakuyakuzen.base.shop/p/00004",
+    "https://rakuyakuzen.base.shop/p/00008",
+    "https://rakuyakuzen.base.shop/p/00005",
+    "https://rakuyakuzen.base.shop/p/00007",
+    "https://rakuyakuzen.base.shop/p/00003",
+    "https://rakuyakuzen.base.shop/p/00006",
+    "https://rakuyakuzen.base.shop/p/00010",
+    "https://rakuyakuzen.base.shop/p/00009"
+  ];
   const scores = Array(8).fill(0);
   for (let i = 0; i < 112; i++) {
     const radios = document.getElementsByName(`q${i + 1}`);
@@ -629,29 +615,11 @@ function calculateScore() {
       }
     }
   }
-  const topIndexes = scores
-    .map((score, index) => ({ index, score }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3);
-
+  const topIndexes = scores.map((score, index) => ({ index, score })).sort((a, b) => b.score - a.score).slice(0, 3);
   const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = "<h2>あなたの体質タイプ（上位3）</h2><ul>";
-  for (let entry of topIndexes) {
-    let url = "";
-    switch (entry.index) {
-      case 0: url = "https://rakuyakuzen.base.shop/p/00001"; break;
-      case 1: url = "https://rakuyakuzen.base.shop/p/00005"; break;
-      case 2: url = "https://rakuyakuzen.base.shop/p/00004"; break;
-      case 3: url = "https://rakuyakuzen.base.shop/p/00007"; break;
-      case 4: url = "https://rakuyakuzen.base.shop/p/00003"; break;
-      case 5: url = "https://rakuyakuzen.base.shop/p/00006"; break;
-      case 6: url = "https://rakuyakuzen.base.shop/p/00010"; break;
-      case 7: url = "https://rakuyakuzen.base.shop/p/00009"; break;
-    }
-    resultDiv.innerHTML += `<li><a href="${url}" target="_blank">${taishitsuNames[entry.index]}（${entry.score}点）</a></li>`;
-  }
-  resultDiv.innerHTML += "</ul>";
+  resultDiv.innerHTML = "<h2>あなたの体質タイプ（上位3）</h2>";
+  topIndexes.forEach(entry => {
+    resultDiv.innerHTML += `<a class='result-button' href='${taishitsuUrls[entry.index]}' target='_blank'>${taishitsuNames[entry.index]}（${entry.score}点）</a>`;
+  });
 }
-</script>
-</body>
-</html>
+</script></body></html>
