@@ -595,17 +595,8 @@ h2 { margin-top: 0; }
 <script>
 function calculateScore() {
   const taishitsuNames = ["気虚", "陽虚", "血虚", "陰虚", "気滞", "血瘀", "湿熱", "湿痰"];
-  const taishitsuUrls = [
-    "https://rakuyakuzen.base.shop/p/00004",
-    "https://rakuyakuzen.base.shop/p/00008",
-    "https://rakuyakuzen.base.shop/p/00005",
-    "https://rakuyakuzen.base.shop/p/00007",
-    "https://rakuyakuzen.base.shop/p/00003",
-    "https://rakuyakuzen.base.shop/p/00006",
-    "https://rakuyakuzen.base.shop/p/00010",
-    "https://rakuyakuzen.base.shop/p/00009"
-  ];
   const scores = Array(8).fill(0);
+
   for (let i = 0; i < 112; i++) {
     const radios = document.getElementsByName(`q${i + 1}`);
     for (let radio of radios) {
@@ -615,11 +606,33 @@ function calculateScore() {
       }
     }
   }
-  const topIndexes = scores.map((score, index) => ({ index, score })).sort((a, b) => b.score - a.score).slice(0, 3);
+
+  const topIndexes = scores.map((score, index) => ({ index, score }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+
+  const typePageMap = {
+    "気虚": { type: "気のタイプ", url: "https://rakuyakuzen.base.shop/p/00004" },
+    "気滞": { type: "気のタイプ", url: "https://rakuyakuzen.base.shop/p/00004" },
+    "血虚": { type: "血のタイプ", url: "https://rakuyakuzen.base.shop/p/00005" },
+    "血瘀": { type: "血のタイプ", url: "https://rakuyakuzen.base.shop/p/00005" },
+    "陰虚": { type: "水のタイプ", url: "https://rakuyakuzen.base.shop/p/00007" },
+    "湿痰": { type: "水のタイプ", url: "https://rakuyakuzen.base.shop/p/00007" },
+    "陽虚": { type: "熱のタイプ", url: "https://rakuyakuzen.base.shop/p/00008" },
+    "湿熱": { type: "熱のタイプ", url: "https://rakuyakuzen.base.shop/p/00008" }
+  };
+
   const resultDiv = document.getElementById("result");
   resultDiv.innerHTML = "<h2>あなたの体質タイプ（上位3）</h2>";
+
+  const displayed = new Set();
   topIndexes.forEach(entry => {
-    resultDiv.innerHTML += `<a class='result-button' href='${taishitsuUrls[entry.index]}' target='_blank'>${taishitsuNames[entry.index]}（${entry.score}点）</a>`;
+    const name = taishitsuNames[entry.index];
+    const info = typePageMap[name];
+    if (info && !displayed.has(info.url)) {
+      resultDiv.innerHTML += `<a class='result-button' href='${info.url}' target='_blank'>${info.type}を見る（${name}：${entry.score}点）</a><br>`;
+      displayed.add(info.url);
+    }
   });
 }
-</script></body></html>
+</script>
