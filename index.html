@@ -596,15 +596,26 @@ h2 { margin-top: 0; }
 function calculateScore() {
   const taishitsuNames = ["気虚", "陽虚", "血虚", "陰虚", "気滞", "血瘀", "湿熱", "湿痰"];
   const scores = Array(8).fill(0);
+  let answeredCount = 0;
 
   for (let i = 0; i < 112; i++) {
     const radios = document.getElementsByName(`q${i + 1}`);
     for (let radio of radios) {
-      if (radio.checked && radio.value === "1") {
-        const groupIndex = Math.floor(i / 14);
-        scores[groupIndex]++;
+      if (radio.checked) {
+        answeredCount++;
+        if (radio.value === "1") {
+          const groupIndex = Math.floor(i / 14);
+          scores[groupIndex]++;
+        }
       }
     }
+  }
+
+  const resultDiv = document.getElementById("result");
+
+  if (answeredCount === 0) {
+    resultDiv.innerHTML = "<p style='color:red;'>※質問に答えてから診断ボタンを押してください。</p>";
+    return;
   }
 
   const topIndexes = scores.map((score, index) => ({ index, score }))
@@ -622,9 +633,7 @@ function calculateScore() {
     "湿熱": { type: "熱のタイプ", url: "https://rakuyakuzen.base.shop/p/00008" }
   };
 
-  const resultDiv = document.getElementById("result");
   resultDiv.innerHTML = "<h2>あなたの体質タイプ（上位3）</h2>";
-
   const displayed = new Set();
   topIndexes.forEach(entry => {
     const name = taishitsuNames[entry.index];
@@ -635,4 +644,5 @@ function calculateScore() {
     }
   });
 }
+</script>
 </script>
