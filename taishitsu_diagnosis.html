@@ -1,91 +1,55 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中医学体質診断</title>
-  <style>
-    body {
-      font-family: "Hiragino Mincho ProN", serif;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      padding: 20px;
-      color: #333;
-    }
-    .section-taishitsu {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-    }
-    .question {
-      margin-bottom: 15px;
-    }
-    .result-button {
-      display: inline-block;
-      margin: 10px 10px 0 0;
-      padding: 10px 20px;
-      background-color: #a94442;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-    .result-button:hover {
-      background-color: #843534;
-    }
-    h2 {
-      margin-top: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>中医学体質診断結果</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .button-container { margin-top: 20px; }
+        .taishitsu-button {
+    display: inline-block;
+    background-color: #4682b4;
+    color: white;
+    padding: 12px 18px;
+    margin: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.taishitsu-button:hover {
+    background-color: #315f7c;
+}
+    </style>
 </head>
 <body>
-<h1>中医学 体質診断フォーム</h1>
+    <h2>診断結果：あなたに当てはまる体質</h2>
+    <div id="result-buttons" class="button-container"></div>
 
-<!-- 質問セクションは別で挿入される前提 -->
+    <script>
+        // 仮の診断結果（実際はJavaScriptで算出される）
+        const topResults = ["気滞", "血虚", "陰虚"];
 
-<button onclick="calculateScore()">診断する</button>
-<div id="result"></div>
+        const urlMap = {
+            "気虚": "https://www.kyotorakurakudo.com/p/00004",
+            "気滞": "https://www.kyotorakurakudo.com/p/00019",
+            "血虚": "https://www.kyotorakurakudo.com/p/00005",
+            "血瘀": "https://www.kyotorakurakudo.com/p/00020",
+            "陰虚": "https://www.kyotorakurakudo.com/p/00007",
+            "陽虚": "https://www.kyotorakurakudo.com/p/00008",
+            "湿痰": "https://www.kyotorakurakudo.com/p/00021",
+            "湿熱": "https://www.kyotorakurakudo.com/p/00022"
+        };
 
-<script>
-function calculateScore() {
-  const taishitsuNames = ["気虚", "陽虚", "血虚", "陰虚", "気滞", "血瘀", "湿熱", "湿痰"];
-  const taishitsuUrls = [
-    "https://rakuyakuzen.base.shop/p/00004",
-    "https://rakuyakuzen.base.shop/p/00008",
-    "https://rakuyakuzen.base.shop/p/00005",
-    "https://rakuyakuzen.base.shop/p/00007",
-    "https://rakuyakuzen.base.shop/p/00003",
-    "https://rakuyakuzen.base.shop/p/00006",
-    "https://rakuyakuzen.base.shop/p/00010",
-    "https://rakuyakuzen.base.shop/p/00009"
-  ];
-  const scores = Array(8).fill(0);
-  for (let i = 0; i < 112; i++) {
-    const radios = document.getElementsByName(`q${i + 1}`);
-    for (let radio of radios) {
-      if (radio.checked && radio.value === "1") {
-        const groupIndex = Math.floor(i / 14);
-        scores[groupIndex]++;
-      }
-    }
-  }
-  const topIndexes = scores
-    .map((score, index) => ({ index, score }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3);
-
-  const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = "<h2>あなたの体質タイプ（上位3）</h2>";
-  topIndexes.forEach(entry => {
-    const name = taishitsuNames[entry.index];
-    const score = entry.score;
-    const url = taishitsuUrls[entry.index];
-    resultDiv.innerHTML += `<a class='result-button' href='${url}' target='_blank'>【${name}】 ${score}点</a>`;
-  });
-}
-</script>
+        const container = document.getElementById("result-buttons");
+        topResults.forEach(type => {
+            const btn = document.createElement("a");
+            btn.href = urlMap[type];
+            btn.className = "taishitsu-button";
+            btn.textContent = `${type}タイプの解説ページへ`;
+            container.appendChild(btn);
+        });
+    </script>
 </body>
 </html>
