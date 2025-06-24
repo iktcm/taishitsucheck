@@ -44,12 +44,16 @@
 
         const container = document.getElementById("result-buttons");
         topResults.forEach(type => {
-            const btn = document.createElement("a");
-            btn.href = urlMap[type];
-            btn.className = "taishitsu-button";
-            btn.textContent = `${type}タイプの解説ページへ`;
-            container.appendChild(btn);
-        });
+    if (urlMap[type]) {
+        const btn = document.createElement("a");
+        btn.href = urlMap[type];
+        btn.className = "taishitsu-button";
+        btn.textContent = `${type}タイプの解説ページへ`;
+        container.appendChild(btn);
+    }
+});
+
+
     </script>
 </body>
 </html>
