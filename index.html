@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>今の心と体をチェックする｜中医学診断</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今の心と体をチェック</title>
   <style>
     body {
       font-family: "Noto Serif JP", serif;
@@ -18,67 +18,56 @@
     }
 
     .wrapper {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.85);
       max-width: 800px;
       margin: 5rem auto;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 18px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
 
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #3a3a3a;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
 
-    p {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      color: #555;
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .button {
       display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
+      background-color: #4682b4;
       color: white;
-      background-color: #006666;
-      border: none;
-      border-radius: 8px;
+      padding: 1rem 2rem;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: background-color 0.3s;
     }
 
     .button:hover {
-      background-color: #009999;
+      background-color: #315f7c;
     }
 
-    @media screen and (max-width: 600px) {
-      .wrapper {
-        margin: 2rem 1rem;
-        padding: 1.5rem;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      .button {
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
+    @media (min-width: 600px) {
+      .button-container {
+        flex-direction: row;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <h1>今の「心」と「体」をチェック</h1>
-    <p>中医学にもとづいた簡易診断です。<br>今の状態に合ったセルフケアのヒントを知ってみましょう。</p>
-    <a class="button" href="https://iktcm.github.io/taishitsucheck/">体からチェックする</a>
-    <a class="button" href="https://iktcm.github.io/goshincheck/">心からチェックする</a>
+    <h1>今の心と体をチェック</h1>
+    <div class="button-container">
+      <a class="button" href="https://iktcm.github.io/taishitsucheck/index.html">からだからチェック</a>
+      <a class="button" href="https://iktcm.github.io/goshincheck/index.html">こころからチェック</a>
+    </div>
   </div>
 </body>
 </html>
