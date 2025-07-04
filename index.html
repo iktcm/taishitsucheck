@@ -1,648 +1,166 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>中医学体質診断</title><style>
-body { font-family: "Hiragino Mincho ProN", serif; background: url('background.jpg') no-repeat center center fixed; background-size: cover; padding: 20px; color: #333; }
-.section-taishitsu { background-color: rgba(255, 255, 255, 0.9); padding: 20px; margin-bottom: 30px; border-radius: 10px; }
-.question { margin-bottom: 15px; }
-.result-button { display: inline-block; margin: 10px 10px 0 0; padding: 10px 20px; background-color: #a94442; color: white; border: none; border-radius: 8px; text-decoration: none; font-size: 16px; }
-.result-button:hover { background-color: #843534; }
-h2 { margin-top: 0; }
-</style></head><body><h1>中医学 体質診断フォーム</h1><section class="section-taishitsu">
-<h2>【気虚タイプ】</h2>
-<div class="question">
-<label>疲れやすいですか？</label><br>
-<input type="radio" name="q1" value="1" required> YES
-<input type="radio" name="q1" value="0"> NO
-</div>
-<div class="question">
-<label>フラフラするようなめまいがありますか？</label><br>
-<input type="radio" name="q2" value="1" required> YES
-<input type="radio" name="q2" value="0"> NO
-</div>
-<div class="question">
-<label>汗をかきやすいですか？</label><br>
-<input type="radio" name="q3" value="1" required> YES
-<input type="radio" name="q3" value="0"> NO
-</div>
-<div class="question">
-<label>呼吸が浅いと感じますか？</label><br>
-<input type="radio" name="q4" value="1" required> YES
-<input type="radio" name="q4" value="0"> NO
-</div>
-<div class="question">
-<label>風邪をよくひくと感じますか？</label><br>
-<input type="radio" name="q5" value="1" required> YES
-<input type="radio" name="q5" value="0"> NO
-</div>
-<div class="question">
-<label>声が小さい方ですか？</label><br>
-<input type="radio" name="q6" value="1" required> YES
-<input type="radio" name="q6" value="0"> NO
-</div>
-<div class="question">
-<label>胃腸が弱い方ですか？</label><br>
-<input type="radio" name="q7" value="1" required> YES
-<input type="radio" name="q7" value="0"> NO
-</div>
-<div class="question">
-<label>手足がだるいと感じますか？</label><br>
-<input type="radio" name="q8" value="1" required> YES
-<input type="radio" name="q8" value="0"> NO
-</div>
-<div class="question">
-<label>食が細い、または食欲不振ですか？</label><br>
-<input type="radio" name="q9" value="1" required> YES
-<input type="radio" name="q9" value="0"> NO
-</div>
-<div class="question">
-<label>舌は白っぽく腫れぼったい、歯型や苔がまだらですか？</label><br>
-<input type="radio" name="q10" value="1" required> YES
-<input type="radio" name="q10" value="0"> NO
-</div>
-<div class="question">
-<label>経血の色は薄いですか？（※女性のみ）</label><br>
-<input type="radio" name="q11" value="1" required> YES
-<input type="radio" name="q11" value="0"> NO
-</div>
-<div class="question">
-<label>経血量が多いですか？（※女性のみ）</label><br>
-<input type="radio" name="q12" value="1" required> YES
-<input type="radio" name="q12" value="0"> NO
-</div>
-<div class="question">
-<label>生理期間が長めですか？（※女性のみ）</label><br>
-<input type="radio" name="q13" value="1" required> YES
-<input type="radio" name="q13" value="0"> NO
-</div>
-<div class="question">
-<label>おりものは多くてサラサラと汁っぽいですか？（※女性のみ）</label><br>
-<input type="radio" name="q14" value="1" required> YES
-<input type="radio" name="q14" value="0"> NO
-</div>
-</section>
-<section class="section-taishitsu">
-<h2>【陽虚タイプ】</h2>
-<div class="question">
-<label>寒がりですか？</label><br>
-<input type="radio" name="q15" value="1" required> YES
-<input type="radio" name="q15" value="0"> NO
-</div>
-<div class="question">
-<label>手足が冷たいですか？</label><br>
-<input type="radio" name="q16" value="1" required> YES
-<input type="radio" name="q16" value="0"> NO
-</div>
-<div class="question">
-<label>顔色が白っぽいですか？</label><br>
-<input type="radio" name="q17" value="1" required> YES
-<input type="radio" name="q17" value="0"> NO
-</div>
-<div class="question">
-<label>物忘れが多いですか？</label><br>
-<input type="radio" name="q18" value="1" required> YES
-<input type="radio" name="q18" value="0"> NO
-</div>
-<div class="question">
-<label>トイレが近いですか？</label><br>
-<input type="radio" name="q19" value="1" required> YES
-<input type="radio" name="q19" value="0"> NO
-</div>
-<div class="question">
-<label>下痢気味（軟便）ですか？</label><br>
-<input type="radio" name="q20" value="1" required> YES
-<input type="radio" name="q20" value="0"> NO
-</div>
-<div class="question">
-<label>耳鳴りがしますか？</label><br>
-<input type="radio" name="q21" value="1" required> YES
-<input type="radio" name="q21" value="0"> NO
-</div>
-<div class="question">
-<label>お風呂は長風呂ですか？</label><br>
-<input type="radio" name="q22" value="1" required> YES
-<input type="radio" name="q22" value="0"> NO
-</div>
-<div class="question">
-<label>腰がだるい、または痛いですか？</label><br>
-<input type="radio" name="q23" value="1" required> YES
-<input type="radio" name="q23" value="0"> NO
-</div>
-<div class="question">
-<label>舌は小さく白い、苔は白く潤っている方ですか？</label><br>
-<input type="radio" name="q24" value="1" required> YES
-<input type="radio" name="q24" value="0"> NO
-</div>
-<div class="question">
-<label>経血の量が極少ですか？（※女性のみ）</label><br>
-<input type="radio" name="q25" value="1" required> YES
-<input type="radio" name="q25" value="0"> NO
-</div>
-<div class="question">
-<label>色が赤黒いですか？（※女性のみ）</label><br>
-<input type="radio" name="q26" value="1" required> YES
-<input type="radio" name="q26" value="0"> NO
-</div>
-<div class="question">
-<label>下腹部疼痛、温めると楽ですか？（※女性のみ）</label><br>
-<input type="radio" name="q27" value="1" required> YES
-<input type="radio" name="q27" value="0"> NO
-</div>
-<div class="question">
-<label>おりものはサラサラで量が多いですか？（※女性のみ）</label><br>
-<input type="radio" name="q28" value="1" required> YES
-<input type="radio" name="q28" value="0"> NO
-</div>
-</section>
-<section class="section-taishitsu">
-<h2>【血虚タイプ】</h2>
-<div class="question">
-<label>顔色が悪くツヤがない？</label><br>
-<input type="radio" name="q29" value="1" required> YES
-<input type="radio" name="q29" value="0"> NO
-</div>
-<div class="question">
-<label>唇や爪の色が白いですか？</label><br>
-<input type="radio" name="q30" value="1" required> YES
-<input type="radio" name="q30" value="0"> NO
-</div>
-<div class="question">
-<label>髪や肌がパサつきますか？</label><br>
-<input type="radio" name="q31" value="1" required> YES
-<input type="radio" name="q31" value="0"> NO
-</div>
-<div class="question">
-<label>立ち眩みやめまいがしますか？</label><br>
-<input type="radio" name="q32" value="1" required> YES
-<input type="radio" name="q32" value="0"> NO
-</div>
-<div class="question">
-<label>眼がかすみますか？</label><br>
-<input type="radio" name="q33" value="1" required> YES
-<input type="radio" name="q33" value="0"> NO
-</div>
-<div class="question">
-<label>精神不安定ですか？</label><br>
-<input type="radio" name="q34" value="1" required> YES
-<input type="radio" name="q34" value="0"> NO
-</div>
-<div class="question">
-<label>寝つきが悪い、眠りが浅く良く目が覚める、睡眠不足ですか？</label><br>
-<input type="radio" name="q35" value="1" required> YES
-<input type="radio" name="q35" value="0"> NO
-</div>
-<div class="question">
-<label>食が細い、または食欲不振ですか？</label><br>
-<input type="radio" name="q36" value="1" required> YES
-<input type="radio" name="q36" value="0"> NO
-</div>
-<div class="question">
-<label>足がつる、まぶたがピクつきますか？</label><br>
-<input type="radio" name="q37" value="1" required> YES
-<input type="radio" name="q37" value="0"> NO
-</div>
-<div class="question">
-<label>舌は白く小さくひび割れがありますか？</label><br>
-<input type="radio" name="q38" value="1" required> YES
-<input type="radio" name="q38" value="0"> NO
-</div>
-<div class="question">
-<label>生理の経血が薄いですか？（※女性のみ）</label><br>
-<input type="radio" name="q39" value="1" required> YES
-<input type="radio" name="q39" value="0"> NO
-</div>
-<div class="question">
-<label>生理の経血が少ないですか？（※女性のみ）</label><br>
-<input type="radio" name="q40" value="1" required> YES
-<input type="radio" name="q40" value="0"> NO
-</div>
-<div class="question">
-<label>無月経、生理不順ですか？（※女性のみ）</label><br>
-<input type="radio" name="q41" value="1" required> YES
-<input type="radio" name="q41" value="0"> NO
-</div>
-<div class="question">
-<label>おりものは特にないですか？（※女性のみ）</label><br>
-<input type="radio" name="q42" value="1" required> YES
-<input type="radio" name="q42" value="0"> NO
-</div>
-</section>
-<section class="section-taishitsu">
-<h2>【陰虚タイプ】</h2>
-<div class="question">
-<label>ほてりやのぼせを感じますか？</label><br>
-<input type="radio" name="q43" value="1" required> YES
-<input type="radio" name="q43" value="0"> NO
-</div>
-<div class="question">
-<label>眼や口が渇きますか？</label><br>
-<input type="radio" name="q44" value="1" required> YES
-<input type="radio" name="q44" value="0"> NO
-</div>
-<div class="question">
-<label>夜型生活（夜更かし気味）、不眠気味ですか？</label><br>
-<input type="radio" name="q45" value="1" required> YES
-<input type="radio" name="q45" value="0"> NO
-</div>
-<div class="question">
-<label>肌が乾燥していますか？</label><br>
-<input type="radio" name="q46" value="1" required> YES
-<input type="radio" name="q46" value="0"> NO
-</div>
-<div class="question">
-<label>イライラしやすいですか？</label><br>
-<input type="radio" name="q47" value="1" required> YES
-<input type="radio" name="q47" value="0"> NO
-</div>
-<div class="question">
-<label>空咳が続きますか？</label><br>
-<input type="radio" name="q48" value="1" required> YES
-<input type="radio" name="q48" value="0"> NO
-</div>
-<div class="question">
-<label>寝汗をよくかきますか？</label><br>
-<input type="radio" name="q49" value="1" required> YES
-<input type="radio" name="q49" value="0"> NO
-</div>
-<div class="question">
-<label>便秘気味、コロコロ便ですか？</label><br>
-<input type="radio" name="q50" value="1" required> YES
-<input type="radio" name="q50" value="0"> NO
-</div>
-<div class="question">
-<label>風呂に長くつかるの苦手ですか？</label><br>
-<input type="radio" name="q51" value="1" required> YES
-<input type="radio" name="q51" value="0"> NO
-</div>
-<div class="question">
-<label>舌は赤くひび割れがありますか？</label><br>
-<input type="radio" name="q52" value="1" required> YES
-<input type="radio" name="q52" value="0"> NO
-</div>
-<div class="question">
-<label>経血の量が多いですか？（※女性のみ）</label><br>
-<input type="radio" name="q53" value="1" required> YES
-<input type="radio" name="q53" value="0"> NO
-</div>
-<div class="question">
-<label>ねっとりしていますか？（※女性のみ）</label><br>
-<input type="radio" name="q54" value="1" required> YES
-<input type="radio" name="q54" value="0"> NO
-</div>
-<div class="question">
-<label>生理不順ですか？（※女性のみ）</label><br>
-<input type="radio" name="q55" value="1" required> YES
-<input type="radio" name="q55" value="0"> NO
-</div>
-<div class="question">
-<label>おりものの量は少なく粘つく方ですか？（※女性のみ）</label><br>
-<input type="radio" name="q56" value="1" required> YES
-<input type="radio" name="q56" value="0"> NO
-</div>
-</section>
-<section class="section-taishitsu">
-<h2>【気滞タイプ】</h2>
-<div class="question">
-<label>お腹や脇が張って痛いと感じますか？</label><br>
-<input type="radio" name="q57" value="1" required> YES
-<input type="radio" name="q57" value="0"> NO
-</div>
-<div class="question">
-<label>ゲップやオナラをしやすいですか？</label><br>
-<input type="radio" name="q58" value="1" required> YES
-<input type="radio" name="q58" value="0"> NO
-</div>
-<div class="question">
-<label>ストレスを感じますか？</label><br>
-<input type="radio" name="q59" value="1" required> YES
-<input type="radio" name="q59" value="0"> NO
-</div>
-<div class="question">
-<label>よくイライラしますか？</label><br>
-<input type="radio" name="q60" value="1" required> YES
-<input type="radio" name="q60" value="0"> NO
-</div>
-<div class="question">
-<label>便秘気味ですか？</label><br>
-<input type="radio" name="q61" value="1" required> YES
-<input type="radio" name="q61" value="0"> NO
-</div>
-<div class="question">
-<label>顔がほてり手足が冷たいと感じますか？</label><br>
-<input type="radio" name="q62" value="1" required> YES
-<input type="radio" name="q62" value="0"> NO
-</div>
-<div class="question">
-<label>胃腸が弱いですか？</label><br>
-<input type="radio" name="q63" value="1" required> YES
-<input type="radio" name="q63" value="0"> NO
-</div>
-<div class="question">
-<label>溜息をよくつきますか？</label><br>
-<input type="radio" name="q64" value="1" required> YES
-<input type="radio" name="q64" value="0"> NO
-</div>
-<div class="question">
-<label>片頭痛がありますか？</label><br>
-<input type="radio" name="q65" value="1" required> YES
-<input type="radio" name="q65" value="0"> NO
-</div>
-<div class="question">
-<label>舌は分厚く赤い、または苔は黄色っぽく、歯型はないのどれかですか？</label><br>
-<input type="radio" name="q66" value="1" required> YES
-<input type="radio" name="q66" value="0"> NO
-</div>
-<div class="question">
-<label>生理が不順ですか？（※女性のみ）</label><br>
-<input type="radio" name="q67" value="1" required> YES
-<input type="radio" name="q67" value="0"> NO
-</div>
-<div class="question">
-<label>生理前に胸や下腹部が脹りますか？（※女性のみ）</label><br>
-<input type="radio" name="q68" value="1" required> YES
-<input type="radio" name="q68" value="0"> NO
-</div>
-<div class="question">
-<label>生理中は憂うつになりますか？（※女性のみ）</label><br>
-<input type="radio" name="q69" value="1" required> YES
-<input type="radio" name="q69" value="0"> NO
-</div>
-<div class="question">
-<label>おりものはあまりない方ですか？（※女性のみ）</label><br>
-<input type="radio" name="q70" value="1" required> YES
-<input type="radio" name="q70" value="0"> NO
-</div>
-</section>
-<section class="section-taishitsu">
-<h2>【血瘀タイプ】</h2>
-<div class="question">
-<label>顔色がくすんでいますか？</label><br>
-<input type="radio" name="q71" value="1" required> YES
-<input type="radio" name="q71" value="0"> NO
-</div>
-<div class="question">
-<label>皮膚が乾燥してカサカサしますか？</label><br>
-<input type="radio" name="q72" value="1" required> YES
-<input type="radio" name="q72" value="0"> NO
-</div>
-<div class="question">
-<label>目元にクマが出来やすいですか？</label><br>
-<input type="radio" name="q73" value="1" required> YES
-<input type="radio" name="q73" value="0"> NO
-</div>
-<div class="question">
-<label>肩こりがありますか？</label><br>
-<input type="radio" name="q74" value="1" required> YES
-<input type="radio" name="q74" value="0"> NO
-</div>
-<div class="question">
-<label>シミやソバカスがある、または肝斑がありますか？</label><br>
-<input type="radio" name="q75" value="1" required> YES
-<input type="radio" name="q75" value="0"> NO
-</div>
-<div class="question">
-<label>アザが出来やすいですか？</label><br>
-<input type="radio" name="q76" value="1" required> YES
-<input type="radio" name="q76" value="0"> NO
-</div>
-<div class="question">
-<label>刺すような痛みがありますか？</label><br>
-<input type="radio" name="q77" value="1" required> YES
-<input type="radio" name="q77" value="0"> NO
-</div>
-<div class="question">
-<label>便秘気味ですか？</label><br>
-<input type="radio" name="q78" value="1" required> YES
-<input type="radio" name="q78" value="0"> NO
-</div>
-<div class="question">
-<label>夕方に微熱を感じることがありますか？</label><br>
-<input type="radio" name="q79" value="1" required> YES
-<input type="radio" name="q79" value="0"> NO
-</div>
-<div class="question">
-<label>舌は紫色、黒い斑点がある、または舌裏の静脈が太いですか？</label><br>
-<input type="radio" name="q80" value="1" required> YES
-<input type="radio" name="q80" value="0"> NO
-</div>
-<div class="question">
-<label>生理痛がひどいですか？（※女性のみ）</label><br>
-<input type="radio" name="q81" value="1" required> YES
-<input type="radio" name="q81" value="0"> NO
-</div>
-<div class="question">
-<label>経血の量は多かったり少なかったりですか？（※女性のみ）</label><br>
-<input type="radio" name="q82" value="1" required> YES
-<input type="radio" name="q82" value="0"> NO
-</div>
-<div class="question">
-<label>経血に塊がありますか？（※女性のみ）</label><br>
-<input type="radio" name="q83" value="1" required> YES
-<input type="radio" name="q83" value="0"> NO
-</div>
-<div class="question">
-<label>おりものはあまりない方ですか？（※女性のみ）</label><br>
-<input type="radio" name="q84" value="1" required> YES
-<input type="radio" name="q84" value="0"> NO
-</div>
-</section>
-<section class="section-taishitsu">
-<h2>【湿熱タイプ】</h2>
-<div class="question">
-<label>暑がりで汗っかきですか？</label><br>
-<input type="radio" name="q85" value="1" required> YES
-<input type="radio" name="q85" value="0"> NO
-</div>
-<div class="question">
-<label>喉が渇きやすく、冷たい物が好きですか？</label><br>
-<input type="radio" name="q86" value="1" required> YES
-<input type="radio" name="q86" value="0"> NO
-</div>
-<div class="question">
-<label>お酒をよく飲みますか？</label><br>
-<input type="radio" name="q87" value="1" required> YES
-<input type="radio" name="q87" value="0"> NO
-</div>
-<div class="question">
-<label>吹き出物や皮膚が化膿しやすいですか？</label><br>
-<input type="radio" name="q88" value="1" required> YES
-<input type="radio" name="q88" value="0"> NO
-</div>
-<div class="question">
-<label>じんましんが良くできる、またはからだが痒いですか？</label><br>
-<input type="radio" name="q89" value="1" required> YES
-<input type="radio" name="q89" value="0"> NO
-</div>
-<div class="question">
-<label>便秘気味（便が硬い）ですか？</label><br>
-<input type="radio" name="q90" value="1" required> YES
-<input type="radio" name="q90" value="0"> NO
-</div>
-<div class="question">
-<label>髪の毛が薄いですか？</label><br>
-<input type="radio" name="q91" value="1" required> YES
-<input type="radio" name="q91" value="0"> NO
-</div>
-<div class="question">
-<label>風呂に長くつかるのは苦手ですか？</label><br>
-<input type="radio" name="q92" value="1" required> YES
-<input type="radio" name="q92" value="0"> NO
-</div>
-<div class="question">
-<label>油っこいものやピリ辛、濃い味が好きですか？</label><br>
-<input type="radio" name="q93" value="1" required> YES
-<input type="radio" name="q93" value="0"> NO
-</div>
-<div class="question">
-<label>舌は大きく歯形がある、または黄色い苔がありますか？</label><br>
-<input type="radio" name="q94" value="1" required> YES
-<input type="radio" name="q94" value="0"> NO
-</div>
-<div class="question">
-<label>経血の量が多くねっとりしていますか？（※女性のみ）</label><br>
-<input type="radio" name="q95" value="1" required> YES
-<input type="radio" name="q95" value="0"> NO
-</div>
-<div class="question">
-<label>生理周期が短めですか？（※女性のみ）</label><br>
-<input type="radio" name="q96" value="1" required> YES
-<input type="radio" name="q96" value="0"> NO
-</div>
-<div class="question">
-<label>陰部に掻痒感がありますか？（※女性のみ）</label><br>
-<input type="radio" name="q97" value="1" required> YES
-<input type="radio" name="q97" value="0"> NO
-</div>
-<div class="question">
-<label>おりものが黄色く粘つきますか？（※女性のみ）</label><br>
-<input type="radio" name="q98" value="1" required> YES
-<input type="radio" name="q98" value="0"> NO
-</div>
-</section>
-<section class="section-taishitsu">
-<h2>【湿痰タイプ】</h2>
-<div class="question">
-<label>胃のあたりでポチャポチャ音がしますか？</label><br>
-<input type="radio" name="q99" value="1" required> YES
-<input type="radio" name="q99" value="0"> NO
-</div>
-<div class="question">
-<label>梅雨時や雨の日に体調が悪いですか？</label><br>
-<input type="radio" name="q100" value="1" required> YES
-<input type="radio" name="q100" value="0"> NO
-</div>
-<div class="question">
-<label>船に乗ってるようなめまいがしますか？</label><br>
-<input type="radio" name="q101" value="1" required> YES
-<input type="radio" name="q101" value="0"> NO
-</div>
-<div class="question">
-<label>カラダが浮腫みやすいですか？</label><br>
-<input type="radio" name="q102" value="1" required> YES
-<input type="radio" name="q102" value="0"> NO
-</div>
-<div class="question">
-<label>痰や唾が出やすいですか？</label><br>
-<input type="radio" name="q103" value="1" required> YES
-<input type="radio" name="q103" value="0"> NO
-</div>
-<div class="question">
-<label>体が重くだるい、手足がだるいと感じますか？</label><br>
-<input type="radio" name="q104" value="1" required> YES
-<input type="radio" name="q104" value="0"> NO
-</div>
-<div class="question">
-<label>食欲不振気味ですか？</label><br>
-<input type="radio" name="q105" value="1" required> YES
-<input type="radio" name="q105" value="0"> NO
-</div>
-<div class="question">
-<label>下痢気味（軟便）ですか？</label><br>
-<input type="radio" name="q106" value="1" required> YES
-<input type="radio" name="q106" value="0"> NO
-</div>
-<div class="question">
-<label>耳鳴りや突発性難聴ですか？</label><br>
-<input type="radio" name="q107" value="1" required> YES
-<input type="radio" name="q107" value="0"> NO
-</div>
-<div class="question">
-<label>舌は大きくまわりに歯形がある、苔がべっとりしていますか？</label><br>
-<input type="radio" name="q108" value="1" required> YES
-<input type="radio" name="q108" value="0"> NO
-</div>
-<div class="question">
-<label>経血の量が多くねっとりしますか？（※女性のみ）</label><br>
-<input type="radio" name="q109" value="1" required> YES
-<input type="radio" name="q109" value="0"> NO
-</div>
-<div class="question">
-<label>経血の色は薄いがねっとりするですか？（※女性のみ）</label><br>
-<input type="radio" name="q110" value="1" required> YES
-<input type="radio" name="q110" value="0"> NO
-</div>
-<div class="question">
-<label>生理が遅れやすいですか？（※女性のみ）</label><br>
-<input type="radio" name="q111" value="1" required> YES
-<input type="radio" name="q111" value="0"> NO
-</div>
-<div class="question">
-<label>おりものは多く粘つきますか？（※女性のみ）</label><br>
-<input type="radio" name="q112" value="1" required> YES
-<input type="radio" name="q112" value="0"> NO
-</div>
-</section>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五神診断（簡易版）</title>
+  <style>
+    body {
+      font-family: "Noto Serif JP", serif;
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #f6f2eb;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
 
-<button onclick="calculateScore()">診断する</button>
-<div id="result"></div>
-<script>
-function calculateScore() {
-  const taishitsuNames = ["気虚", "陽虚", "血虚", "陰虚", "気滞", "血瘀", "湿熱", "湿痰"];
-  const scores = Array(8).fill(0);
-  let answeredCount = 0;
+    .wrapper {
+      background-color: rgba(255, 255, 255, 0.85);
+      max-width: 800px;
+      margin: 5rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
 
-  for (let i = 0; i < 112; i++) {
-    const radios = document.getElementsByName(`q${i + 1}`);
-    for (let radio of radios) {
-      if (radio.checked) {
-        answeredCount++;
-        if (radio.value === "1") {
-          const groupIndex = Math.floor(i / 14);
-          scores[groupIndex]++;
-        }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .question {
+      margin-bottom: 1rem;
+    }
+
+    .result-button {
+      display: inline-block;
+      margin: 0.5rem 0;
+      padding: 0.75rem 1.25rem;
+      background-color: #006666;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .result-button:hover {
+      background-color: #009999;
+    }
+
+    button {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+
+    @media screen and (max-width: 768px) {
+      .wrapper {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      button {
+        font-size: 0.9rem;
       }
     }
-  }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>五神診断（簡易版）</h1>
+    <form id="goshin-form">
+      <div class="question">1. 人の気持ちに敏感すぎて疲れることがある（神）<br>
+        <label><input type="radio" name="q1" value="神"> はい</label>
+        <label><input type="radio" name="q1" value=""> いいえ</label>
+      </div>
+      <div class="question">2. 夜になると興奮して眠れない日がある（神）<br>
+        <label><input type="radio" name="q2" value="神"> はい</label>
+        <label><input type="radio" name="q2" value=""> いいえ</label>
+      </div>
+      <div class="question">3. イライラしたり、感情が爆発することがある（魂）<br>
+        <label><input type="radio" name="q3" value="魂"> はい</label>
+        <label><input type="radio" name="q3" value=""> いいえ</label>
+      </div>
+      <div class="question">4. 新しいことに挑戦したいのに腰が重い（魂）<br>
+        <label><input type="radio" name="q4" value="魂"> はい</label>
+        <label><input type="radio" name="q4" value=""> いいえ</label>
+      </div>
+      <div class="question">5. すぐに緊張し、不安になりやすい（魄）<br>
+        <label><input type="radio" name="q5" value="魄"> はい</label>
+        <label><input type="radio" name="q5" value=""> いいえ</label>
+      </div>
+      <div class="question">6. 気づいたら呼吸が浅くなっていることがある（魄）<br>
+        <label><input type="radio" name="q6" value="魄"> はい</label>
+        <label><input type="radio" name="q6" value=""> いいえ</label>
+      </div>
+      <div class="question">7. 考えすぎて物事を決められないことが多い（意）<br>
+        <label><input type="radio" name="q7" value="意"> はい</label>
+        <label><input type="radio" name="q7" value=""> いいえ</label>
+      </div>
+      <div class="question">8. 集中力が続かず、気が散りやすい（意）<br>
+        <label><input type="radio" name="q8" value="意"> はい</label>
+        <label><input type="radio" name="q8" value=""> いいえ</label>
+      </div>
+      <div class="question">9. やる気はあるのに行動に移せないことがある（志）<br>
+        <label><input type="radio" name="q9" value="志"> はい</label>
+        <label><input type="radio" name="q9" value=""> いいえ</label>
+      </div>
+      <div class="question">10. 夢や目標を途中で諦めたくなることがある（志）<br>
+        <label><input type="radio" name="q10" value="志"> はい</label>
+        <label><input type="radio" name="q10" value=""> いいえ</label>
+      </div>
+      <button type="button" onclick="calculateGoshin()">診断する</button>
+    </form>
 
-  const resultDiv = document.getElementById("result");
+    <div id="result"></div>
+  </div>
 
-  if (answeredCount === 0) {
-    resultDiv.innerHTML = "<p style='color:red;'>※質問に答えてから診断ボタンを押してください。</p>";
-    return;
-  }
+  <script>
+    function calculateGoshin() {
+      const scores = { "神": 0, "魂": 0, "魄": 0, "意": 0, "志": 0 };
+      const form = document.getElementById("goshin-form");
+      const inputs = form.querySelectorAll("input[type='radio']:checked");
+      inputs.forEach(input => {
+        if (input.value) scores[input.value]++;
+      });
 
-  const topIndexes = scores.map((score, index) => ({ index, score }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3);
+      const sorted = Object.entries(scores)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 2);
 
-  const typePageMap = {
-    "気虚": { type: "気のタイプ", url: "https://rakuyakuzen.base.shop/p/00004" },
-    "気滞": { type: "気のタイプ", url: "https://rakuyakuzen.base.shop/p/00004" },
-    "血虚": { type: "血のタイプ", url: "https://rakuyakuzen.base.shop/p/00005" },
-    "血瘀": { type: "血のタイプ", url: "https://rakuyakuzen.base.shop/p/00005" },
-    "陰虚": { type: "水のタイプ", url: "https://rakuyakuzen.base.shop/p/00007" },
-    "湿痰": { type: "水のタイプ", url: "https://rakuyakuzen.base.shop/p/00007" },
-    "陽虚": { type: "熱のタイプ", url: "https://rakuyakuzen.base.shop/p/00008" },
-    "湿熱": { type: "熱のタイプ", url: "https://rakuyakuzen.base.shop/p/00008" }
-  };
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "<h2>今のあなたの精神状態は、以下の2つのタイプに傾く傾向があるようです。</h2>";
 
-  resultDiv.innerHTML = "<h2>あなたの体質タイプ（上位3）</h2>";
-  const displayed = new Set();
-  topIndexes.forEach(entry => {
-    const name = taishitsuNames[entry.index];
-    const info = typePageMap[name];
-    if (info && !displayed.has(info.url)) {
-      resultDiv.innerHTML += `<a class='result-button' href='${info.url}' target='_blank'>${info.type}を見る（${name}：${entry.score}点）</a><br>`;
-      displayed.add(info.url);
+      const goshinUrls = {
+        "神": "https://rakuyakuzen.base.shop/p/00003",
+        "魂": "https://rakuyakuzen.base.shop/p/00006",
+        "魄": "https://rakuyakuzen.base.shop/p/00009",
+        "意": "https://rakuyakuzen.base.shop/p/00010",
+        "志": "https://rakuyakuzen.base.shop/p/00017"
+      };
+
+      sorted.forEach(([type, score]) => {
+        resultDiv.innerHTML += `<a class="result-button" href="${goshinUrls[type]}" target="_blank">${type}タイプを見る（${score}点）</a><br>`;
+      });
     }
-  });
-}
-</script>
-</script>
+  </script>
+</body>
+</html>
