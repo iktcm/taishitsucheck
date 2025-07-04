@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>五神診断（簡易版）</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>今の心と体をチェックする｜中医学診断</title>
   <style>
     body {
       font-family: "Noto Serif JP", serif;
@@ -15,152 +15,70 @@
       background-color: #f6f2eb;
       margin: 0;
       padding: 0;
-      line-height: 1.8;
     }
 
     .wrapper {
-      background-color: rgba(255, 255, 255, 0.85);
+      background-color: rgba(255, 255, 255, 0.9);
       max-width: 800px;
       margin: 5rem auto;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.15);
+      text-align: center;
     }
 
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
-      text-align: center;
+      color: #3a3a3a;
     }
 
-    .question {
-      margin-bottom: 1rem;
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #555;
     }
 
-    .result-button {
+    .button {
       display: inline-block;
-      margin: 0.5rem 0;
-      padding: 0.75rem 1.25rem;
-      background-color: #006666;
+      margin: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
       color: white;
+      background-color: #006666;
+      border: none;
+      border-radius: 8px;
       text-decoration: none;
-      border-radius: 6px;
+      transition: background-color 0.3s ease;
     }
 
-    .result-button:hover {
+    .button:hover {
       background-color: #009999;
     }
 
-    button {
-      display: block;
-      margin: 2rem auto;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      background-color: #444;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #666;
-    }
-
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 600px) {
       .wrapper {
         margin: 2rem 1rem;
         padding: 1.5rem;
       }
 
       h1 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
 
-      button {
-        font-size: 0.9rem;
+      .button {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <h1>五神診断（簡易版）</h1>
-    <form id="goshin-form">
-      <div class="question">1. 人の気持ちに敏感すぎて疲れることがある（神）<br>
-        <label><input type="radio" name="q1" value="神"> はい</label>
-        <label><input type="radio" name="q1" value=""> いいえ</label>
-      </div>
-      <div class="question">2. 夜になると興奮して眠れない日がある（神）<br>
-        <label><input type="radio" name="q2" value="神"> はい</label>
-        <label><input type="radio" name="q2" value=""> いいえ</label>
-      </div>
-      <div class="question">3. イライラしたり、感情が爆発することがある（魂）<br>
-        <label><input type="radio" name="q3" value="魂"> はい</label>
-        <label><input type="radio" name="q3" value=""> いいえ</label>
-      </div>
-      <div class="question">4. 新しいことに挑戦したいのに腰が重い（魂）<br>
-        <label><input type="radio" name="q4" value="魂"> はい</label>
-        <label><input type="radio" name="q4" value=""> いいえ</label>
-      </div>
-      <div class="question">5. すぐに緊張し、不安になりやすい（魄）<br>
-        <label><input type="radio" name="q5" value="魄"> はい</label>
-        <label><input type="radio" name="q5" value=""> いいえ</label>
-      </div>
-      <div class="question">6. 気づいたら呼吸が浅くなっていることがある（魄）<br>
-        <label><input type="radio" name="q6" value="魄"> はい</label>
-        <label><input type="radio" name="q6" value=""> いいえ</label>
-      </div>
-      <div class="question">7. 考えすぎて物事を決められないことが多い（意）<br>
-        <label><input type="radio" name="q7" value="意"> はい</label>
-        <label><input type="radio" name="q7" value=""> いいえ</label>
-      </div>
-      <div class="question">8. 集中力が続かず、気が散りやすい（意）<br>
-        <label><input type="radio" name="q8" value="意"> はい</label>
-        <label><input type="radio" name="q8" value=""> いいえ</label>
-      </div>
-      <div class="question">9. やる気はあるのに行動に移せないことがある（志）<br>
-        <label><input type="radio" name="q9" value="志"> はい</label>
-        <label><input type="radio" name="q9" value=""> いいえ</label>
-      </div>
-      <div class="question">10. 夢や目標を途中で諦めたくなることがある（志）<br>
-        <label><input type="radio" name="q10" value="志"> はい</label>
-        <label><input type="radio" name="q10" value=""> いいえ</label>
-      </div>
-      <button type="button" onclick="calculateGoshin()">診断する</button>
-    </form>
-
-    <div id="result"></div>
+    <h1>今の「心」と「体」をチェック</h1>
+    <p>中医学にもとづいた簡易診断です。<br>今の状態に合ったセルフケアのヒントを知ってみましょう。</p>
+    <a class="button" href="https://iktcm.github.io/taishitsucheck/">体からチェックする</a>
+    <a class="button" href="https://iktcm.github.io/goshincheck/">心からチェックする</a>
   </div>
-
-  <script>
-    function calculateGoshin() {
-      const scores = { "神": 0, "魂": 0, "魄": 0, "意": 0, "志": 0 };
-      const form = document.getElementById("goshin-form");
-      const inputs = form.querySelectorAll("input[type='radio']:checked");
-      inputs.forEach(input => {
-        if (input.value) scores[input.value]++;
-      });
-
-      const sorted = Object.entries(scores)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 2);
-
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = "<h2>今のあなたの精神状態は、以下の2つのタイプに傾く傾向があるようです。</h2>";
-
-      const goshinUrls = {
-        "神": "https://rakuyakuzen.base.shop/p/00003",
-        "魂": "https://rakuyakuzen.base.shop/p/00006",
-        "魄": "https://rakuyakuzen.base.shop/p/00009",
-        "意": "https://rakuyakuzen.base.shop/p/00010",
-        "志": "https://rakuyakuzen.base.shop/p/00017"
-      };
-
-      sorted.forEach(([type, score]) => {
-        resultDiv.innerHTML += `<a class="result-button" href="${goshinUrls[type]}" target="_blank">${type}タイプを見る（${score}点）</a><br>`;
-      });
-    }
-  </script>
 </body>
 </html>
