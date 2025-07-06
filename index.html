@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>今の心と体をチェック</title>
+  <title>今の心と体を知る｜京都 楽楽堂</title>
   <style>
     body {
       font-family: "Noto Serif JP", serif;
@@ -18,56 +18,55 @@
     }
 
     .wrapper {
-      background-color: rgba(255, 255, 255, 0.85);
+      background-color: rgba(255, 255, 255, 0.88);
       max-width: 800px;
       margin: 5rem auto;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
       text-align: center;
     }
 
     h1 {
       font-size: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
     }
 
     .button {
       display: inline-block;
-      background-color: #4682b4;
-      color: white;
+      margin: 1rem;
       padding: 1rem 2rem;
+      background-color: #006666;
+      color: white;
       text-decoration: none;
-      font-size: 1.2rem;
       border-radius: 8px;
+      font-size: 1.1rem;
       transition: background-color 0.3s;
     }
 
     .button:hover {
-      background-color: #315f7c;
+      background-color: #009999;
     }
 
-    @media (min-width: 600px) {
-      .button-container {
-        flex-direction: row;
-        justify-content: center;
+    @media (max-width: 600px) {
+      .wrapper {
+        margin: 2rem 1rem;
+        padding: 2rem 1rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <h1>今の心と体をチェック</h1>
-    <div class="button-container">
-      <a class="button" href="https://iktcm.github.io/taishitsucheck/index.html">からだからチェック</a>
-      <a class="button" href="https://iktcm.github.io/goshincheck/index.html">こころからチェック</a>
-    </div>
+    <h1>今の心と体をチェックしてみましょう</h1>
+    <p>気になるのは「こころ」？ それとも「からだ」？<br>今の状態に合わせて、どちらかをお選びください。</p>
+    <a class="button" href="index.html">こころからチェック（五神診断）</a>
+    <a class="button" href="https://iktcm.github.io/taishitsucheck/index.html">からだからチェック（体質診断）</a>
   </div>
 </body>
 </html>
