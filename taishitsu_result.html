@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>中医学体質診断結果</title>
+    <style>
+        body {
+            font-family: "Noto Serif JP", serif;
+            background-image: url("background.jpg");
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f6f2eb;
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            background-color: rgba(255, 255, 255, 0.85);
+            max-width: 800px;
+            margin: 5rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #3f3f3f;
+        }
+        .button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .taishitsu-button {
+            display: inline-block;
+            background-color: #4682b4;
+            color: white;
+            padding: 12px 18px;
+            margin: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .taishitsu-button:hover {
+            background-color: #315f7c;
+        }
+    </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h2>診断結果：あなたに当てはまる体質</h2>
+    <div id="result-buttons" class="button-container"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const topResults = [urlParams.get("t1"), urlParams.get("t2"), urlParams.get("t3")].filter(Boolean);
+
+    const urlMap = {
+        "気虚": "https://www.kyotorakurakudo.com/p/00004",
+        "気滞": "https://www.kyotorakurakudo.com/p/00019",
+        "血虚": "https://www.kyotorakurakudo.com/p/00005",
+        "血瘀": "https://www.kyotorakurakudo.com/p/00020",
+        "陰虚": "https://www.kyotorakurakudo.com/p/00007",
+        "陽虚": "https://www.kyotorakurakudo.com/p/00008",
+        "湿痰": "https://www.kyotorakurakudo.com/p/00021",
+        "湿熱": "https://www.kyotorakurakudo.com/p/00022"
+    };
+
+    const container = document.getElementById("result-buttons");
+    if (topResults.length === 0) {
+        container.innerHTML = "<p>診断結果が取得できませんでした。最初からやり直してください。</p>";
+    } else {
+        topResults.forEach(type => {
+            if (urlMap[type]) {
+                const btn = document.createElement("a");
+                btn.href = urlMap[type];
+                btn.className = "taishitsu-button";
+                btn.textContent = `${type}タイプの解説ページへ`;
+                container.appendChild(btn);
+            }
+        });
+    }
+  </script>
+
+</body>
+</html>
