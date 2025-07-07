@@ -1,89 +1,155 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>中医学体質診断結果</title>
-    <style>
-        body {
-            font-family: "Noto Serif JP", serif;
-            background-image: url("background.jpg");
-            background-size: cover;
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #f6f2eb;
-            margin: 0;
-            padding: 0;
-        }
-
-        .wrapper {
-            background-color: rgba(255, 255, 255, 0.8);
-            max-width: 800px;
-            margin: 5rem auto;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: #3f3f3f;
-        }
-
-        .button-container {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .taishitsu-button {
-            display: inline-block;
-            background-color: #4682b4;
-            color: white;
-            padding: 12px 18px;
-            margin: 8px;
-            text-decoration: none;
-            font-size: 16px;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-        }
-
-        .taishitsu-button:hover {
-            background-color: #315f7c;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>中医学体質診断</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+  <script src="questionsByType.js"></script>
+  <style>
+    body {
+      font-family: "Noto Serif JP", serif;
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #f6f2eb;
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      background-color: rgba(255,255,255,0.95);
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .question {
+      margin: 1.5rem 0;
+    }
+    .question p {
+      font-weight: bold;
+    }
+    .options label {
+      margin-right: 20px;
+    }
+    .submit-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 1rem 2rem;
+      background-color: #006666;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #009999;
+    }
+    .section-title {
+      font-size: 1.2rem;
+      color: #444;
+      margin-top: 2rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-
   <div class="wrapper">
-    <h2>診断結果：あなたに当てはまる体質</h2>
-    <div id="result-buttons" class="button-container"></div>
+    <h1>中医学 体質診断</h1>
+    <form id="diagnosisForm"></form>
+    <button type="button" class="submit-btn" onclick="submitAnswers()">診断結果を見る</button>
   </div>
 
   <script>
-    const topResults = ["気滞", "血虚", "陰虚"];
+    const form = document.getElementById("diagnosisForm");
 
-    const urlMap = {
-        "気虚": "https://www.kyotorakurakudo.com/p/00004",
-        "気滞": "https://www.kyotorakurakudo.com/p/00019",
-        "血虚": "https://www.kyotorakurakudo.com/p/00005",
-        "血瘀": "https://www.kyotorakurakudo.com/p/00020",
-        "陰虚": "https://www.kyotorakurakudo.com/p/00007",
-        "陽虚": "https://www.kyotorakurakudo.com/p/00008",
-        "湿痰": "https://www.kyotorakurakudo.com/p/00021",
-        "湿熱": "https://www.kyotorakurakudo.com/p/00022"
-    };
+    Object.entries(questionsByType).forEach(([type, questions], index) => {
+      const section = document.createElement("div");
+      section.className = "section";
 
-    const container = document.getElementById("result-buttons");
-    topResults.forEach(type => {
-        if (urlMap[type]) {
-            const btn = document.createElement("a");
-            btn.href = urlMap[type];
-            btn.className = "taishitsu-button";
-            btn.textContent = `${type}タイプの解説ページへ`;
-            container.appendChild(btn);
+      const title = document.createElement("div");
+      title.className = "section-title";
+      title.textContent = `${type}タイプ`;
+      section.appendChild(title);
+
+      questions.forEach((q, i) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "question";
+
+        const label = document.createElement("p");
+        label.textContent = `Q${i + 1}. ${q}`;
+        wrapper.appendChild(label);
+
+        if (i === 10) {
+          const note = document.createElement("div");
+          note.className = "note";
+          note.textContent = "※以下は女性専用の質問です";
+          section.appendChild(note);
         }
-    });
-  </script>
 
+        const options = document.createElement("div");
+        options.className = "options";
+
+        ["はい", "いいえ"].forEach(answer => {
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = `${type}_q${i + 1}`;
+          radio.value = answer === "はい" ? "1" : "0";
+          radio.required = true;
+
+          const label = document.createElement("label");
+          label.textContent = answer;
+          label.prepend(radio);
+
+          options.appendChild(label);
+        });
+
+        wrapper.appendChild(options);
+        section.appendChild(wrapper);
+      });
+
+      form.appendChild(section);
+    });
+
+    function submitAnswers() {
+      const scores = {};
+      Object.keys(questionsByType).forEach(type => {
+        let count = 0;
+        for (let i = 1; i <= questionsByType[type].length; i++) {
+          const selected = document.querySelector(`input[name="${type}_q${i}"]:checked`);
+          if (selected && selected.value === "1") count++;
+        }
+        scores[type] = count;
+      });
+
+      const sorted = Object.entries(scores)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(item => item[0]);
+
+      const param = new URLSearchParams();
+      sorted.forEach((type, index) => {
+        param.append(`top${index + 1}`, type);
+      });
+
+      window.location.href = `taishitsu_result.html?${param.toString()}`;
+    }
+  </script>
 </body>
 </html>
