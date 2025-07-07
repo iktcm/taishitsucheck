@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>体質診断フォーム｜京都 楽楽堂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: "Noto Serif JP", serif;
+      background-color: #f9f7f3;
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fffefc;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #5c4430;
+    }
+    .question {
+      margin: 1.5rem 0;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .question p {
+      font-weight: bold;
+    }
+    button {
+      display: block;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      background-color: #006666;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #008080;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>体質診断フォーム</h1>
+    <form id="quizForm">
+      <div id="questions"></div>
+      <button type="submit">診断する</button>
+    </form>
+  </div>
+
+  <script>
+    const baseQuestions = {
+      "気虚": "すぐに疲れる・だるいと感じやすいですか？",
+      "気滞": "ストレスやイライラを感じやすいですか？",
+      "血虚": "顔色が悪い・肌が乾燥しやすいですか？",
+      "血瘀": "肩こりや冷え、シミなどがありますか？",
+      "陰虚": "口や喉が渇く・寝汗をかくことがありますか？",
+      "陽虚": "冷えやすく、むくみやすい体質ですか？",
+      "湿痰": "体が重だるく、痰やむくみが出やすいですか？",
+      "湿熱": "ニキビや吹き出物が出やすい体質ですか？"
+    };
+
+    const questionsDiv = document.getElementById("questions");
+    let qCount = 1;
+
+    for (const type in baseQuestions) {
+      for (let i = 1; i <= 14; i++) {
+        const id = `${type}_q${i}`;
+        const isFemale = i > 10 ? "（女性のみ）" : "";
+        const questionText = `${isFemale}${baseQuestions[type]}（Q${qCount}）`;
+
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `
+          <p>${questionText}</p>
+          <label><input type="radio" name="${id}" value="1" required> はい</label>
+          <label><input type="radio" name="${id}" value="0"> いいえ</label>
+        `;
+        questionsDiv.appendChild(div);
+        qCount++;
+      }
+    }
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const scores = {
+        気虚: 0, 気滞: 0, 血虚: 0, 血瘀: 0,
+        陰虚: 0, 陽虚: 0, 湿痰: 0, 湿熱: 0
+      };
+
+      for (let [name, value] of formData.entries()) {
+        const type = name.split("_")[0];
+        scores[type] += parseInt(value);
+      }
+
+      const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+      const top3 = sorted.slice(0, 3).map(item => item[0]);
+      const params = new URLSearchParams();
+      top3.forEach((type, i) => params.set(`rank${i + 1}`, type));
+      window.location.href = `taishitsu_result.html?${params.toString()}`;
+    });
+  </script>
+</body>
+</html>
