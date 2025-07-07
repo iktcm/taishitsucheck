@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>体質診断結果｜京都 楽楽堂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: "Noto Serif JP", serif;
+      background-color: #f9f7f3;
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: 5rem auto;
+      padding: 2rem;
+      background: #fffefc;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #5c4430;
+    }
+    .result {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border: 2px solid #ddd1c4;
+      border-radius: 8px;
+      background-color: #fefaf5;
+    }
+    .result h2 {
+      color: #006666;
+    }
+    .link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #8f6d54;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .link:hover {
+      background-color: #a67b5b;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>体質診断の結果</h1>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const ranks = [urlParams.get("rank1"), urlParams.get("rank2"), urlParams.get("rank3")];
+
+    const contents = {
+      気虚: {
+        title: "あなたの今の状態に近いのは「気虚タイプ」です",
+        desc: "気のエネルギーが不足し、疲れやすく、息切れしやすい状態かもしれません。日中に元気が出ない、声が小さくなってきたと感じることはありませんか？",
+        url: "https://www.kyotorakurakudo.com/p/00004"
+      },
+      気滞: {
+        title: "または「気滞タイプ」かもしれません",
+        desc: "気の巡りが滞り、イライラしたり、情緒が不安定になりやすい傾向が見られます。胸やお腹の張り感、ため息が増えていませんか？",
+        url: "https://www.kyotorakurakudo.com/p/00019"
+      },
+      血虚: {
+        title: "「血虚タイプ」の傾向も見られます",
+        desc: "血が不足し、顔色が悪い、肌が乾燥しやすい、眠りが浅いなどの症状が出ている可能性があります。",
+        url: "https://www.kyotorakurakudo.com/p/00005"
+      },
+      血瘀: {
+        title: "「血瘀タイプ」の可能性もあります",
+        desc: "血の巡りが悪くなり、肩こりや冷え、シミ、暗い肌色などの不調が出やすい傾向です。",
+        url: "https://www.kyotorakurakudo.com/p/00020"
+      },
+      陰虚: {
+        title: "「陰虚タイプ」の特徴が出ているかもしれません",
+        desc: "身体の潤いが不足し、ほてりや寝汗、口や喉の乾きなどが気になることはありませんか？",
+        url: "https://www.kyotorakurakudo.com/p/00007"
+      },
+      陽虚: {
+        title: "「陽虚タイプ」の傾向が見られます",
+        desc: "身体を温めるエネルギーが不足し、手足の冷え、むくみ、寒がり、下痢気味などが起こりやすい状態です。",
+        url: "https://www.kyotorakurakudo.com/p/00008"
+      },
+      湿痰: {
+        title: "「湿痰タイプ」の可能性があります",
+        desc: "水分代謝が悪く、むくみ、体が重い、痰が多い、消化不良などの症状が出やすい体質です。",
+        url: "https://www.kyotorakurakudo.com/p/00021"
+      },
+      湿熱: {
+        title: "「湿熱タイプ」のサインかもしれません",
+        desc: "体に熱と湿がこもってニキビや吹き出物、尿の濃さや匂い、のぼせなどが現れている可能性があります。",
+        url: "https://www.kyotorakurakudo.com/p/00022"
+      }
+    };
+
+    const container = document.getElementById("results");
+
+    ranks.forEach(type => {
+      if (contents[type]) {
+        const div = document.createElement("div");
+        div.className = "result";
+        div.innerHTML = `
+          <h2>${contents[type].title}</h2>
+          <p>${contents[type].desc}</p>
+          <a class="link" href="${contents[type].url}" target="_blank">▶ ${type}タイプの方はこちら</a>
+        `;
+        container.appendChild(div);
+      }
+    });
+  </script>
+</body>
+</html>
