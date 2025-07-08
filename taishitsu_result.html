@@ -56,35 +56,36 @@
   </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const topResults = [urlParams.get("t1"), urlParams.get("t2"), urlParams.get("t3")].filter(Boolean);
+  const urlParams = new URLSearchParams(window.location.search);
+  const topResults = [urlParams.get("top1"), urlParams.get("top2"), urlParams.get("top3")].filter(Boolean);
 
-    const urlMap = {
-        "気虚": "https://www.kyotorakurakudo.com/p/00004",
-        "気滞": "https://www.kyotorakurakudo.com/p/00019",
-        "血虚": "https://www.kyotorakurakudo.com/p/00005",
-        "血瘀": "https://www.kyotorakurakudo.com/p/00020",
-        "陰虚": "https://www.kyotorakurakudo.com/p/00007",
-        "陽虚": "https://www.kyotorakurakudo.com/p/00008",
-        "湿痰": "https://www.kyotorakurakudo.com/p/00021",
-        "湿熱": "https://www.kyotorakurakudo.com/p/00022"
-    };
+  const urlMap = {
+      "気虚": "https://www.kyotorakurakudo.com/p/00004",
+      "気滞": "https://www.kyotorakurakudo.com/p/00019",
+      "血虚": "https://www.kyotorakurakudo.com/p/00005",
+      "血瘀": "https://www.kyotorakurakudo.com/p/00020",
+      "陰虚": "https://www.kyotorakurakudo.com/p/00007",
+      "陽虚": "https://www.kyotorakurakudo.com/p/00008",
+      "湿痰": "https://www.kyotorakurakudo.com/p/00021",
+      "湿熱": "https://www.kyotorakurakudo.com/p/00022"
+  };
 
-    const container = document.getElementById("result-buttons");
-    if (topResults.length === 0) {
-        container.innerHTML = "<p>診断結果が取得できませんでした。最初からやり直してください。</p>";
-    } else {
-        topResults.forEach(type => {
-            if (urlMap[type]) {
-                const btn = document.createElement("a");
-                btn.href = urlMap[type];
-                btn.className = "taishitsu-button";
-                btn.textContent = `${type}タイプの解説ページへ`;
-                container.appendChild(btn);
-            }
-        });
-    }
-  </script>
+  const container = document.getElementById("result-buttons");
+  if (topResults.length === 0) {
+      container.innerHTML = "<p>診断結果が取得できませんでした。最初からやり直してください。</p>";
+  } else {
+      topResults.forEach(type => {
+          if (urlMap[type]) {
+              const btn = document.createElement("a");
+              btn.href = urlMap[type];
+              btn.className = "taishitsu-button";
+              btn.textContent = `${type}タイプの解説ページへ`;
+              container.appendChild(btn);
+          }
+      });
+  }
+</script>
+
 
 </body>
 </html>
