@@ -1,21 +1,20 @@
 
 body {
-  font-family: sans-serif;
-  color: #222;
-  padding: 2em;
-  background-color: rgba(255, 255, 255, 0.85);
+    font-family: sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
 }
-h1, h2, h3 {
-  margin-top: 1em;
-}
-section {
-  margin-bottom: 2em;
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    box-shadow: 0 0 10px #ccc;
 }
 img {
-  margin: 1em 0.5em;
-  max-width: 100%;
-  height: auto;
-}
-a {
-  color: #006699;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
 }
