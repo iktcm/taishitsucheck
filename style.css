@@ -1,1 +1,21 @@
-/* レスポンシブCSS内容：軽量スタイル */
+
+body {
+  font-family: sans-serif;
+  color: #222;
+  padding: 2em;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+h1, h2, h3 {
+  margin-top: 1em;
+}
+section {
+  margin-bottom: 2em;
+}
+img {
+  margin: 1em 0.5em;
+  max-width: 100%;
+  height: auto;
+}
+a {
+  color: #006699;
+}
