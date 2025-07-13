@@ -1,90 +1,214 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>血虚タイプ | 中医学体質診断</title>
+  <title>血虚タイプ - 中医学体質診断</title>
   <style>
-  body {{
-    font-family: sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 1em;
-    background: url('taishitsu_common_bg.jpg') no-repeat center top;
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: #fff;
-    color: #333;
-  }}
-  header, section {{
-    margin-bottom: 2em;
-    background: rgba(255, 255, 255, 0.94);
-    padding: 1.5em;
-    border-radius: 12px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }}
-  h1, h2 {{
-    font-size: 1.4em;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 0.2em;
-  }}
-  ul {{
-    padding-left: 1.2em;
-  }}
-  a {{
-    color: #0066cc;
-    text-decoration: none;
-  }}
-  a:hover {{
-    text-decoration: underline;
-  }}
-  .image-center {{
-    display: block;
-    margin: 1em auto;
-    max-width: 350px;
-    width: 100%;
-    height: auto;
-  }}
-  .tongue-caption {{
-    text-align: center;
-    font-size: 0.95em;
-    color: #666;
-    margin-bottom: 1.5em;
-  }}
-  @media (max-width: 600px) {{
-    body {{
-      padding: 1em;
-    }}
-  }}
-</style>
+    body {
+      margin: 0;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      background-image: url('taishitsu_common_bg.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #333;
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #6c1e2d;
+      margin-bottom: 0.8em;
+    }
+    h2 {
+      font-size: 20px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.2em;
+      margin-top: 1.5em;
+      color: #444;
+    }
+    h3 {
+      font-size: 18px;
+      color: #444;
+      margin-top: 1.2em;
+    }
+    p, li {
+      font-size: 16.5px;
+    }
+    img {
+      display: block;
+      margin: 1em auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .back-button {
+      text-align: center;
+      margin-top: 2em;
+    }
+    .banner-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1.5em;
+    }
+    .tongue-image {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+      border-radius: 8px;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      background-color: #721c24;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #5e171f;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1em;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p, li {
+        font-size: 16px;
+      }
+      .back-button a {
+        font-size: 14px;
+        padding: 0.6em 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <img src="banner_xuexu.jpg" alt="血虚タイプバナー" class="image-center" />
-
-  <header>
+  <div class="container">
     <h1>血虚タイプ</h1>
-  </header>
+    <img src="banner_xuexu.jpg" alt="血虚タイプのバナー" class="banner-image">
 
-  <section>
+    <p><strong>体質　血虚タイプ</strong></p>
+    <p><strong>疲労過度による貧血体質の「血虚タイプ」</strong></p>
+    <br>
+    <p><strong>めまいや立ちくらみ、顔色がさえないあなたは「血虚タイプ」</strong></p>
+
+    <h2>体質の説明、主な特徴</h2>
+    <p>痩せ気味。顔色は青白く土気色。</p>
+    <p>透き通ったような肌ですが皮膚が乾燥し、肌荒れしやすく、髪にもツヤがなく抜け毛、切れ毛、枝毛になりやすい。</p>
+    <p>大便はコロコロ。</p>
+    <p>生理周期は大幅に遅れ、量は少ない傾向。</p>
+    <p>貧血、めまい、目がかすむ、疲れやすい。</p>
+    <p>動悸や手足のシビレ。</p>
+    <p>まぶたの痙攣や足がつりやすい。</p>
+
     <h2>なりやすい不調・病態（からだとこころ）</h2>
-    <p>※本文略。体質の概要をここに入れます。</p>
-  </section>
+    <p>貧血や生理に関する異常（無月経、希発月経、月経過少、生理不順、更年期）。</p>
+    <p>痺れ、麻痺、神経炎、筋肉痛、便秘。</p>
+    <p>色盲、夜盲症、近視、遠視、乱視、眼精疲労、脱毛、皮膚乾燥、アトピー。</p>
+    <p>循環器障害、不整脈、脳貧血性めまい、低血圧、不眠、健忘症、認知症、脳性マヒ、アルツハイマー、精神不安（情緒不安定）</p>
+    <p>爪の異常。</p>
 
-  <section>
-    <img src="tongue_normal.jpg" alt="正常舌" class="image-center" />
-    <div class="tongue-caption">🔹 正常舌：淡紅色で潤いあり、舌苔は白く薄い</div>
-    <img src="tongue_xuexu.jpg" alt="血虚タイプの舌" class="image-center" />
-    <div class="tongue-caption">🔹 血虚タイプ舌の特徴（仮）</div>
-  </section>
+    <h2>舌の特徴（正常との比較）</h2>
+    <p>正常な舌（画像）</p>
+    <img src="tongue_normal.jpg" alt="正常な舌" class="tongue-image">
+    <p>血虚の舌（画像）</p>
+    <img src="tongue_xuexu.jpg" alt="血虚タイプの舌" class="tongue-image">
 
-  <section>
-    <h2>おすすめ商品</h2>
+    <h2>他の体質との関連</h2>
+    <p>「血」の不足は、「脾虚」や「腎陽虚」が原因の場合もあり、「脾虚」や「腎陽虚」の特徴もある。</p>
+    <p>「血」の流れが悪い「血瘀」の人も、部分的に「血虚」になっている。</p>
+    <p>また、「気滞」の人も「血虚」にもなりやすい。</p>
+
+    <h2>養生ポイント</h2>
+    <p>子宮筋腫などで出血量が多い場合、それを治療することが先決。<br>また、「脾虚」や「腎陽虚」で「血」が作れない事も多いので、「脾虚」や「腎陽虚」の解決もいっしょに！</p>
+
+    <h3>未病先防…１</h3>
+    <p>積極的に「血」を増やす対策が大切！ </p>
+    <p>なつめ・金針菜・クコの実・ニンジン・小松菜・ほうれん草・ひじき・牛・豚・鶏のレバー・栗・胡桃・黒ゴマ・黒きくらげ・松の実など「血」をつくる食材を積極的に摂りましょう。</p>
+    <p>…但し摂り過ぎは胃腸に負担をかけるので禁物。</p>
+    <p>特に生理中は「血」を補うなつめなどを使った食事や薬膳茶、薬膳スープなど！</p>
+
+    <h3>未病先防…２</h3>
+    <p>正しい睡眠が「血」を増やします。夜更かしは禁物で１２時までには寝ること。</p>
+    <p>血は陰なので、「陰」の作用が強い夜間に充分睡眠をとることで補われます。</p>
+    <p>そして昼間はよく動いて「陽」を高め、陰陽の気のバランスを整えること。</p>
+    <p>特に女性は生理中の夜更かしは禁物。</p>
+
+    <h3>既病防変</h3>
+    <p>少ない「血」の回転数を上げること。</p>
+    <p>巡りがよければ、充足状態をつくれます。</p>
+    <p>巡りをよくするためには、「血」は「気」とともに動くので、「血瘀」や「気滞」の養生法などを参考にしましょう！</p>
+
+    <h2>経絡/ヨガ/運動処方</h2>
+    <p>脾経・胃経、肝経、肺経、心経。</p>
+    <p>サウナや激しい運動など、多量の汗をかくものは控えめに。軽い全身運動。あせらず、少しずつ体力をアップしていくことが大切。</p>
+    <p>効果的なツボ=肺兪、心兪、肝兪、脾兪、腎兪、三陰交・血海・膈兪など</p>
+    <p>効果的なヨガ＝太陽礼拝A（スーリヤナマスカーラ）など</p>
+
+    <h2>薬膳施治</h2>
+    <p>補血養血（ほけつようけつ）</p>
+    <p>胃腸の働きを良くして血を補う。</p>
+
+    <h2>おすすめの食材</h2>
+    <p>ライチ、くるみ、黒きくらげ、ほうれん草、にんじん、豚肉、羊肉、レバー、スッポン、なまこ、トマト、落花生、ヒラメ、いかなど。</p>
+    <p>血を補うもの。ただし食材には温・熱・平・涼・寒の五つの性質があります。</p>
+    <p>今の自分の体質をチェックし、寒熱虚実の傾きを把握したうえで、そのバランスを中庸に整えてくれる食材をとるようにしましょう。</p>
+    <p>良いと言われる物でもそればっかり摂り過ぎるのは良くありません。</p>
+
+    <h2>おすすめ商品（カテゴリーリンクで対応）</h2>
     <ul>
       <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583388">健やか茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583387">増血美肌茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583390">肝腎かなめ茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">全部食べる薬膳茶（桂棗黒豆茶）</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583412">いろいろお豆のお汁粉セット</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583410">なつめ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583414">金針菜</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583413">白きくらげ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583412">黒きくらげ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583411">枸杞の実</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583415">竜眼</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583416">蓮の実</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583432">松の実</a></li>
     </ul>
-  </section>
+
+    <h2>注意するもの</h2>
+    <p>どちらかというと寒・涼性の摂り過ぎには注意。</p>
+
+    <h2>摂ると良い四気・五味・帰経食材</h2>
+    <p>性：平性　味：甘味・鹹味・酸味　帰経：肝・心・腎・胆・小腸・膀胱</p>
+
+    <h2>国際中医師からのアドバイス</h2>
+    <p>心身が疲れすぎないこと、消化吸収しやすい物を食べること、しっかり睡眠をとること。</p>
+    <p>…ムリせずコツコツ続ければ回復しますよ。</p>
+
+    <div class="back-button">
+      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+    </div>
+  </div>
 </body>
 </html>
+
