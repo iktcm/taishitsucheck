@@ -1,94 +1,200 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>湿痰タイプ | 中医学体質診断</title>
+  <title>湿痰タイプ - 中医学体質診断</title>
   <style>
     body {
-      font-family: sans-serif;
-      line-height: 1.6;
       margin: 0;
-      padding: 1em;
-      background: url('taishitsu_common_bg.jpg') no-repeat center top;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      background-image: url('taishitsu_common_bg.jpg');
       background-size: cover;
       background-attachment: fixed;
-      background-color: #fff;
+      background-position: center;
       color: #333;
+      line-height: 1.8;
     }
-    header, section {
-      margin-bottom: 2em;
-      background: rgba(255, 255, 255, 0.92);
-      padding: 1em;
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 2em;
       border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
-    h1, h2 {
-      font-size: 1.4em;
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #6c1e2d;
+      margin-bottom: 0.8em;
+    }
+    h2 {
+      font-size: 20px;
       border-bottom: 2px solid #ccc;
       padding-bottom: 0.2em;
+      margin-top: 1.5em;
+      color: #444;
     }
-    ul {
-      padding-left: 1.2em;
+    h3 {
+      font-size: 18px;
+      color: #444;
+      margin-top: 1.2em;
     }
-    a {
-      color: #0066cc;
-      text-decoration: none;
+    p, li {
+      font-size: 16.5px;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    .image-center {
+    img {
       display: block;
+      margin: 1em auto;
       max-width: 100%;
       height: auto;
-      margin: 1em auto;
+      border-radius: 8px;
     }
-    .tongue-caption {
+    .back-button {
       text-align: center;
-      font-size: 0.95em;
-      color: #666;
+      margin-top: 2em;
+    }
+    .banner-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
       margin-bottom: 1.5em;
     }
+    .tongue-image {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+      border-radius: 8px;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      background-color: #721c24;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #5e171f;
+    }
     @media (max-width: 600px) {
-      body {
-        padding: 0.5em;
+      .container {
+        padding: 1em;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p, li {
+        font-size: 16px;
+      }
+      .back-button a {
+        font-size: 14px;
+        padding: 0.6em 1.2em;
       }
     }
   </style>
 </head>
 <body>
-  <img src="banner_shittan.jpg" alt="湿痰タイプバナー" class="image-center" />
+  <div class="container">
+    <h1>湿痰タイプ</h1>
+    <img src="banner_shittan.jpg" alt="湿痰タイプのバナー" class="banner-image">
 
-  <header>
-    <h1>湿痰タイプ（水の巡りが悪くなってむくむ体質）</h1>
-  </header>
+    <p><strong>体質　湿痰タイプ</strong></p>
+    <p><strong>水の巡りが悪くなってポチャポチャの「湿痰」タイプ</strong></p>
+    <p>水腫虚冷体質</p>
+    <p>色白で肥満・むくみ・冷え症タイプ。「水」の過剰・渋滞・停滞状態。全身に不調をもたらす不要な水を撃退しましょう。</p>
+    <p>肥満気味でまぶたがむくみやすい。大便は軟便。尿はすっきりでない。おりものが多い。</p>
+    <p>甘いもの、油っこいものを好み口中が甘く粘る。口は渇くが飲みたくない。手足のむくみ、めまい。</p>
+    <h2>体質の説明、主な特徴</h2>
+    <p>・色白で太りやすい。</p>
+    <p>・胃腸が弱く、食後に眠くなる。</p>
+    <p>・朝起きるのがつらく、だるい。</p>
+    <p>・お腹が張りやすく、軟便傾向。</p>
+    <p>・手足がむくみやすい。めまい。</p>
+    <p>・鼻炎、蓄膿症、花粉症、アトピー、喘息、肺水腫などに注意。</p>
 
-  <section>
     <h2>なりやすい不調・病態（からだとこころ）</h2>
-    <p>鼻炎、蓄膿症、花粉症、アトピー、喘息、肺水腫、気管支炎、高血圧、甲状腺機能低下症、湿疹やイボ、蕁麻疹、うつ病、腎炎など「水」が関与するさまざまな症状が現れやすいです。</p>
-  </section>
+    <p>アレルギー性鼻炎、慢性副鼻腔炎、気管支喘息、痰が多く切れにくい、咳、息切れ、だるさ、眠気、頭が重い、思考力低下。</p>
+    <p>水腫、メニエール、脂質異常、肥満、糖尿病、下痢、婦人科疾患、不妊症、多嚢胞性卵巣症候群。</p>
 
-  <section>
-    <img src="tongue_normal.jpg" alt="正常舌" class="image-center" />
-    <div class="tongue-caption">🔹 正常舌：淡紅色で潤いあり、舌苔は白く薄い</div>
-    <img src="tongue_shittan.jpg" alt="湿痰舌" class="image-center" />
-    <div class="tongue-caption">🔹 湿痰舌：胖大、歯痕、白膩苔が厚い、潤い過多</div>
-  </section>
+    <h2>舌の特徴（正常との比較）</h2>
+    <p>正常な舌（画像）</p>
+    <img src="tongue_normal.jpg" alt="正常な舌" class="tongue-image">
+    <p>湿痰の舌（画像）</p>
+    <img src="tongue_shittan.jpg" alt="湿痰タイプの舌" class="tongue-image">
 
-  <section>
-    <h2>おすすめ商品</h2>
+    <h2>他の体質との関連</h2>
+    <p>「気虚」や「陽虚」と合併しやすい。脾の運化失調と関係。</p>
+
+    <h2>養生ポイント</h2>
+    <p>水を巡らせ、余分な痰湿をさばく。脾胃を強めて代謝促進。</p>
+
+    <h3>未病先防…１</h3>
+    <p>甘味・脂っこいもの・乳製品などを控える。</p>
+    <p>冷たい飲食・生もの・夜更かし・過労を避ける。</p>
+
+    <h3>未病先防…２</h3>
+    <p>空腹を感じてから食べる。</p>
+    <p>過食を避け、食後すぐ横にならない。</p>
+
+    <h3>既病防変</h3>
+    <p>有酸素運動や発汗を促す入浴で代謝UP。</p>
+    <p>寝起きに白湯で胃腸を温める。</p>
+    <p>気を巡らせる香味野菜も活用。</p>
+
+    <h2>経絡/ヨガ/運動処方</h2>
+    <p>脾経・肺経・腎経を意識した運動。</p>
+    <p>ストレッチ・足踏み・半身浴・湯たんぽで温める。</p>
+    <p>効果的なツボ＝陰陵泉・足三里・太白など</p>
+
+    <h2>薬膳施治</h2>
+    <p>健脾化湿（けんぴけしつ）・化痰利水（けたんりすい）</p>
+    <p>脾の働きを高めて水分代謝を良くし、痰湿を除く。</p>
+
+    <h2>おすすめの食材</h2>
+    <p>はと麦、陳皮、山薬（山芋）、生姜、大根、白ネギ、冬瓜、しそ、三つ葉、黒豆、小豆、きのこ類、海藻類、魚介類（えび、かに、あさり）など。</p>
+    <p>五気：温・平、五味：甘・辛、帰経：脾・胃・肺・腎</p>
+    <h2>おすすめ商品（カテゴリーリンクで対応）</h2>
     <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6722581" target="_blank">ポチャポチャタイプの減肥セット</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583392" target="_blank">水巡茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583393" target="_blank">五望茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583393" target="_blank">なつめとバラの美人紅茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405" target="_blank">四神湯スープ</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583398" target="_blank">食べる薬膳茶（意棗紅豆茶）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583404" target="_blank">いろいろお豆のお汁粉セット</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583428" target="_blank">緑豆</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583430" target="_blank">はと麦</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583398">食べる薬膳茶（意棗紅豆茶）</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583392">気血巡茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">崑崙雪菊茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583393">五望茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">茉莉花茶（ジャスミン茶）</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">理気明目茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583419">山査子（サンザシ）</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583432">松の実</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583430">はと麦</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583428">緑豆</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583413">白きくらげ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583404">いろいろお豆のスィーツセット</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">スッキリさっぱり乃湯</a></li>
     </ul>
-  </section>
+
+    <h2>注意するもの</h2>
+    <p>甘いもの、脂っこいもの、冷たい飲み物、生もの、チーズ、牛乳、アイス、スナック菓子など。</p>
+
+    <h2>摂ると良い四気・五味・帰経食材</h2>
+    <p>四気：温性・平性　五味：甘味・辛味　帰経：脾・肺・腎</p>
+
+    <h2>国際中医師からのアドバイス</h2>
+    <p>水分の代謝がうまくいかず、不要な水が体内に溜まると「痰湿（たんしつ）」になります。</p>
+    <p>このタイプは「冷え」と「脾の弱さ」が関係しており、運動不足や食べ過ぎ、甘いものの摂りすぎにも注意が必要です。</p>
+    <p>食生活の見直しと生活習慣の改善が、体質改善のカギです。</p>
+
+    <div class="back-button">
+      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+    </div>
+  </div>
 </body>
 </html>
