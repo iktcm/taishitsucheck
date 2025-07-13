@@ -4,87 +4,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>気虚タイプ | 中医学体質診断</title>
+  <title>気虚タイプ - 中医学体質診断</title>
   <style>
-  body {{
-    font-family: sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 1em;
-    background: url('taishitsu_common_bg.jpg') no-repeat center top;
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: #fff;
-    color: #333;
-  }}
-  header, section {{
-    margin-bottom: 2em;
-    background: rgba(255, 255, 255, 0.94);
-    padding: 1.5em;
-    border-radius: 12px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }}
-  h1, h2 {{
-    font-size: 1.4em;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 0.2em;
-  }}
-  ul {{
-    padding-left: 1.2em;
-  }}
-  a {{
-    color: #0066cc;
-    text-decoration: none;
-  }}
-  a:hover {{
-    text-decoration: underline;
-  }}
-  .image-center {{
-    display: block;
-    margin: 1em auto;
-    max-width: 350px;
-    width: 100%;
-    height: auto;
-  }}
-  .tongue-caption {{
-    text-align: center;
-    font-size: 0.95em;
-    color: #666;
-    margin-bottom: 1.5em;
-  }}
-  @media (max-width: 600px) {{
-    body {{
-      padding: 1em;
-    }}
-  }}
-</style>
+    body {
+      margin: 0;
+      font-family: 'Hiragino Mincho ProN', serif;
+      background-image: url('taishitsu_common_bg.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #333;
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #6c1e2d;
+      margin-bottom: 0.8em;
+    }
+    h2 {
+      font-size: 20px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.2em;
+      margin-top: 1.5em;
+      color: #444;
+    }
+    p {
+      font-size: 16.5px;
+      margin-bottom: 1em;
+    }
+    img {
+      display: block;
+      margin: 1em auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .tongue-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5em;
+    }
+    .tongue-block {
+      text-align: center;
+      max-width: 320px;
+    }
+    .tongue-block img {
+      max-width: 100%;
+    }
+    .back-button {
+      text-align: center;
+      margin-top: 2em;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      background-color: #721c24;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: 'Hiragino Mincho ProN', serif;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #5e171f;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1em;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <img src="banner_kikyo.jpg" alt="気虚タイプバナー" class="image-center" />
-
-  <header>
+  <div class="container">
     <h1>気虚タイプ</h1>
-  </header>
+    <img src="banner_kikyo.jpg" alt="気虚タイプのバナー" />
 
-  <section>
-    <h2>なりやすい不調・病態（からだとこころ）</h2>
-    <p>※本文略。体質の概要をここに入れます。</p>
-  </section>
+    <p><strong>体質　気虚タイプ</strong></p>
+    <p><strong>お腹（胃腸）が弱くエネルギー不足の「気虚タイプ」</strong></p>
+    <br>
+    <p><strong>からだ全体の「気」（エネルギー）が不足して、疲れやすく、体力が続かないタイプ。</strong></p>
 
-  <section>
-    <img src="tongue_normal.jpg" alt="正常舌" class="image-center" />
-    <div class="tongue-caption">🔹 正常舌：淡紅色で潤いあり、舌苔は白く薄い</div>
-    <img src="tongue_kikyo.jpg" alt="気虚タイプの舌" class="image-center" />
-    <div class="tongue-caption">🔹 気虚タイプ舌の特徴（仮）</div>
-  </section>
+    <h2>体質の説明</h2>
+<p>「気虚タイプ」は、からだの基本エネルギーである「気」が不足しており、疲れやすく、風邪をひきやすい、あるいは体力が続かないなどの特徴がみられます。顔色は白く艶がなく、食欲不振や軟便、息切れ、汗をかきやすいなどの傾向があります。</p>
 
-  <section>
-    <h2>おすすめ商品</h2>
-    <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶</a></li>
-    </ul>
-  </section>
+<h2>主な特徴</h2>
+<ul>
+  <li>疲れやすくて休んでも回復しにくい</li>
+  <li>食後に眠くなる、食が細い</li>
+  <li>風邪をひきやすく治りにくい</li>
+  <li>声に力がない、話すのが億劫</li>
+  <li>汗をかきやすく、風にあたると体調を崩す</li>
+</ul>
+
+<h2>なりやすい不調</h2>
+<ul>
+  <li>風邪、インフルエンザなどの感染症</li>
+  <li>慢性疲労、食欲不振、胃腸の虚弱</li>
+  <li>低血圧、めまい、立ちくらみ</li>
+</ul>
+
+<h2>養生のポイント</h2>
+<ul>
+  <li>朝食をきちんと摂り、温かい食事を心がける</li>
+  <li>運動はゆったりした散歩やストレッチから始める</li>
+  <li>生活リズムを整え、夜更かしを避ける</li>
+</ul>
+
+<h2>おすすめの食材（薬膳）</h2>
+<ul>
+  <li>なつめ：補気・健脾。甘味で脾を養う。</li>
+  <li>山芋：補気・補陰・健脾。</li>
+  <li>かぼちゃ：温性で胃腸を温める。</li>
+  <li>白米：脾を補い、気をつける主食。</li>
+</ul>
+
+<h2>おすすめの商品</h2>
+<ul>
+  <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶（養気茶）</a></li>
+  <li><a href="https://www.kyotorakurakudo.com/categories/6583409">はと麦と蓮の実の健脾スープ</a></li>
+</ul>
+
+<h2>舌診の参考</h2>
+<div class="tongue-section">
+  <div class="tongue-block">
+    <strong>正常な舌：</strong>
+    <img src="tongue_normal.jpg" alt="正常な舌" />
+  </div>
+  <div class="tongue-block">
+    <strong>気虚タイプの舌：</strong>
+    <img src="tongue_kikyo.jpg" alt="気虚タイプの舌" />
+  </div>
+</div>
+
+<h2>国際中医師からのアドバイス</h2>
+<p>気虚タイプの方は、まずは「胃腸を養うこと」が最優先。冷たいものや生ものはなるべく避け、温かく煮た食事で消化の負担を減らしましょう。また、心身の疲労を溜め込まないよう、日常的にリラックスできる時間を意識的にとることが大切です。</p>
+
+    <div class="back-button">
+      <a href="https://www.kyotorakurakudo.com/p/00002">← 診断ページに戻る</a>
+    </div>
+  </div>
 </body>
 </html>
+
