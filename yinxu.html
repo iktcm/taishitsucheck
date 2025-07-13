@@ -1,90 +1,217 @@
+陰虚タイプ
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>陰虚タイプ | 中医学体質診断</title>
+  <title>陰虚タイプ - 中医学体質診断</title>
   <style>
-  body {{
-    font-family: sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 1em;
-    background: url('taishitsu_common_bg.jpg') no-repeat center top;
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: #fff;
-    color: #333;
-  }}
-  header, section {{
-    margin-bottom: 2em;
-    background: rgba(255, 255, 255, 0.94);
-    padding: 1.5em;
-    border-radius: 12px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }}
-  h1, h2 {{
-    font-size: 1.4em;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 0.2em;
-  }}
-  ul {{
-    padding-left: 1.2em;
-  }}
-  a {{
-    color: #0066cc;
-    text-decoration: none;
-  }}
-  a:hover {{
-    text-decoration: underline;
-  }}
-  .image-center {{
-    display: block;
-    margin: 1em auto;
-    max-width: 350px;
-    width: 100%;
-    height: auto;
-  }}
-  .tongue-caption {{
-    text-align: center;
-    font-size: 0.95em;
-    color: #666;
-    margin-bottom: 1.5em;
-  }}
-  @media (max-width: 600px) {{
-    body {{
-      padding: 1em;
-    }}
-  }}
-</style>
+    body {
+      margin: 0;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      background-image: url('taishitsu_common_bg.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #333;
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #6c1e2d;
+      margin-bottom: 0.8em;
+    }
+    h2 {
+      font-size: 20px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.2em;
+      margin-top: 1.5em;
+      color: #444;
+    }
+    h3 {
+      font-size: 18px;
+      color: #444;
+      margin-top: 1.2em;
+    }
+    p, li {
+      font-size: 16.5px;
+    }
+    img {
+      display: block;
+      margin: 1em auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .back-button {
+      text-align: center;
+      margin-top: 2em;
+    }
+    .banner-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1.5em;
+    }
+    .tongue-image {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+      border-radius: 8px;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      background-color: #721c24;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #5e171f;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1em;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p, li {
+        font-size: 16px;
+      }
+      .back-button a {
+        font-size: 14px;
+        padding: 0.6em 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <img src="banner_yinxu.jpg" alt="陰虚タイプバナー" class="image-center" />
-
-  <header>
+  <div class="container">
     <h1>陰虚タイプ</h1>
-  </header>
+    <img src="banner_yinxu.jpg" alt="陰虚タイプのバナー" class="banner-image">
 
-  <section>
+    <p><strong>体質　陰虚タイプ</strong></p>
+    <p><strong>からだを冷ますチカラが弱って火照る体質の「陰虚タイプ」</strong></p>
+    <p>水不足、熱潮紅体質</p>
+    <p>のぼせや寝汗、ほてりが気になるあなたは陰虚タイプ</p>
+    <p>身体を潤す「陰液」が不足しており、内側から乾燥や熱っぽさが現れやすい</p>
+
+    <h2>体質の説明、主な特徴</h2>
+    <p>ニキビや肌荒れが気になる。夜型生活の人に多い。</p>
+    <p>しんどいときや生理中は、特に夜更かしは避け出来るだけ早く寝るようにしましょう。</p>
+    <p>のぼせ、暑がり、手足が火照る。痩せ気味。赤ら顔。</p>
+    <p>便秘気味、小便量少ない。</p>
+    <p>生理周期は早い傾向。</p>
+    <p>寝汗をかく、喉が渇く。</p>
+    <p>夏がつらく暑さに弱い。お風呂は烏の行水。シャワーで済ますことが多い。</p>
+    <p>糖尿や高血圧に注意。更年期障害の症状も出やすい。</p>
+
     <h2>なりやすい不調・病態（からだとこころ）</h2>
-    <p>※本文略。体質の概要をここに入れます。</p>
-  </section>
+    <p>不眠、健忘、自律神経失調症、のぼせ、ほてり、</p>
+    <p>めまい、耳鳴り、難聴、白内障、ドライアイ、老眼、眼精疲労、飛蚊症、</p>
+    <p>喉頭炎、慢性気管支炎、間質性肺炎、胃・十二指腸潰瘍、大腸炎、便秘、</p>
+    <p>アトピー、皮膚乾燥、脱毛、生理不順、過少月経、バセドー病。</p>
+    <p>ホットフラッシュやイライラ、高脂血症、高血圧、不整脈や骨粗鬆症、情緒不安など更年期障害。</p>
 
-  <section>
-    <img src="tongue_normal.jpg" alt="正常舌" class="image-center" />
-    <div class="tongue-caption">🔹 正常舌：淡紅色で潤いあり、舌苔は白く薄い</div>
-    <img src="tongue_yinxu.jpg" alt="陰虚タイプの舌" class="image-center" />
-    <div class="tongue-caption">🔹 陰虚タイプ舌の特徴（仮）</div>
-  </section>
+    <h2>舌の特徴（正常との比較）</h2>
+    <p>正常な舌（画像）</p>
+    <img src="tongue_normal.jpg" alt="正常な舌" class="tongue-image">
+    <p>陰虚の舌（画像）</p>
+    <img src="tongue_yinxu.jpg" alt="陰虚タイプの舌" class="tongue-image">
 
-  <section>
-    <h2>おすすめ商品</h2>
+    <h2>他の体質との関連</h2>
+    <p>「血虚」とも似ていますが、乾燥が特徴。</p>
+    <p>「腎陽虚」とはともに『腎』の働きが低下するので共通点もある。</p>
+    <p>また、「気滞」と同時に見られたり、「湿熱」や「血瘀」とも互いに影響しあう。</p>
+
+    <h2>養生ポイント</h2>
+    <p>過労や極限に近い精神疲労は避けましょう。食べ過ぎや香辛料の使いすぎも注意。</p>
+    <p>ただ水を飲むだけではダメで、充分な睡眠で「陰」を増やし昼の活動で「陽」を高め、陰陽のバランスが大切です。</p>
+
+    <h3>未病先防…１</h3>
+    <p>「津液」の消耗を絶つ。サウナや岩盤浴・ホットヨガなどの過度に急激な不自然な発汗や過労、睡眠不足、過剰なセックスを避けることです。</p>
+
+    <h3>未病先防…２</h3>
+    <p>ストレス、強壮剤、香辛料などでカラダの中に余分な「熱」を作らないことも「津液」の消耗を防ぐコツです。</p>
+    <p>脂っこい食事やお酒の摂り過ぎにも注意が必要です！</p>
+
+    <h3>既病防変</h3>
+    <p>「津液」を増やす睡眠法。夜間にしっかりと睡眠すること。</p>
+    <p>夕方から宵にかけてはゆったりのんびり過ごすように。</p>
+    <p>運動や精神活動、視覚、聴覚が冴えることは避けましょう。</p>
+
+    <h2>経絡/ヨガ/運動処方</h2>
+    <p>脾経、肝経、腎経、心経。</p>
+    <p>あぐら、膝打ち、開脚、腕振り体操をゆっくり気持ちいい強さで。</p>
+    <p>効果的なツボ=合谷など</p>
+    <p>効果的なヨガ＝呼吸法（プラーナヤーマ）など</p>
+
+    <h2>薬膳施治</h2>
+    <p>滋陰潜陽（じいんせんよう）</p>
+    <p>陰を補い潤いを与えほてりやのぼせを取る。</p>
+
+    <h2>おすすめの食材</h2>
+    <p>小麦、ぶどう、白菜、山芋、百合根、黒ゴマ、あわ、レモン、りんご、梨、キウイ、バナナ、蜂蜜、乳製品、豆腐、鴨肉、魚介類、カニ、いか、くらげなど</p>
+    <p>陰を補うもの。水分代謝を促進するもの。</p>
+    <p>ただし食材には温・熱・平・涼・寒の五つの性質があります。</p>
+    <p>今の自分の体質をチェックし、寒熱虚実の傾きを把握したうえで、バランスを中庸に整えてくれる食材をとりましょう。</p>
+
+    <h2>おすすめ商品（カテゴリーリンクで対応）</h2>
     <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583393">カラダ潤し茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583383">増血美肌茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">肝腎かなめ茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583393">五望茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583383">野ばらとなつめの美顔茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">黒薔薇茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583403">四神湯スープ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583404">白きくらげのスィーツセット</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583423">胎菊花</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583413">白きくらげ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583414">金針菜</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583422">菊花</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583411">クコの実</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583412">黒きくらげ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583420">百合</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583432">松の実</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">スッキリさっぱり乃湯</a></li>
     </ul>
-  </section>
+
+    <h2>注意するもの</h2>
+    <p>ねぎ、しょうが、にんにく、らっきょ、唐辛子、羊肉など熱を生むものは避ける。</p>
+
+    <h2>摂ると良い四気・五味・帰経食材</h2>
+    <p>性：涼性・平性　味：甘味・鹹味・酸味　帰経：肝・心・腎・胆・小腸・膀胱</p>
+
+    <h2>国際中医師からのアドバイス</h2>
+    <p>カラダの中のものを陰陽で分けると「気」は陽、「血・津液」は陰に分類されます。</p>
+    <p>陰虚は血や津液などが不足し、熱を抑え、潤いを補い、滋潤させる働きが低下している状態です。</p>
+    <p>充分な睡眠で「陰」を増やし、昼の活動で「陽」を高めて、陰陽のバランスを調えることが重要です。</p>
+
+    <div class="back-button">
+      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+    </div>
+  </div>
 </body>
 </html>
