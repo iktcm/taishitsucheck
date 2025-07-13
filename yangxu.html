@@ -1,99 +1,226 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>陽虚タイプ | 中医学体質診断</title>
+  <title>陽虚タイプ - 中医学体質診断</title>
   <style>
-    body {{
-      font-family: sans-serif;
-      line-height: 1.6;
+    body {
       margin: 0;
-      padding: 1em;
-      background: url('taishitsu_common_bg.jpg') no-repeat center top;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      background-image: url('taishitsu_common_bg.jpg');
       background-size: cover;
       background-attachment: fixed;
-      background-color: #fff;
+      background-position: center;
       color: #333;
-    }}
-    header, section {{
-      margin-bottom: 2em;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 1em;
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 2em;
       border-radius: 12px;
-    }}
-    h1, h2 {{
-      font-size: 1.4em;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #6c1e2d;
+      margin-bottom: 0.8em;
+    }
+    h2 {
+      font-size: 20px;
       border-bottom: 2px solid #ccc;
       padding-bottom: 0.2em;
-    }}
-    ul {{
-      padding-left: 1.2em;
-    }}
-    a {{
-      color: #0066cc;
-      text-decoration: none;
-    }}
-    a:hover {{
-      text-decoration: underline;
-    }}
-    .image-center {{
+      margin-top: 1.5em;
+      color: #444;
+    }
+    h3 {
+      font-size: 18px;
+      color: #444;
+      margin-top: 1.2em;
+    }
+    p, li {
+      font-size: 16.5px;
+    }
+    img {
       display: block;
+      margin: 1em auto;
       max-width: 100%;
       height: auto;
-      margin: 1em auto;
-    }}
-    .tongue-caption {{
+      border-radius: 8px;
+    }
+    .back-button {
       text-align: center;
-      font-size: 0.95em;
-      color: #666;
+      margin-top: 2em;
+    }
+    .banner-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
       margin-bottom: 1.5em;
-    }}
-    @media (max-width: 600px) {{
-      body {{
-        padding: 0.5em;
-      }}
-    }}
+    }
+    .tongue-image {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+      border-radius: 8px;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      background-color: #721c24;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #5e171f;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1em;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p, li {
+        font-size: 16px;
+      }
+      .back-button a {
+        font-size: 14px;
+        padding: 0.6em 1.2em;
+      }
+    }
   </style>
 </head>
 <body>
-  <img src="banner_yangxu.jpg" alt="陽虚タイプバナー" class="image-center" />
+  <div class="container">
+    <h1>陽虚タイプ</h1>
+    <img src="banner_yangxu.jpg" alt="陽虚タイプのバナー" class="banner-image">
 
-  <header>
-    <h1>陽虚タイプ（エネルギー不足の冷え体質）</h1>
-  </header>
+    <p><strong>体質　陽虚タイプ</strong></p>
+    <p><strong>エネルギー不足の冷え体質「陽虚タイプ」</strong></p>
+    <p>天生的虚冷体質</p>
+    <p>夏でも冷えるといった陽虚タイプ、陽気が不足しており熱を生み出せず、からだの内側から冷えやすい。</p>
 
-  <section>
+    <h2>体質の説明、主な特徴</h2>
+    <p>生まれつきパワーの少ないタイプ。熱を作れないので寒がり、冷え症。</p>
+    <p>『先天の気』を蓄える『腎』が弱く、成長、発育、生殖などにトラブルが起こりやすい。</p>
+    <p>色白。軟便、尿量多い（夜間尿）。生理周期遅れる傾向で生理痛も多い。</p>
+    <p>冷えると足がだるくなり、むくみ、関節が痛くなる。温かいものを好む。</p>
+    <p>温めると楽になる。お風呂も長く使っているのが好き。</p>
+
     <h2>なりやすい不調・病態（からだとこころ）</h2>
-    <p>無月経、頻尿、不妊、耳鳴り、冷え、むくみ、甲状腺機能低下、骨粗鬆症、関節痛、認知症傾向など。</p>
-  </section>
+    <p>無月経、希発月経などの生理異常、無精子症、インポテンツ、不妊症など生殖機能低下。</p>
+    <p>前立腺肥大、慢性腎炎、頻尿、夜尿症、失禁など泌尿機能瘀低下、</p>
+    <p>下痢・便秘、難聴、耳鳴り、めまい、老眼、白内障、脱毛、冷え症、</p>
+    <p>むくみ、甲状腺機能低下、鼻炎、</p>
+    <p>各部ヘルニア、股関節脱臼、腰痛、骨粗鬆、関節リウマチ。</p>
+    <p>アルツハイマーや認知症などの中枢神経障害や遺伝、免疫系のトラブルも起こりやすい。</p>
 
-  <section>
-    <img src="tongue_normal.jpg" alt="正常舌" class="image-center" />
-    <div class="tongue-caption">🔹 正常舌：淡紅色で潤いあり、白苔</div>
-    <img src="tongue_yangxu.jpg" alt="陽虚舌" class="image-center" />
-    <div class="tongue-caption">🔹 陽虚舌：淡胖で歯痕あり、白滑苔</div>
-  </section>
+    <h2>舌の特徴（正常との比較）</h2>
+    <p>正常な舌（画像）</p>
+    <img src="tongue_normal.jpg" alt="正常な舌" class="tongue-image">
+    <p>陽虚の舌（画像）</p>
+    <img src="tongue_yangxu.jpg" alt="陽虚タイプの舌" class="tongue-image">
 
-  <section>
-    <h2>おすすめ商品</h2>
+    <h2>他の体質との関連</h2>
+    <p>「脾虚」も「陽虚」と同じ「気」が不足している「気虚体質」。（脾腎陽虚証）</p>
+    <p>「湿痰」にもなりやすい。</p>
+    <p>「陰虚」の特徴も合わせ持つ。（陰陽両虚証）</p>
+
+    <h2>養生ポイント</h2>
+    <p>過労や体を冷やすことが原因。先天性や誕生時の異常が原因も。</p>
+    <p>両親からのエネルギー（先天の気）が少ないので、無駄遣いは避け、後天の気を増やすこと。</p>
+    <p>「熱」を失わず、『腎』の負担を減らし、『脾』を守り強くする。</p>
+
+    <h3>未病先防…１</h3>
+    <p>冷えを防ぎ、内側の「熱」を守る事が大切。薄着をせず、衣服でカラダの中の「熱」を守りましょう。</p>
+    <p>冷たいものの飲みすぎ食べすぎは、「熱」を奪います。</p>
+    <p>ビールや牛乳や生もの（魚・野菜・果物）はカラダを冷やすので要注意です。</p>
+    <p>手で触って冷たく感じるものや、体を冷やす涼・寒性の食べ物は口にしない。</p>
+
+    <h3>未病先防…２</h3>
+    <p>睡眠時間をきっちり確保することが大切です。</p>
+    <p>肉体疲労や精神の酷使は『腎』を消耗させます。</p>
+    <p>使わないというより、使った後に充分休養して回復させ、疲れを翌日に持ち越さないことです。</p>
+    <p>セックス過多や病気や手術後も注意が必要です。</p>
+
+    <h3>既病防変</h3>
+    <p>じんわり汗をかくぐらいに運動をしたり、ちょこまか動くこと！</p>
+    <p>カラダを動かすと体内で「熱」が発生し循環します。</p>
+    <p>また食物を分解するときに「熱」を発生するので、食べることも大切ですが、ムリに食べると脾（胃腸）を傷めるので少しお腹を空かせる事がポイントです。</p>
+    <p>太腿や腹筋など大きな筋力をアップして基礎代謝や体温を高めましょう。</p>
+
+    <h2>経絡/ヨガ/運動処方</h2>
+    <p>腎経、心経、心包経。</p>
+    <p>はじめはゆるめの運動から始めて、最後は筋力アップ。</p>
+    <p>ゆっくりスクワット、腹筋、背筋</p>
+    <p>開脚、上体そらし、腕振り体操。</p>
+    <p>効果的なツボ=腎兪、脾兪、三陰交、太谿、復留、照海など。</p>
+    <p>効果的なヨガ＝ウールドヴァムカシュヴァーナアサナ（上向き犬）、ダヌラアサナ（弓）</p>
+
+    <h2>薬膳施治</h2>
+    <p>温補腎陽（おんほじんよう）</p>
+    <p>体を温め腎の働きを高める。</p>
+
+    <h2>おすすめの食材</h2>
+    <p>羊肉、鶏肉、エビ、なまこ、にら、からし菜、唐辛子、生姜、にんにく、なた豆、栗、くるみなど。</p>
+    <p>体を温めるもの。</p>
+    <p>温かいもの。</p>
+    <p>夏場の冷たい料理には、生姜、ネギ、みょうが、わさび、からしなど温性の薬味たっぷりで。</p>
+    <p>ただし食材には温・熱・平・涼・寒の五つの性質があります。</p>
+    <p>今の自分の体質をチェックし、寒熱虚実の傾きを把握したうえで、そのバランスを中庸に整えてくれる食材をとるようにしましょう。</p>
+    <p>良いと言われる物でもそればっかり摂り過ぎるのは良くありません。</p>
+
+    <h2>おすすめ商品（カテゴリーリンクで対応）</h2>
     <ul>
       <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶</a></li>
       <li><a href="https://www.kyotorakurakudo.com/categories/6583396">枸杞とバラ 養眠茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">からだを温める黒のお茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">なつめと生姜のチャイ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583394">からだを温める黒のお茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583394">なつめと生姜のチャイ</a></li>
       <li><a href="https://www.kyotorakurakudo.com/categories/6583395">肝腎かなめ茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">健やか茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583390">健やか茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583410">なつめ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583411">クコの実</a></li>
       <li><a href="https://www.kyotorakurakudo.com/categories/6583412">黒きくらげ</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583415">竜眼</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583427">マイカイ花</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">薬膳火鍋紅白セット</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">手足氷凍鍋セット</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">四物湯スープセット</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583433">竜眼</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583417">マイカイ花</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583431">かぼちゃの種</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583406">薬膳火鍋紅白セット</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583406">手足氷凍鍋セット</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583406">四物湯スープセット</a></li>
       <li><a href="https://www.kyotorakurakudo.com/categories/6583398">食べる薬膳茶（桂棗黒豆茶）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">からだポカポカあたため乃湯</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583409">からだポカポカあたため乃湯</a></li>
     </ul>
-  </section>
+
+    <h2>注意するもの</h2>
+    <p>瓜類（かぼちゃ以外）、ナス、セロリ、緑茶、冷たい豆腐など寒・涼性のものは避けましょう。</p>
+
+    <h2>摂ると良い四気・五味・帰経食材</h2>
+    <p>性：温性・熱性　味：甘味・辛味　帰経：心・脾・腎・小腸・胃・膀胱</p>
+
+    <h2>国際中医師からのアドバイス</h2>
+    <p>過労や心労に気をつけエネルギーの無駄遣いをしないように。</p>
+    <p>常に腎陽を補い、脾を健やかに保つように心掛けましょう。</p>
+    <p>お腹を空かせてしっかり食べることも効果的。</p>
+    <p>しんどくなければ椅子に座ってのスクワットや壁に向かって腕立て伏せなど筋力アップも目指しましょう。</p>
+    <p>お腹を空かせてしっかり食べること、筋力アップを目指した軽い運動もおすすめです。</p>
+
+    <div class="back-button">
+      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+    </div>
+  </div>
 </body>
 </html>
