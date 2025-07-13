@@ -1,99 +1,214 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>湿熱タイプ | 中医学体質診断</title>
+  <title>湿熱タイプ - 中医学体質診断</title>
   <style>
     body {
-      font-family: sans-serif;
-      line-height: 1.6;
       margin: 0;
-      padding: 1em;
-      background: url('taishitsu_common_bg.jpg') no-repeat center top;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      background-image: url('taishitsu_common_bg.jpg');
       background-size: cover;
       background-attachment: fixed;
-      background-color: #fff;
+      background-position: center;
       color: #333;
+      line-height: 1.8;
     }
-    header, section {
-      margin-bottom: 2em;
-      background: rgba(255, 255, 255, 0.94);
-      padding: 1em;
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 2em;
       border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
-    h1, h2 {
-      font-size: 1.4em;
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #6c1e2d;
+      margin-bottom: 0.8em;
+    }
+    h2 {
+      font-size: 20px;
       border-bottom: 2px solid #ccc;
       padding-bottom: 0.2em;
+      margin-top: 1.5em;
+      color: #444;
     }
-    ul {
-      padding-left: 1.2em;
+    h3 {
+      font-size: 18px;
+      color: #444;
+      margin-top: 1.2em;
     }
-    a {
-      color: #0066cc;
-      text-decoration: none;
+    p, li {
+      font-size: 16.5px;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    .image-center {
+    img {
       display: block;
       margin: 1em auto;
-      max-width: 95%;
+      max-width: 100%;
       height: auto;
+      border-radius: 8px;
     }
-    .tongue-caption {
+    .back-button {
       text-align: center;
-      font-size: 0.95em;
-      color: #666;
+      margin-top: 2em;
+    }
+    .banner-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
       margin-bottom: 1.5em;
     }
+    .tongue-image {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+      border-radius: 8px;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      background-color: #721c24;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    .back-button a:hover {
+      background-color: #5e171f;
+    }
     @media (max-width: 600px) {
-      body {
-        padding: 0.5em;
+      .container {
+        padding: 1em;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p, li {
+        font-size: 16px;
+      }
+      .back-button a {
+        font-size: 14px;
+        padding: 0.6em 1.2em;
       }
     }
   </style>
 </head>
 <body>
-  <img src="banner_shitsunetsu.jpg" alt="湿熱タイプバナー" class="image-center" />
+  <div class="container">
+    <h1>湿熱タイプ</h1>
+    <img src="banner_shitsunetsu.jpg" alt="湿熱タイプのバナー" class="banner-image">
 
-  <header>
-    <h1>湿熱タイプ（体内にこもった熱と湿気の体質）</h1>
-  </header>
+    <p><strong>体質　湿熱タイプ</strong></p>
+    <p><strong>のぼせる、ほてる、暑がる体質の「湿熱タイプ」</strong></p>
+    <p>水腫体質</p>
+    <p>からだの中に余分な熱がこもった「湿（血）熱」タイプ</p>
 
-  <section>
+    <h2>体質の説明、主な特徴</h2>
+    <p>暑がりで汗っかきのがっちり肥満型。</p>
+    <p>「水」と「熱」の過剰ですので、充満した不要物を追放しましょう！</p>
+    <p>暑がりで冷房を好みます。肥満気味。顔が赤く吹き出物出やすい。</p>
+    <p>便秘、粘り気がある便で臭いが強い。生理周期は早い傾向で量は多くおりものも多い。</p>
+    <p>喉が渇き冷たいものを好み、汗をかきやすい。</p>
+
     <h2>なりやすい不調・病態（からだとこころ）</h2>
-    <p>皮膚トラブル、ニキビ、吹き出物、湿疹、膀胱炎、口臭、便のにおいが強い、寝汗、体臭など「湿」と「熱」による炎症傾向が出やすいタイプです。</p>
-  </section>
+    <p>化膿性の炎症。蓄膿症、慢性鼻炎、花粉症、結膜炎、緑内障、慢性中耳炎、ニキビ、面疔、湿疹、おでき、アトピー、ケロイド形成、</p>
+    <p>気管支拡張症、扁桃炎、リンパ腺炎、乳腺炎、慢性胃炎、膵臓炎、肝炎、胆嚢炎、虫垂炎、大腸炎、過敏性腸症候群、腎炎、膀胱炎、前立腺炎、膣炎、</p>
+    <p>糖尿病、高脂血症、高血圧、関節リウマチ、胆石、腎結石、各種ガン、前立腺肥大、</p>
+    <p>心筋梗塞、動脈硬化、脳卒中、うつ病。</p>
 
-  <section>
-    <img src="tongue_normal.jpg" alt="正常舌" class="image-center" />
-    <div class="tongue-caption">🔹 正常舌：淡紅色で潤いあり、舌苔は白く薄い</div>
-    <img src="tongue_shitsunetsu.jpg" alt="湿熱舌" class="image-center" />
-    <div class="tongue-caption">🔹 湿熱舌：紅く、黄色く厚い苔。舌の縁に赤みがあることも</div>
-  </section>
+    <h2>舌の特徴（正常との比較）</h2>
+    <p>正常な舌（画像）</p>
+    <img src="tongue_normal.jpg" alt="正常な舌" class="tongue-image">
+    <p>湿熱の舌（画像）</p>
+    <img src="tongue_shitsunetsu.jpg" alt="湿熱タイプの舌" class="tongue-image">
 
-  <section>
-    <h2>おすすめ商品</h2>
+    <h2>他の体質との関連</h2>
+    <p>「気滞」の人が水を取りすぎ、「湿痰」の人がストレスをためると「湿熱」に。</p>
+    <p>血流が悪く「血瘀」や、胃腸に溜まり「脾虚」にもなりやすい。</p>
+
+    <h2>養生ポイント</h2>
+    <p>「湿熱」を取り込む脂っこい飲食物に注意。イライラや怒りなども溜め込まないように。</p>
+    <p>カラダを動かし汗をかいて体内の余分な「湿熱」を発散しましょう。</p>
+    <p>体内の「湿」や「熱」の生産を抑えるように意識しましょう。</p>
+
+    <h3>未病先防…１</h3>
+    <p>全体的に食べ過ぎの傾向。また、濃い味（甘い、辛い、塩辛い）、こってり、高カロリー、酒類は「熱」を作り、「湿」をためます。</p>
+    <p>ビール、水割り、カクテル、刺身、冷しゃぶ生肉、チーズ。ミルクやヨーグルトの取り過ぎも注意。</p>
+    <p>わさび、辛子、生姜、山椒などは適量なら解消しますが、摂り過ぎは「熱」を作ります。</p>
+
+    <h3>未病先防…２</h3>
+    <p>「湿」と「熱」の発生を防ぐ。</p>
+    <p>「湿」の多い湿熱、「熱」の多い気滞の養生術を参考に、生活の改善を図りましょう。</p>
+
+    <h3>既病防変</h3>
+    <p>運動＋薬膳茶で、カラダに溜まった毒素のお掃除。</p>
+    <p>蓄えがありすぎるので、カラダを動かし、汗を流して、食べる以上に「湿」や「熱」を消費すること。</p>
+    <p>そして、ハトムギ、菊花、トウモロコシの毛などの薬膳茶でカラダの掃除を。高麗人参、ローヤルゼリーなどは「湿熱」を強める作用あるので注意。</p>
+
+    <h2>経絡/ヨガ/運動処方</h2>
+    <p>腎経、膀胱経。</p>
+    <p>有酸素運動などで発汗を促し、全身運動。</p>
+    <p>閉脚前屈、開脚前屈体操。</p>
+    <p>効果的なツボ=脾兪、陰稜泉、水分など</p>
+    <p>効果的なヨガ＝パシュチモタアナアサナ（閉脚前屈）など</p>
+
+    <h2>薬膳施治</h2>
+    <p>清熱瀉火（せいねつしゃか）</p>
+    <p>からだの中の余分な水分に溜まった熱を冷まし、いらない水分を流す。</p>
+
+    <h2>おすすめの食材</h2>
+    <p>はと麦、緑豆、あずき、トマト、れんこん、白菜、セロリ、バナナ、スイカ、柿、セリ、ナズナなど。</p>
+    <p>瓜類（冬瓜、苦瓜、胡瓜、西瓜、南瓜、糸瓜）。南瓜だけ温性。</p>
+    <p>水分代謝を良くするもの。熱を冷ますもの。解毒するもの。</p>
+    <p>ただし五気のバランスに注意し、摂りすぎには気をつけましょう。</p>
+
+    <h2>おすすめ商品（カテゴリーリンクで対応）</h2>
     <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">枸杞とバラ 養眠茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">からだを温める黒のお茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">なつめと生姜のチャイ</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">肝腎かなめ茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">健やか茶</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583412">黒きくらげ</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583415">竜眼</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583427">マイカイ花</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">薬膳火鍋紅白セット</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">手足氷凍鍋セット</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">四物湯スープセット</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583398">食べる薬膳茶（桂棗黒豆茶）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">からだポカポカあたため乃湯</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">桑の実 養眠茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">蓮の葉 涼心茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583392">水巡茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583393">五望茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583393">カラダ潤し茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583394">ダイエット応援 爽快茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583388">理気明目茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">なつめとのバラの美人紅茶</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583403">四神湯スープ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583428">緑豆</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583430">はと麦</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583417">蓮の実</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583422">菊花</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583413">白きくらげ</a></li>
+      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">スッキリさっぱり乃湯</a></li>
     </ul>
-  </section>
+
+    <h2>注意するもの</h2>
+    <p>唐辛子、生姜など香辛料、ねぎ、牛肉、鶏肉、羊肉、酒など熱を生むものは避ける</p>
+
+    <h2>摂ると良い四気・五味・帰経食材</h2>
+    <p>性：涼性・寒性　味：苦味・鹹味　帰経：肝・心・胆・小腸</p>
+
+    <h2>国際中医師からのアドバイス</h2>
+    <p>激辛、こってり、高カロリー、お酒など湿熱をつくる飲食物を控えめにする。</p>
+    <p>イライラしたりカッカしないで、ストレスも溜め込まないように。</p>
+    <p>カラダを動かし汗を流して、体内の余分な「湿熱」をデトックスしましょう。</p>
+    <p>昔から「怪病多痰」といい、原因不明や完治させる治療法のない難病などの原因は「痰」と呼ばれる湿邪が原因と考えられてきました。</p>
+    <p>真夏の寝ていても汗をかいて水分を失う季節はこまめな水分補給が必要ですが、それ以外は特にオフィスワークなど一日中室内で過ごすことが多い人は余分な水分は控えめにしましょう。</p>
+
+    <div class="back-button">
+      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+    </div>
+  </div>
 </body>
 </html>
+
