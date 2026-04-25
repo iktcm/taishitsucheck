@@ -1,155 +1,363 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>魂タイプ - 五神診断</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
-      background-image: url('taishitsu_common_bg.jpg');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      color: #333;
-      line-height: 1.8;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.96);
-      padding: 2em;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    }
-    h1 {
-      font-size: 28px;
-      text-align: center;
-      color: #6c1e2d;
-      margin-bottom: 0.8em;
-    }
-    h2 {
-      font-size: 20px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.2em;
-      margin-top: 1.5em;
-      color: #444;
-    }
-    p, li {
-      font-size: 16.5px;
-    }
-    .banner-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 1.5em;
-    }
-</style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>魂（こん）｜五神診断｜京都伝統中医学研究所</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>:root{--c1:#0f2010;--c2:#1a3520;--c3:#3a7a4a;--c4:#80c080;--c5:#c0e8c0;--cream:#f5f2ea;--paper:#fdfbf6;--ink:#1c1a16;--charcoal:#3a3630;--muted:#8a8278;--gold:#b8962a;--gold-lt:#d4b84a;--red:#8b2020;--washi:#ede8dc;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:"Noto Serif JP",serif;background:var(--cream);color:var(--ink);line-height:1.8;overflow-x:hidden;}
+.hero{min-height:100vh;background:var(--c1);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:40px 20px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(180,140,80,0.25) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(180,140,80,0.1) 0%,transparent 50%);}
+.hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(200,180,120,0.04) 60px,rgba(200,180,120,0.04) 61px);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;text-align:center;max-width:600px;width:100%;}
+.site-badge{display:inline-block;font-size:10px;letter-spacing:4px;color:rgba(240,230,200,0.6);border:1px solid rgba(240,230,200,0.2);padding:6px 16px;border-radius:20px;margin-bottom:32px;}
+.type-emblem{width:110px;height:110px;border-radius:50%;border:2px solid rgba(184,150,42,0.5);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho",serif;font-size:56px;color:var(--gold-lt);position:relative;background:rgba(180,140,80,0.12);animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,150,42,0.2);}50%{box-shadow:0 0 0 24px rgba(184,150,42,0);}}
+.type-emblem::before{content:"";position:absolute;inset:7px;border:1px solid rgba(184,150,42,0.25);border-radius:50%;}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--c4);margin-bottom:6px;}
+.hero-title{font-family:"Shippori Mincho",serif;font-size:clamp(28px,7vw,48px);font-weight:700;color:var(--paper);line-height:1.4;margin-bottom:6px;}
+.hero-title .reading{font-size:clamp(14px,3.5vw,20px);display:block;color:var(--c4);letter-spacing:4px;font-weight:400;margin-bottom:4px;}
+.hero-subtitle{font-size:13px;color:rgba(240,230,200,0.7);letter-spacing:2px;margin-bottom:32px;}
+.score-display{background:rgba(255,255,255,0.06);border:1px solid rgba(184,150,42,0.2);border-radius:12px;padding:20px 24px;margin-bottom:24px;text-align:left;}
+.score-label{font-size:10px;letter-spacing:3px;color:var(--c4);margin-bottom:12px;}
+.score-bar-wrap{display:flex;align-items:center;gap:12px;}
+.score-bar-bg{flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;}
+.score-bar-fill{height:100%;background:linear-gradient(90deg,var(--c3),var(--gold-lt));border-radius:3px;width:0%;transition:width 1.5s ease;}
+.score-num{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--gold-lt);min-width:40px;text-align:right;}
+.rank-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(184,150,42,0.2),rgba(184,150,42,0.05));border:1px solid rgba(184,150,42,0.4);border-radius:8px;padding:10px 20px;font-family:"Shippori Mincho",serif;font-size:14px;color:var(--gold-lt);}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(240,230,200,0.4);font-size:10px;letter-spacing:2px;animation:scrollHint 2s ease-in-out infinite;}
+@keyframes scrollHint{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+section{padding:80px 20px;max-width:720px;margin:0 auto;}
+.section-eyebrow{font-size:10px;letter-spacing:4px;color:var(--c3);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.section-eyebrow::before{content:"";width:24px;height:1px;background:var(--c3);}
+.section-title{font-family:"Shippori Mincho",serif;font-size:clamp(22px,5vw,32px);font-weight:700;color:var(--c1);line-height:1.5;margin-bottom:32px;}
+.personal-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.personal-section::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(180,140,80,0.1) 0%,transparent 60%);}
+.personal-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.personal-message{background:rgba(255,255,255,0.05);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:28px 32px;margin-bottom:32px;}
+.personal-message p{font-family:"Shippori Mincho",serif;font-size:clamp(15px,3.5vw,18px);color:rgba(253,251,246,0.9);line-height:2;}
+.personal-message .highlight{color:var(--gold-lt);font-weight:600;}
+.three-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.pillar-card{background:rgba(255,255,255,0.06);border:1px solid rgba(240,230,200,0.15);border-radius:12px;padding:20px 16px;text-align:center;}
+.pillar-icon{font-size:28px;margin-bottom:10px;}
+.pillar-title{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--c5);font-weight:600;margin-bottom:6px;}
+.pillar-desc{font-size:11px;color:rgba(240,230,200,0.6);line-height:1.7;}
+.nature-section{background:var(--paper);}
+.state-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
+.state-card{border-radius:16px;padding:28px 24px;}
+.state-card.healthy{background:linear-gradient(135deg,rgba(var(--rgb3),0.08),rgba(var(--rgb3),0.04));border:1px solid rgba(var(--rgb3),0.2);}
+.state-card.weak{background:rgba(139,32,32,0.05);border:1px solid rgba(139,32,32,0.15);}
+.state-card-title{font-family:"Shippori Mincho",serif;font-size:15px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.state-card.healthy .state-card-title{color:var(--c3);}
+.state-card.weak .state-card-title{color:var(--red);}
+.state-list{list-style:none;}
+.state-list li{font-size:13px;color:var(--charcoal);padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:flex-start;gap:10px;line-height:1.7;}
+.state-list li:last-child{border-bottom:none;}
+.state-card.healthy li::before{content:"✦";color:var(--c3);font-size:9px;margin-top:4px;flex-shrink:0;}
+.state-card.weak li::before{content:"▼";color:var(--red);font-size:9px;margin-top:4px;flex-shrink:0;}
+.organ-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.organ-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.organ-card{background:rgba(255,255,255,0.06);border:1px solid rgba(240,230,200,0.2);border-radius:20px;padding:36px 32px;margin-bottom:32px;}
+.organ-title{font-family:"Shippori Mincho",serif;font-size:22px;color:var(--gold-lt);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.organ-desc{font-size:14px;color:rgba(240,230,200,0.85);line-height:2.2;}
+.organ-desc strong{color:var(--gold-lt);}
+.taishitsu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.taishitsu-card{background:rgba(255,255,255,0.05);border:1px solid rgba(240,230,200,0.12);border-radius:12px;padding:16px;text-align:center;text-decoration:none;transition:all 0.2s;display:block;}
+.taishitsu-card:hover{background:rgba(184,150,42,0.15);transform:translateY(-2px);}
+.taishitsu-name{font-family:"Shippori Mincho",serif;font-size:16px;color:var(--gold-lt);font-weight:700;margin-bottom:4px;}
+.taishitsu-rel{font-size:11px;color:rgba(240,230,200,0.6);}
+.yojo-section{background:var(--paper);padding:80px 20px;}
+.yojo-inner{max-width:720px;margin:0 auto;}
+.yojo-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+.yojo-tab{flex-shrink:0;padding:10px 20px;border-radius:24px;border:1.5px solid rgba(180,140,80,0.3);background:transparent;font-family:"Noto Serif JP",serif;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.3s;white-space:nowrap;}
+.yojo-tab.active{background:var(--c1);border-color:var(--c1);color:var(--c5);}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.yojo-card{background:var(--cream);border-radius:16px;padding:32px;border:1px solid rgba(180,140,80,0.12);}
+.yojo-card-title{font-family:"Shippori Mincho",serif;font-size:18px;color:var(--c1);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.yojo-card-subtitle{font-size:12px;color:var(--muted);margin-bottom:20px;padding-left:28px;}
+.yojo-point{background:white;border-radius:10px;padding:16px 20px;margin-bottom:12px;border-left:3px solid var(--c3);font-size:13px;color:var(--charcoal);line-height:1.8;}
+.yojo-point strong{color:var(--c1);display:block;margin-bottom:4px;font-size:13px;}
+.yakuzen-section{background:linear-gradient(180deg,var(--washi),var(--cream));padding:80px 20px;}
+.yakuzen-inner{max-width:720px;margin:0 auto;}
+.yakuzen-title-block{text-align:center;margin-bottom:40px;}
+.yakuzen-kanji{font-family:"Shippori Mincho",serif;font-size:40px;color:var(--c1);letter-spacing:4px;display:block;margin-bottom:8px;}
+.yakuzen-reading{font-size:12px;letter-spacing:3px;color:var(--muted);}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:32px;}
+.food-card{background:white;border-radius:12px;padding:16px 12px;text-align:center;border:1px solid rgba(180,140,80,0.12);transition:all 0.2s;}
+.food-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(180,140,80,0.1);}
+.food-emoji{font-size:28px;margin-bottom:8px;}
+.food-name{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--c1);font-weight:600;margin-bottom:4px;}
+.food-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.yakuzen-detail-list{margin-bottom:32px;}
+.yakuzen-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(180,140,80,0.1);}
+.yakuzen-item-name{font-family:"Shippori Mincho",serif;font-size:15px;color:var(--c1);font-weight:600;min-width:80px;flex-shrink:0;}
+.yakuzen-item-info{flex:1;}
+.yakuzen-item-property{font-size:11px;color:var(--c3);margin-bottom:4px;font-family:"Shippori Mincho",serif;}
+.yakuzen-item-effect{font-size:12px;color:var(--charcoal);line-height:1.6;}
+.products-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.products-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.products-intro{font-family:"Shippori Mincho",serif;font-size:15px;color:rgba(240,230,200,0.8);line-height:2;margin-bottom:32px;padding:20px 24px;background:rgba(255,255,255,0.04);border-left:2px solid var(--gold);border-radius:0 8px 8px 0;}
+.products-grid{display:grid;gap:12px;}
+.product-category{font-size:10px;letter-spacing:3px;color:var(--c4);margin:24px 0 12px;text-transform:uppercase;display:flex;align-items:center;gap:12px;}
+.product-category::after{content:"";flex:1;height:1px;background:rgba(240,230,200,0.15);}
+.product-link{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.05);border:1px solid rgba(240,230,200,0.1);border-radius:10px;padding:14px 18px;text-decoration:none;transition:all 0.2s;color:rgba(253,251,246,0.85);font-size:13px;}
+.product-link:hover{background:rgba(180,140,80,0.2);border-color:rgba(240,230,200,0.25);transform:translateX(4px);}
+.product-arrow{color:var(--gold-lt);font-size:14px;}
+.advice-section{background:var(--paper);padding:80px 20px;}
+.advice-inner{max-width:720px;margin:0 auto;}
+.advice-card{background:linear-gradient(135deg,var(--c1),var(--c2));border-radius:20px;padding:40px 36px;position:relative;overflow:hidden;}
+.advice-badge{font-size:10px;letter-spacing:3px;color:var(--gold-lt);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.advice-badge::before{content:"";width:16px;height:1px;background:var(--gold);}
+.advice-text{font-family:"Shippori Mincho",serif;font-size:clamp(14px,3vw,16px);color:rgba(253,251,246,0.9);line-height:2.2;margin-bottom:24px;}
+.advice-text em{color:var(--gold-lt);font-style:normal;font-weight:600;}
+.advice-author{font-size:12px;color:rgba(240,230,200,0.5);text-align:right;letter-spacing:1px;}
+.cta-section{background:var(--washi);padding:60px 20px;text-align:center;}
+.cta-inner{max-width:480px;margin:0 auto;}
+.cta-message{font-family:"Shippori Mincho",serif;font-size:16px;color:var(--c1);line-height:2;margin-bottom:32px;}
+.cta-btn{display:inline-block;padding:16px 40px;background:var(--c1);color:var(--c5);text-decoration:none;border-radius:8px;font-family:"Noto Serif JP",serif;font-size:13px;letter-spacing:2px;transition:all 0.3s;border:1px solid transparent;margin:6px;}
+.cta-btn:hover{background:var(--c2);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+.cta-btn.outline{background:transparent;border-color:var(--c1);color:var(--c1);}
+.cta-btn.outline:hover{background:rgba(0,0,0,0.04);}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:600px){
+  .three-pillars{grid-template-columns:1fr;}
+  .state-grid{grid-template-columns:1fr;}
+  .taishitsu-grid{grid-template-columns:1fr;}
+  .food-grid{grid-template-columns:repeat(2,1fr);}
+  .advice-card{padding:28px 20px;}
+}</style>
 </head>
 <body>
-  <div class="container">
-    <h1>魂（こん）タイプ</h1>
-    <img src="banner_kon.jpg" alt="魂タイプのバナー"class="banner-image">
-    <p><strong>「情緒を風にのせて、しなやかに生きる」</strong></p>
-
-    <h2>1. 五臓と五神の関係</h2>
-    <p>魂（こん）は「肝」に宿る精神活動の主体です。肝は疏泄（そせつ）を司り、気血の流れをスムーズに保つ働きがあります。魂が健やかであれば、情緒のバランスが取れ、柔軟でのびやかな心を持つことができます。</p>
-
-    <h2>2. 精神的特徴とその長所・短所</h2>
-    <p><strong>●長所：</strong>感受性が豊か、創造性に富む、情熱的、直感力に優れる</p>
-    <ul>
-    <li><strong>自由さ・柔軟さ：</strong> 春の芽吹きのように、のびのびと自由に伸び、変化に柔軟に対応できる。</li>
-    <li><strong>創造性・発想力：</strong> 想像力や独創性が豊かで、新しいものを生み出す力を持つ。</li>
-    <li><strong>行動力・冒険心：</strong> チャレンジ精神やフットワークの軽さにつながり、新しい出会いや経験を楽しむ。</li>
-    <li><strong>人との共感・交流力：</strong> 他者とのつながりを広げ、共感と交流を楽しむ資質を持つ。</li>
-    <li><strong>未来志向・希望を持つ力：</strong> 過去にとらわれず未来を志向し、理想や目標を追求する推進力。</li>
-    </ul>
-    <p><strong>✅ まとめ：</strong> 自由さ・創造性・行動力・交流力・未来志向が発揮されやすい</p>
-    <p><strong>●短所：</strong>情緒不安定、怒りっぽい、落ち込みやすい、迷いやすい</p>
-    <p>※「魂（こん）」が弱まると、落ち着きのなさ、衝動性、イライラ、気分の上下などが起こりやすくなる。</p>
-
-    <h2>3. 中医学的背景</h2>
-    <p>『黄帝内経』では、「肝は将軍の官、謀慮（ぼうりょ）を出す」と記され、魂（こん）は「夢」とも深く関係します。肝と魂（こん）が健やかであれば、意思決定が明晰で、日々の感情にも柔軟に対応できます。魂（こん）が乱れると、夜に悪夢を見やすくなったり、感情の波が激しくなります。</p>
-
-    <h2>4. 魂（こん）が失調したときのサイン</h2>
-    <p><strong>●精神的サイン：</strong>感情の起伏が激しい、怒りやすい、落ち込みやすい、焦燥感、夢をよく見る</p>
-    <p><strong>●身体的サイン：</strong>側頭部の痛み、目の疲れ、筋のこわばり、月経不順、爪がもろくなる</p>
-
-    <h2>5. 養生のポイント</h2>
-    <p><strong>●疏肝理気：</strong>五臓の肝気の巡りを整え、滞った気を巡らせる</p>
-    <p>イライラや怒りは肝気が滞るので、出来るだけリラックスして心を穏やかに過ごすことが必要です。</p>
-
-    <h3>💤 生活習慣・睡眠</h3>
-    <p>イライラや怒りをムリに抑え過ぎず、感情表現を恐れないことも大切です。朝日を浴びて深呼吸し、音楽や芸術で心を解放しましょう。</p>
-    <p>夜更かしを避け、特に23時前には就寝。寝る前にスマホを控え、心を鎮める時間を持つ。</p>
-
-    <h3>🧠 こころの使い方</h3>
-    <p>怒りを感じたら、一度立ち止まって深呼吸。ノートに気持ちを書き出して整理する習慣を。</p>
-
-    <h3>🌿 癒しの香り</h3>
-    <p>柑橘系（ベルガモット、オレンジスイート）、ハーブ系（ラベンダー、マジョラム）</p>
-
-    <h3>🧘‍♀️ 経絡と運動処方</h3>
-    <p>肝経をゆるめるストレッチ（股関節・脇腹）、太極拳やヨガの「ねじり」のポーズ</p>
-
-    <h3>🫂 周囲との接し方のヒント</h3>
-    <p>自分の感受性を否定せず、共感力を強みに。相手の意見に流されず、自分の気持ちを言語化する練習を。情報過多に疲れたときは「何もしない時間」も大切です。</p>
-
-    <h2>🍙 魂（こん）タイプにおすすめの食材</h2>
-    <p>セロリ、紫蘇、三つ葉、柑橘類、黒豆、小松菜、しそ油、トマト、ハーブティー（カモミール）、黒ごま</p>
-
-    <h2>🫖魂（こん）タイプにおすすめの薬膳食材</h2>
-<ul>
-  <li>枸杞の実（平・甘／肝・腎・肺）：滋補肝腎・益精明目</li>
-  <li>百合（微寒・甘／肺・心）：潤肺止咳・清心安神</li>
-  <li>竜眼（温・甘／心・脾）：補血安神・健脾養心</li>
-  <li>マイカイ花（温・甘・微苦／肝・脾）：理気解鬱・活血調経</li>
-  <li>菊花（微寒・甘・苦／肺・肝）：清肝明目・平肝解毒</li>
-  <li>黒きくらげ（平・甘／肺・胃・肝）：養血・潤肺・止血</li>
-  <li>金針菜（涼・甘／肝・腎）：清熱・利尿・安神</li>
-  <li>薫衣草（温・辛・苦／肝・心）：疏肝解鬱・安神鎮静</li>
-  <li>山査子（微温・酸・甘／脾・胃・肝）：消食化積・活血化瘀</li>
-</ul>
-
-    <h2>京都 楽楽堂おすすめ商品</h2>
-    <h3>◉ 薬膳茶</h3>
-    <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">蓮の葉 涼心茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583392">気血巡茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">理気明目茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583393">五望茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">茉莉龍珠茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583392">麗香龍珠茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">全部食べる薬膳茶　桂棗黒豆茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">桑の実 養眠茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>
-    <h3>◉ 薬膳食材</h3>
-    <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583411">枸杞の実 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583420">百合 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583415">竜眼肉 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583423">菊花 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583422">桑の実 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583433">紅花 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583412">黒きくらげ ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583414">金針菜 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583432">松の実 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583419">山査子 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6721925">薫衣草（ラベンダー） ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>
-    <h3>◉ 薬膳スィーツ、薬膳鍋・スープ</h3>
-    <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583404">いろいろお豆のスィーツセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">四物湯スープセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    <h3>◉ その他</h3>  
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">ほっこりポカポカあたため乃湯 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>
-
-    <div class="back-button">
-      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="site-badge">京都伝統中医学研究所｜五神診断</div>
+    <div class="type-emblem">魂</div>
+    <div class="hero-label">GOSHIN — LIVER・WOOD</div>
+    <h1 class="hero-title"><span class="reading">こん</span>魂（こん）</h1>
+    <div class="hero-subtitle">肝（かん）に宿る｜創造・決断・夢・感情の柔軟性を主る</div>
+    <div class="score-display" id="scoreDisplay">
+      <div class="score-label">魂（こん）の失調スコア</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-bg"><div class="score-bar-fill" id="scoreBar"></div></div>
+        <div class="score-num" id="scoreNum">—</div>
+      </div>
+    </div>
+    <div class="rank-badge" id="rankBadge">
+      <span>🌿</span><span id="rankText">今のあなたの五神で最も影響を受けています</span>
     </div>
   </div>
+  <div class="hero-scroll"><span>SCROLL</span><span>↓</span></div>
+</div>
+
+<div class="personal-section">
+  <div class="personal-inner">
+    <div class="section-eyebrow" style="color:#90d090;">あなたの今</div>
+    <h2 class="section-title" style="color:var(--paper);">「魂」が示す<br>こころの状態</h2>
+    <div class="personal-message reveal"><p>
+      やりたいことはある。でも、なぜか動けない。<br>
+      怒りが湧いてくるのに、どこにぶつければいいかわからない。<br>
+      夢をよく見る——とても鮮明な、疲れる夢を——<br><br>
+      それは意志が弱いのではありません。<br>
+      <span class="highlight">肝（かん）に宿る「魂」が乱れ、創造力と決断力の源が揺れている</span>サインです。<br><br>
+      魂は夢・創造・決断・未来への意志を主ります。<br>
+      充実していれば、しなやかに動き、自由に発想できる。<br>
+      乱れると、怒り・迷い・感情の波・方向感覚の喪失が現れます。<br><br>
+      今必要なのは、肝の疏泄を整え、<br>
+      <span class="highlight">魂が自由にのびやかに宿れる環境を作ること</span>から始めることです。
+    </p></div>
+    <div class="three-pillars reveal">
+      <div class="pillar-card"><div class="pillar-icon">🌿</div><div class="pillar-title">魂が主るもの</div><div class="pillar-desc">創造性・決断力・夢・感情の柔軟性・未来への意志</div></div>
+      <div class="pillar-card"><div class="pillar-icon">⚠️</div><div class="pillar-title">失調のサイン</div><div class="pillar-desc">怒り・迷い・夢が多い・動けない・過去の執着</div></div>
+      <div class="pillar-card"><div class="pillar-icon">🌱</div><div class="pillar-title">養生の方向</div><div class="pillar-desc">肝の疏泄を整え、感情を流し、魂がのびやかに動ける状態へ</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="nature-section reveal">
+  <div class="section-eyebrow">STATE OF KON</div>
+  <h2 class="section-title">「魂」が充実しているときと<br>失調しているときのサイン</h2>
+  <div class="state-grid">
+    <div class="state-card" style="background:rgba(60,120,60,0.06);border:1px solid rgba(60,120,60,0.2);">
+      <div class="state-card-title" style="color:#4a904a;">✦ 魂が充実しているとき</div>
+      <ul class="state-list">
+        <li>決断が早く行動に移せる</li>
+        <li>創造的なアイデアが湧いてくる</li>
+        <li>感情が流れるように動く</li>
+        <li>怒りが出てもすぐに収まる</li>
+        <li>夢や目標に向かって進める</li>
+        <li>人との交流を楽しめる</li>
+      </ul>
+    </div>
+    <div class="state-card weak">
+      <div class="state-card-title">▼ 魂が失調しているとき</div>
+      <ul class="state-list">
+        <li>衝動的に怒り、収まりが遅い</li>
+        <li>夢をよく見る・悪夢・うなされる</li>
+        <li>やりたいのに動けない</li>
+        <li>過去のことを何度も思い出す</li>
+        <li>側頭部の痛み・目の疲れ</li>
+        <li>筋のこわばり・月経不順</li>
+      </ul>
+    </div>
+  </div>
+  <div style="background:var(--washi);border-radius:16px;padding:28px 32px;" class="reveal">
+    <div class="section-eyebrow" style="margin-bottom:16px;">中医学的背景</div>
+    <p style="font-size:13px;color:var(--charcoal);line-height:2;">
+      『黄帝内経』では「肝は将軍の官、謀慮（ぼうりょ）を出す」と記され、魂（こん）は「夢」とも深く関係します。肝と魂が健やかであれば、意思決定が明晰で感情にも柔軟に対応できます。魂が乱れると夜に悪夢を見やすくなったり、感情の波が激しくなります。<strong>「疏肝理気」</strong>——肝の気の流れを整えることが魂の養生の基本です。
+    </p>
+  </div>
+</section>
+
+<div class="organ-section">
+  <div class="organ-inner">
+    <div class="section-eyebrow" style="color:#90d090;">RELATED TAISHITSU</div>
+    <h2 class="section-title" style="color:var(--paper);">「魂」の失調と<br>つながる体質タイプ</h2>
+    <div class="taishitsu-grid reveal">
+      <a href="kitai.html" class="taishitsu-card"><div class="taishitsu-name">🌀 気滞タイプ</div><div class="taishitsu-rel">肝気の停滞が魂を最も乱す。怒り・イライラ・詰まり感が重なる</div></a>
+      <a href="xuexu.html" class="taishitsu-card"><div class="taishitsu-name">🌸 血虚タイプ</div><div class="taishitsu-rel">肝血の不足で魂が定まらず、夢が多く判断が鈍る</div></a>
+      <a href="xueyu.html" class="taishitsu-card"><div class="taishitsu-name">🍂 血瘀タイプ</div><div class="taishitsu-rel">血の停滞が魂を固め、過去への執着・手放せない感情に</div></a>
+      <a href="yinxu.html" class="taishitsu-card"><div class="taishitsu-name">🌙 陰虚タイプ</div><div class="taishitsu-rel">肝陰の不足で魂が浮き、不眠・怒りやすさが慢性化</div></a>
+    </div>
+  </div>
+</div>
+
+<div class="yojo-section">
+  <div class="yojo-inner">
+    <div class="section-eyebrow">HEALTH CARE</div>
+    <h2 class="section-title">「魂」を養う<br>養生ポイント</h2>
+    <div class="yojo-tabs">
+      <button class="yojo-tab active" onclick="showTab('k1')">睡眠・生活</button>
+      <button class="yojo-tab" onclick="showTab('k2')">こころの使い方</button>
+      <button class="yojo-tab" onclick="showTab('k3')">香り・感覚</button>
+      <button class="yojo-tab" onclick="showTab('k4')">経絡・ツボ</button>
+    </div>
+    <div id="k1" class="yojo-content active"><div class="yojo-card">
+      <div class="yojo-card-title">🌙 23時前の就寝で魂を肝に戻す</div>
+      <div class="yojo-card-subtitle">夜間、魂は肝に宿って休む</div>
+      <div class="yojo-point"><strong>深夜の活動は魂を浮かせる</strong>中医学では夜間、魂は肝に戻り休むとされています。夜更かしや深夜のスマホ使用は、魂が肝に戻れず「浮いた状態」になり、夢が多く・浅い眠り・翌日の判断力低下につながります。</div>
+      <div class="yojo-point"><strong>朝日を浴びて深呼吸する</strong>朝の新鮮な気を取り込むことが魂を活性化させます。起床後5〜10分、外の空気と朝日を浴びることが魂の養生になります。</div>
+    </div></div>
+    <div id="k2" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🧠 感情を「流す」練習をする</div>
+      <div class="yojo-card-subtitle">感情を抑えるでも爆発させるでもなく</div>
+      <div class="yojo-point"><strong>怒りを感じたら一度立ち止まる</strong>怒りを感じたら深呼吸して立ち止まる。気持ちをノートに書き出して整理する——感情を「流す」ことが魂の健全さを保ちます。無理に抑え込むと肝気が滞り、魂がさらに乱れます。</div>
+      <div class="yojo-point"><strong>一つのことへのこだわりを緩める</strong>魂が乱れているとき、思考は特定の問題に固定されやすくなります。意識的に違うものに関心を向け、視野を広げる練習が魂の柔軟性を回復させます。</div>
+    </div></div>
+    <div id="k3" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🌿 柑橘の香りで肝気を解放する</div>
+      <div class="yojo-card-subtitle">魂に届く香り</div>
+      <div class="yojo-point"><strong>ベルガモット・オレンジスイート</strong>肝気の疏泄を助け、詰まった気を解放する柑橘系の香り。朝や仕事中に取り入れると魂が活性化します。</div>
+      <div class="yojo-point"><strong>ラベンダー・マジョラム</strong>過熱した肝気を静め、魂を落ち着かせる香り。就寝前や怒りを感じたときに効果的です。</div>
+    </div></div>
+    <div id="k4" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🧘 経絡・ツボ</div>
+      <div class="yojo-card-subtitle">肝経を整え魂を安定させる</div>
+      <div class="yojo-point"><strong>足の厥陰肝経（股関節・脇腹のストレッチ）</strong>肝経をゆるめるストレッチが魂の養生に直結します。ヨガの「ねじりのポーズ」も効果的。</div>
+      <div class="yojo-point"><strong>太衝・肝兪・期門</strong>肝気を巡らせる代表ツボ。特に太衝（足の甲・親指と人差し指の間）は感情の解放に効果的です。</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="yakuzen-section">
+  <div class="yakuzen-inner">
+    <div class="yakuzen-title-block">
+      <span class="yakuzen-kanji">疏肝解鬱</span>
+      <span class="yakuzen-reading">そかんかいうつ｜魂の薬膳施治</span>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.8;">肝の気の流れを整え、停滞を解消し、魂をのびやかに。<br>これが「魂」を整える食養生の根本です。</p>
+    </div>
+    <div class="food-grid reveal">
+      <div class="food-card"><div class="food-emoji">🟠</div><div class="food-name">枸杞の実</div><div class="food-desc">滋補肝腎。肝血を補い魂を養う</div></div>
+      <div class="food-card"><div class="food-emoji">⚪</div><div class="food-name">菊花</div><div class="food-desc">清肝明目。肝の熱を冷まし魂を安定させる</div></div>
+      <div class="food-card"><div class="food-emoji">🟤</div><div class="food-name">竜眼</div><div class="food-desc">補血安神。肝血不足の魂の失調に</div></div>
+      <div class="food-card"><div class="food-emoji">🌹</div><div class="food-name">玫瑰花（マイカイ花）</div><div class="food-desc">理気解鬱。詰まった肝気を解放する</div></div>
+      <div class="food-card"><div class="food-emoji">⚫</div><div class="food-name">黒きくらげ</div><div class="food-desc">養血潤肺。肝血を補いながら魂を養う</div></div>
+      <div class="food-card"><div class="food-emoji">💜</div><div class="food-name">薫衣草（ラベンダー）</div><div class="food-desc">疏肝解鬱・安神鎮静。魂の過活動を静める</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="products-section">
+  <div class="products-inner">
+    <div class="section-eyebrow" style="color:#90d090;">KYOTO RAKURAKUDO</div>
+    <h2 class="section-title" style="color:var(--paper);">「魂」を整える<br>京都 楽楽堂おすすめ薬膳</h2>
+    <div class="products-intro reveal">「魂」の養生に必要なのは、<strong style="color:var(--gold-lt);">「疏通・解放・のびやかに」</strong>の三原則。<br>肝気を巡らせ、感情を流す薬膳茶と食材が魂の安定を助けます。</div>
+    <div class="products-grid reveal">
+      <div class="product-category">薬膳茶</div>
+      <a href="https://www.kyotorakurakudo.com/categories/6583392" class="product-link"><span>🌀 気血巡茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583389" class="product-link"><span>🌸 理気明目茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583396" class="product-link"><span>🌿 桑の実 養眠茶</span><span class="product-arrow">→</span></a>
+      <div class="product-category">薬膳食材</div>
+      <a href="https://www.kyotorakurakudo.com/categories/6583411" class="product-link"><span>🟠 枸杞の実</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583423" class="product-link"><span>⚪ 菊花</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583427" class="product-link"><span>🌹 玫瑰花（マイカイ花）</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583415" class="product-link"><span>🟤 竜眼</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583412" class="product-link"><span>⚫ 黒きくらげ</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6721925" class="product-link"><span>💜 薫衣草（ラベンダー）</span><span class="product-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="advice-section">
+  <div class="advice-inner">
+    <div class="section-eyebrow">FROM THE DOCTOR</div>
+    <h2 class="section-title">国際中医師から<br>あなたへ</h2>
+    <div class="advice-card reveal">
+      <div class="advice-badge">京都伝統中医学研究所｜国際中医師</div>
+      <div class="advice-text">
+        イライラや怒りを無理に抑え過ぎず、<em>感情表現を恐れないことも大切です。</em><br><br>
+        朝日を浴びて深呼吸し、<br>音楽や芸術でこころを解放しましょう。<br><br>
+        <em>自分の感受性を否定せず、共感力を強みに。</em><br>
+        相手の意見に流されず、自分の気持ちを言語化する練習を。<br><br>
+        情報過多に疲れたときは<em>「何もしない時間」</em>も大切です。
+      </div>
+      <div class="advice-author">京都伝統中医学研究所｜京都 楽楽堂</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-message">体質との連動も確認しましょう。<br>「魂」の失調は複数の体質と関係します。</div>
+    <a href="taishitsu_diagnosis.html" class="cta-btn">← 診断に戻る</a>
+    <a href="https://www.kyotorakurakudo.com/p/00002" class="cta-btn outline">今のカラダを知るへ</a>
+  </div>
+</div>
+<script>
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const score=parseInt(params.get('score')||'0');
+  const maxScore=parseInt(params.get('max')||'100');
+  const rank=parseInt(params.get('rank')||'0');
+  if(score>0){
+    const pct=Math.round((score/maxScore)*100);
+    setTimeout(()=>{
+      document.getElementById('scoreBar').style.width=pct+'%';
+      document.getElementById('scoreNum').textContent=pct+'%';
+    },600);
+    const rankTexts=['','最も影響を受けている','次に影響を受けている'];
+    if(rank>0&&rank<=2){
+      document.getElementById('rankText').textContent=`今のあなたの五神では ${rankTexts[rank]}`;
+    }
+  }else{
+    document.getElementById('scoreDisplay').style.display='none';
+    document.getElementById('rankBadge').innerHTML='<span>🌿</span><span>魂（こん）について</span>';
+  }
+})();
+function showTab(id){
+  document.querySelectorAll('.yojo-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.yojo-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>

@@ -1,169 +1,381 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>神タイプ - 五神診断</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
-      background-image: url('taishitsu_common_bg.jpg');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      color: #333;
-      line-height: 1.8;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.96);
-      padding: 2em;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    }
-    h1 {
-      font-size: 28px;
-      text-align: center;
-      color: #6c1e2d;
-      margin-bottom: 0.8em;
-    }
-    h2 {
-      font-size: 20px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.2em;
-      margin-top: 1.5em;
-      color: #444;
-    }
-    p, li {
-      font-size: 16.5px;
-    }
-    .banner-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 1.5em;
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>神（しん）｜五神診断｜京都伝統中医学研究所</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>:root{--c1:#2a0f0f;--c2:#401515;--c3:#9a3030;--c4:#e08080;--c5:#f5d0d0;--cream:#f5f2ea;--paper:#fdfbf6;--ink:#1c1a16;--charcoal:#3a3630;--muted:#8a8278;--gold:#b8962a;--gold-lt:#d4b84a;--red:#8b2020;--washi:#ede8dc;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:"Noto Serif JP",serif;background:var(--cream);color:var(--ink);line-height:1.8;overflow-x:hidden;}
+.hero{min-height:100vh;background:var(--c1);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:40px 20px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(180,140,80,0.25) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(180,140,80,0.1) 0%,transparent 50%);}
+.hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(200,180,120,0.04) 60px,rgba(200,180,120,0.04) 61px);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;text-align:center;max-width:600px;width:100%;}
+.site-badge{display:inline-block;font-size:10px;letter-spacing:4px;color:rgba(240,230,200,0.6);border:1px solid rgba(240,230,200,0.2);padding:6px 16px;border-radius:20px;margin-bottom:32px;}
+.type-emblem{width:110px;height:110px;border-radius:50%;border:2px solid rgba(184,150,42,0.5);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho",serif;font-size:56px;color:var(--gold-lt);position:relative;background:rgba(180,140,80,0.12);animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,150,42,0.2);}50%{box-shadow:0 0 0 24px rgba(184,150,42,0);}}
+.type-emblem::before{content:"";position:absolute;inset:7px;border:1px solid rgba(184,150,42,0.25);border-radius:50%;}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--c4);margin-bottom:6px;}
+.hero-title{font-family:"Shippori Mincho",serif;font-size:clamp(28px,7vw,48px);font-weight:700;color:var(--paper);line-height:1.4;margin-bottom:6px;}
+.hero-title .reading{font-size:clamp(14px,3.5vw,20px);display:block;color:var(--c4);letter-spacing:4px;font-weight:400;margin-bottom:4px;}
+.hero-subtitle{font-size:13px;color:rgba(240,230,200,0.7);letter-spacing:2px;margin-bottom:32px;}
+.score-display{background:rgba(255,255,255,0.06);border:1px solid rgba(184,150,42,0.2);border-radius:12px;padding:20px 24px;margin-bottom:24px;text-align:left;}
+.score-label{font-size:10px;letter-spacing:3px;color:var(--c4);margin-bottom:12px;}
+.score-bar-wrap{display:flex;align-items:center;gap:12px;}
+.score-bar-bg{flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;}
+.score-bar-fill{height:100%;background:linear-gradient(90deg,var(--c3),var(--gold-lt));border-radius:3px;width:0%;transition:width 1.5s ease;}
+.score-num{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--gold-lt);min-width:40px;text-align:right;}
+.rank-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(184,150,42,0.2),rgba(184,150,42,0.05));border:1px solid rgba(184,150,42,0.4);border-radius:8px;padding:10px 20px;font-family:"Shippori Mincho",serif;font-size:14px;color:var(--gold-lt);}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(240,230,200,0.4);font-size:10px;letter-spacing:2px;animation:scrollHint 2s ease-in-out infinite;}
+@keyframes scrollHint{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+section{padding:80px 20px;max-width:720px;margin:0 auto;}
+.section-eyebrow{font-size:10px;letter-spacing:4px;color:var(--c3);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.section-eyebrow::before{content:"";width:24px;height:1px;background:var(--c3);}
+.section-title{font-family:"Shippori Mincho",serif;font-size:clamp(22px,5vw,32px);font-weight:700;color:var(--c1);line-height:1.5;margin-bottom:32px;}
+.personal-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.personal-section::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(180,140,80,0.1) 0%,transparent 60%);}
+.personal-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.personal-message{background:rgba(255,255,255,0.05);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:28px 32px;margin-bottom:32px;}
+.personal-message p{font-family:"Shippori Mincho",serif;font-size:clamp(15px,3.5vw,18px);color:rgba(253,251,246,0.9);line-height:2;}
+.personal-message .highlight{color:var(--gold-lt);font-weight:600;}
+.three-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.pillar-card{background:rgba(255,255,255,0.06);border:1px solid rgba(240,230,200,0.15);border-radius:12px;padding:20px 16px;text-align:center;}
+.pillar-icon{font-size:28px;margin-bottom:10px;}
+.pillar-title{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--c5);font-weight:600;margin-bottom:6px;}
+.pillar-desc{font-size:11px;color:rgba(240,230,200,0.6);line-height:1.7;}
+.nature-section{background:var(--paper);}
+.state-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
+.state-card{border-radius:16px;padding:28px 24px;}
+.state-card.healthy{background:linear-gradient(135deg,rgba(var(--rgb3),0.08),rgba(var(--rgb3),0.04));border:1px solid rgba(var(--rgb3),0.2);}
+.state-card.weak{background:rgba(139,32,32,0.05);border:1px solid rgba(139,32,32,0.15);}
+.state-card-title{font-family:"Shippori Mincho",serif;font-size:15px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.state-card.healthy .state-card-title{color:var(--c3);}
+.state-card.weak .state-card-title{color:var(--red);}
+.state-list{list-style:none;}
+.state-list li{font-size:13px;color:var(--charcoal);padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:flex-start;gap:10px;line-height:1.7;}
+.state-list li:last-child{border-bottom:none;}
+.state-card.healthy li::before{content:"✦";color:var(--c3);font-size:9px;margin-top:4px;flex-shrink:0;}
+.state-card.weak li::before{content:"▼";color:var(--red);font-size:9px;margin-top:4px;flex-shrink:0;}
+.organ-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.organ-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.organ-card{background:rgba(255,255,255,0.06);border:1px solid rgba(240,230,200,0.2);border-radius:20px;padding:36px 32px;margin-bottom:32px;}
+.organ-title{font-family:"Shippori Mincho",serif;font-size:22px;color:var(--gold-lt);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.organ-desc{font-size:14px;color:rgba(240,230,200,0.85);line-height:2.2;}
+.organ-desc strong{color:var(--gold-lt);}
+.taishitsu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.taishitsu-card{background:rgba(255,255,255,0.05);border:1px solid rgba(240,230,200,0.12);border-radius:12px;padding:16px;text-align:center;text-decoration:none;transition:all 0.2s;display:block;}
+.taishitsu-card:hover{background:rgba(184,150,42,0.15);transform:translateY(-2px);}
+.taishitsu-name{font-family:"Shippori Mincho",serif;font-size:16px;color:var(--gold-lt);font-weight:700;margin-bottom:4px;}
+.taishitsu-rel{font-size:11px;color:rgba(240,230,200,0.6);}
+.yojo-section{background:var(--paper);padding:80px 20px;}
+.yojo-inner{max-width:720px;margin:0 auto;}
+.yojo-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+.yojo-tab{flex-shrink:0;padding:10px 20px;border-radius:24px;border:1.5px solid rgba(180,140,80,0.3);background:transparent;font-family:"Noto Serif JP",serif;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.3s;white-space:nowrap;}
+.yojo-tab.active{background:var(--c1);border-color:var(--c1);color:var(--c5);}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.yojo-card{background:var(--cream);border-radius:16px;padding:32px;border:1px solid rgba(180,140,80,0.12);}
+.yojo-card-title{font-family:"Shippori Mincho",serif;font-size:18px;color:var(--c1);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.yojo-card-subtitle{font-size:12px;color:var(--muted);margin-bottom:20px;padding-left:28px;}
+.yojo-point{background:white;border-radius:10px;padding:16px 20px;margin-bottom:12px;border-left:3px solid var(--c3);font-size:13px;color:var(--charcoal);line-height:1.8;}
+.yojo-point strong{color:var(--c1);display:block;margin-bottom:4px;font-size:13px;}
+.yakuzen-section{background:linear-gradient(180deg,var(--washi),var(--cream));padding:80px 20px;}
+.yakuzen-inner{max-width:720px;margin:0 auto;}
+.yakuzen-title-block{text-align:center;margin-bottom:40px;}
+.yakuzen-kanji{font-family:"Shippori Mincho",serif;font-size:40px;color:var(--c1);letter-spacing:4px;display:block;margin-bottom:8px;}
+.yakuzen-reading{font-size:12px;letter-spacing:3px;color:var(--muted);}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:32px;}
+.food-card{background:white;border-radius:12px;padding:16px 12px;text-align:center;border:1px solid rgba(180,140,80,0.12);transition:all 0.2s;}
+.food-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(180,140,80,0.1);}
+.food-emoji{font-size:28px;margin-bottom:8px;}
+.food-name{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--c1);font-weight:600;margin-bottom:4px;}
+.food-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.yakuzen-detail-list{margin-bottom:32px;}
+.yakuzen-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(180,140,80,0.1);}
+.yakuzen-item-name{font-family:"Shippori Mincho",serif;font-size:15px;color:var(--c1);font-weight:600;min-width:80px;flex-shrink:0;}
+.yakuzen-item-info{flex:1;}
+.yakuzen-item-property{font-size:11px;color:var(--c3);margin-bottom:4px;font-family:"Shippori Mincho",serif;}
+.yakuzen-item-effect{font-size:12px;color:var(--charcoal);line-height:1.6;}
+.products-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.products-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.products-intro{font-family:"Shippori Mincho",serif;font-size:15px;color:rgba(240,230,200,0.8);line-height:2;margin-bottom:32px;padding:20px 24px;background:rgba(255,255,255,0.04);border-left:2px solid var(--gold);border-radius:0 8px 8px 0;}
+.products-grid{display:grid;gap:12px;}
+.product-category{font-size:10px;letter-spacing:3px;color:var(--c4);margin:24px 0 12px;text-transform:uppercase;display:flex;align-items:center;gap:12px;}
+.product-category::after{content:"";flex:1;height:1px;background:rgba(240,230,200,0.15);}
+.product-link{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.05);border:1px solid rgba(240,230,200,0.1);border-radius:10px;padding:14px 18px;text-decoration:none;transition:all 0.2s;color:rgba(253,251,246,0.85);font-size:13px;}
+.product-link:hover{background:rgba(180,140,80,0.2);border-color:rgba(240,230,200,0.25);transform:translateX(4px);}
+.product-arrow{color:var(--gold-lt);font-size:14px;}
+.advice-section{background:var(--paper);padding:80px 20px;}
+.advice-inner{max-width:720px;margin:0 auto;}
+.advice-card{background:linear-gradient(135deg,var(--c1),var(--c2));border-radius:20px;padding:40px 36px;position:relative;overflow:hidden;}
+.advice-badge{font-size:10px;letter-spacing:3px;color:var(--gold-lt);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.advice-badge::before{content:"";width:16px;height:1px;background:var(--gold);}
+.advice-text{font-family:"Shippori Mincho",serif;font-size:clamp(14px,3vw,16px);color:rgba(253,251,246,0.9);line-height:2.2;margin-bottom:24px;}
+.advice-text em{color:var(--gold-lt);font-style:normal;font-weight:600;}
+.advice-author{font-size:12px;color:rgba(240,230,200,0.5);text-align:right;letter-spacing:1px;}
+.cta-section{background:var(--washi);padding:60px 20px;text-align:center;}
+.cta-inner{max-width:480px;margin:0 auto;}
+.cta-message{font-family:"Shippori Mincho",serif;font-size:16px;color:var(--c1);line-height:2;margin-bottom:32px;}
+.cta-btn{display:inline-block;padding:16px 40px;background:var(--c1);color:var(--c5);text-decoration:none;border-radius:8px;font-family:"Noto Serif JP",serif;font-size:13px;letter-spacing:2px;transition:all 0.3s;border:1px solid transparent;margin:6px;}
+.cta-btn:hover{background:var(--c2);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+.cta-btn.outline{background:transparent;border-color:var(--c1);color:var(--c1);}
+.cta-btn.outline:hover{background:rgba(0,0,0,0.04);}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:600px){
+  .three-pillars{grid-template-columns:1fr;}
+  .state-grid{grid-template-columns:1fr;}
+  .taishitsu-grid{grid-template-columns:1fr;}
+  .food-grid{grid-template-columns:repeat(2,1fr);}
+  .advice-card{padding:28px 20px;}
+}</style>
 </head>
 <body>
-  <div class="container">
-    <h1>神タイプ</h1>
-    <img src="banner_shin.jpg" alt="神タイプのバナー" class="banner-image">
-
-    <p><strong>心（しん）に宿る「精神の光」、思いやりと興奮のバランスを保つ</strong></p>
-    
-    <h2>1. 五臓と五神の関係</h2>
-    <p>神（しん）は五臓の「心（しん）」に宿り、精神活動や意識、記憶、思考、感情全般をつかさどります。</p>
-    <p>五行では「火」に属し、明るさ・熱・上昇・光明といった性質を持ちます。</p>
-
-    <h2>2. 精神的特徴とその長所・短所</h2>
-    <p><strong>健全な時は…</strong><br>
-    明るく朗らかで、感受性が豊かで周囲に安心感を与えます。人に優しく、美意識も優れています。また集中力が高く、感情のバランスも安定しています。</p>
-    <ul>
-    <li><strong>意識・覚醒の明晰さ：</strong> 物事を正しく認識し、判断・決断する力。五神全体をまとめる統率力。</li>
-    <li><strong>喜び・楽観性：</strong> 朗らかさと温かいオーラで人を惹きつけ、安心を与える。</li>
-    <li><strong>直観と洞察：</strong> 精神活動の中心として外界を的確に捉え、本質を見抜く直観力。</li>
-    <li><strong>統合力・調和力：</strong> 魂・魄・意・志をまとめあげ、精神活動全体に調和をもたらす。</li>
-    <li><strong>精神的な輝き：</strong> 健やかであれば、表情や言葉に透明感と輝きが宿り、人に希望を与える。</li>
-   </ul>
-   <p><strong>✅ まとめ：</strong> 明晰さ・喜び・直観力・統合力・精神的な輝きなどが発揮される。</p>
-   <p><strong>失調すると…</strong><br>
-    不安感や焦燥感が強くなり、眠りが浅くなります。また神経が過敏で、小さなことに過剰に反応しやすくなりいきなり激昂したり、胸がざわついたり（心煩）します。注意力散漫や妄想傾向も。</p>
-    <p>※「神（しん）」が弱まると、不眠・不安・動悸・注意散漫・精神的混乱などが現れやすくなる。</p>
-
-    <h2>3. 中医学的背景</h2>
-    <p>『黄帝内経』では「心（しん＝五臓）は神を蔵す」とされ、神は全身の精神・意識・思考・記憶を総合的に統括する存在とされています。</p>
-    <p>五臓の心（しん）は血脈をめぐらせ神志を主り、舌と通じ、顔色にその状態が反映されます。</p>
-    <p>心神の安定は「養心安神」により保たれ、五神の中心とも言える存在です。</p>
-
-    <h2>4. 神（しん）が失調したときのサイン</h2>
-    <p><strong>◉ 精神的サイン</strong><br>
-    不眠、夢が多い（変な夢や悪い夢）、うなされる、落ち着かない、不安感、動揺しやすい<br>
-    ひとりでいるのが不安になる、急に涙が出るなど感情が不安定</p>
-    <p><strong>◉ 身体的サイン</strong><br>
-    動悸、舌先が赤い、口が苦い、顔が赤くなる<br>
-    手足のほてり、寝汗、胸のザワつき（心煩）、舌の震え</p>
-
-    <h2>5. 養生のポイント</h2>
-    <p><strong>「安神養心」：</strong>五臓の心（しん）を養い、神（精神）を安らかに保つこと。</p>
-    <p>出来るだけ静かな環境で、こころ安らぐ音楽やアロマを焚いて、リラックスできる読書や動画鑑賞で心を穏やかに過ごすことが必要です。</p>
-
-    <h3>💤 生活習慣・睡眠</h3>
-    <p>夜更かしを避け、22〜23時までには就寝しましょう。こころを鎮める音楽や香り、夜のスマホ断ちがおすすめ。</p>
-
-    <h3>🧠 心の使い方（養心・調情）</h3>
-    <p>焦らず「今ここ」に意識を向ける。瞑想や静かにお茶を飲む習慣が効果的。美しいものを見る、静かな空間で過ごすことで心神が安定。</p>
-
-    <h3>🌿 癒しの香り</h3>
-    <p>白檀（サンダルウッド）、沈香、ラベンダー、ネロリ</p>
-
-    <h3>🧘‍♀️ 経絡と運動処方</h3>
-    <p>手の少陰心経を伸ばすストレッチ（腕を胸の前で広げるように伸ばす）</p>
-    <p>ゆったりした気功、太極拳、ヨガの瞑想なども◎</p>
-
-    <h3>🫂 周囲との接し方のヒント</h3>
-    <p>こころが不安定なときは、つい言葉が早くなったり反応が敏感になったりします。そんなときこそ「少し間を置いてから返答する」「相手と静かな環境で話す」ことが、心神の養生になります。</p>
-    <p>焦らず、共に“静けさ”を共有する姿勢が、あなたの魅力をより引き立てます。</p>
-
-    <h2>🍙 神（しん）タイプにおすすめの食材</h2>
-    <p>黒ごま、ぶどう、豆腐、卵、カモミールティー、白米粥</p>
-
-    <h2>🫖 神（しん）タイプにおすすめの薬膳食材</h2>
-<ul>
-  <li>菊花（微寒・甘・苦／肺・肝）：清肝明目・平肝解毒</li>
-  <li>蓮の実（平・甘・渋／心・腎・脾）：補脾止瀉・養心安神・益腎固精</li>
-  <li>竜眼（温・甘／心・脾）：補血安神・健脾養心</li>
-  <li>金針菜（涼・甘／肝・腎）：清熱・利尿・安神</li>
-  <li>桑の実（平・甘・酸／心・肝・腎）：補血滋陰・生津潤燥</li>
-  <li>玫瑰花（マイカイ花）（温・甘・微苦／肝・脾）：理気解鬱・活血調経</li>
-  <li>茉莉花（ジャスミン）（温・辛・甘／脾・胃）：理気止痛・開鬱醒脾</li>
-  <li>百合（微寒・甘／肺・心）：潤肺止咳・清心安神</li>
-  <li>なつめ（温・甘／脾・胃）：補気・健脾・養血</li>
-  <li>枸杞の実（平・甘／肝・腎・肺）：滋補肝腎・益精明目</li>
-</ul>
-
-    <h2>京都 楽楽堂おすすめ商品</h2>
-    <h3>◉ 薬膳茶</h3>
-    <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">蓮の葉 涼心茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583392">気血巡茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">理気明目茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583393">五望茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583389">茉莉龍珠茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583392">麗香龍珠茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">全部食べる薬膳茶　桑の実茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">桑の実 養眠茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>
-    <h3>◉ 薬膳食材</h3>
-    <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583423">菊花 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583416">蓮の実 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583415">竜眼 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583414">金針菜 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583422">桑の実 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583427">玫瑰花（マイカイ花） ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583435">茉莉花（ジャスミン） ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583420">百合 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583410">なつめ ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583411">枸杞の実 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>
-    <h3>◉ 薬膳スィーツ、薬膳鍋・スープ</h3>
-    <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583404">いろいろお豆のスィーツセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583405">四物湯スープセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>  
-    <h3>◉ その他</h3>
-    <ul>  
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">ほっこりポカポカあたため乃湯 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583408">スッキリさっぱり乃湯 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>  
-  <div class="back-button">
-      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="site-badge">京都伝統中医学研究所｜五神診断</div>
+    <div class="type-emblem">神</div>
+    <div class="hero-label">GOSHIN — HEART・FIRE</div>
+    <h1 class="hero-title"><span class="reading">しん</span>神（しん）</h1>
+    <div class="hero-subtitle">心（しん）に宿る｜意識・思考・感情全体を主る</div>
+    <div class="score-display" id="scoreDisplay">
+      <div class="score-label">神（しん）の失調スコア</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-bg"><div class="score-bar-fill" id="scoreBar"></div></div>
+        <div class="score-num" id="scoreNum">—</div>
+      </div>
+    </div>
+    <div class="rank-badge" id="rankBadge">
+      <span>✨</span><span id="rankText">今のあなたの五神で最も影響を受けています</span>
     </div>
   </div>
+  <div class="hero-scroll"><span>SCROLL</span><span>↓</span></div>
+</div>
+
+<div class="personal-section">
+  <div class="personal-inner">
+    <div class="section-eyebrow" style="color:#f0a0a0;">あなたの今</div>
+    <h2 class="section-title" style="color:var(--paper);">「神」が示す<br>こころの状態</h2>
+    <div class="personal-message reveal"><p>
+      夜、なかなか眠れない。<br>
+      眠れても夢ばかりで、休めた気がしない。<br>
+      些細なことで胸がざわつき、動悸を感じることがある——<br><br>
+      それは意志が弱いのではありません。<br>
+      <span class="highlight">心（しん）に宿る「神」が揺れ、精神活動の中心が不安定になっている</span>サインです。<br><br>
+      五神の中心に位置する「神」は、意識・思考・感情全体を統括します。<br>
+      神が安定していれば、判断は明晰で感情は穏やか。<br>
+      乱れると、不眠・不安・動悸・感情の揺れが一度に現れます。<br><br>
+      今必要なのは、心（しん）を養い、<br>
+      <span class="highlight">神を静かに、穏やかに宿らせること</span>から始めることです。
+    </p></div>
+    <div class="three-pillars reveal">
+      <div class="pillar-card"><div class="pillar-icon">✨</div><div class="pillar-title">神が主るもの</div><div class="pillar-desc">意識・思考・感情全体・睡眠の質・対人関係の安定感</div></div>
+      <div class="pillar-card"><div class="pillar-icon">⚠️</div><div class="pillar-title">失調のサイン</div><div class="pillar-desc">不眠・動悸・不安・集中困難・感情の不安定・夢が多い</div></div>
+      <div class="pillar-card"><div class="pillar-icon">🌱</div><div class="pillar-title">養生の方向</div><div class="pillar-desc">心を養い神を安らかに。養心安神の食養生と睡眠の質向上が鍵</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="nature-section reveal">
+  <div class="section-eyebrow">STATE OF SHIN</div>
+  <h2 class="section-title">「神」が充実しているときと<br>失調しているときのサイン</h2>
+  <div class="state-grid">
+    <div class="state-card healthy" style="background:rgba(180,60,60,0.06);border:1px solid rgba(180,60,60,0.2);">
+      <div class="state-card-title" style="color:#c05050;">✦ 神が充実しているとき</div>
+      <ul class="state-list">
+        <li>眠りが深く、朝すっきり目覚める</li>
+        <li>思考が明晰で判断が早い</li>
+        <li>感情の波が穏やかで安定している</li>
+        <li>人の話を落ち着いて聞ける</li>
+        <li>表情に輝きがあり、言葉に温かさがある</li>
+        <li>記憶が定着しやすく、集中が続く</li>
+      </ul>
+    </div>
+    <div class="state-card weak">
+      <div class="state-card-title">▼ 神が失調しているとき</div>
+      <ul class="state-list">
+        <li>眠れない・夢が多くて疲れる</li>
+        <li>急に涙が出る・感情を制御できない</li>
+        <li>胸がざわつく・動悸がある</li>
+        <li>考えがまとまらない・注意散漫</li>
+        <li>ひとりでいることへの不安感</li>
+        <li>顔が赤くなる・口が苦い・舌先が赤い</li>
+      </ul>
+    </div>
+  </div>
+  <div style="background:var(--washi);border-radius:16px;padding:28px 32px;" class="reveal">
+    <div class="section-eyebrow" style="margin-bottom:16px;">中医学的背景</div>
+    <p style="font-size:13px;color:var(--charcoal);line-height:2;">
+      『黄帝内経』では「心は神を蔵す」とされ、心（しん）は血脈を主り、神志（精神活動）を統括すると記されています。五行では「火」に属し、明るさ・熱・上昇の性質を持ちます。神が健やかであれば五神全体が調和し、失調すると精神活動全体に影響が及びます。<strong>「養心安神」</strong>——心（しん）を養い神（精神）を安らかに保つことが基本の養生法です。
+    </p>
+  </div>
+</section>
+
+<div class="organ-section">
+  <div class="organ-inner">
+    <div class="section-eyebrow" style="color:#f0a0a0;">RELATED TAISHITSU</div>
+    <h2 class="section-title" style="color:var(--paper);">「神」の失調と<br>つながる体質タイプ</h2>
+    <p style="font-size:14px;color:rgba(240,210,210,0.7);line-height:2;margin-bottom:32px;" class="reveal">
+      「神」の失調は特定の体質と深く連動しています。<br>
+      体質診断の結果とあわせて確認しましょう。
+    </p>
+    <div class="taishitsu-grid reveal">
+      <a href="xuexu.html" class="taishitsu-card"><div class="taishitsu-name">🌸 血虚タイプ</div><div class="taishitsu-rel">血が神を養えず、不眠・不安・動悸が重なる</div></a>
+      <a href="yinxu.html" class="taishitsu-card"><div class="taishitsu-name">🌙 陰虚タイプ</div><div class="taishitsu-rel">陰が不足し心の熱が高まり、夜の焦燥感・不眠に</div></a>
+      <a href="kikyo.html" class="taishitsu-card"><div class="taishitsu-name">🌿 気虚タイプ</div><div class="taishitsu-rel">心気の不足で動悸・息切れ・不安が出やすい</div></a>
+      <a href="kitai.html" class="taishitsu-card"><div class="taishitsu-name">🌀 気滞タイプ</div><div class="taishitsu-rel">気の停滞が心に熱をもたらし神を乱す</div></a>
+    </div>
+  </div>
+</div>
+
+<div class="yojo-section">
+  <div class="yojo-inner">
+    <div class="section-eyebrow">HEALTH CARE</div>
+    <h2 class="section-title">「神」を養う<br>養生ポイント</h2>
+    <div class="yojo-tabs">
+      <button class="yojo-tab active" onclick="showTab('s1')">睡眠・生活</button>
+      <button class="yojo-tab" onclick="showTab('s2')">こころの使い方</button>
+      <button class="yojo-tab" onclick="showTab('s3')">香り・環境</button>
+      <button class="yojo-tab" onclick="showTab('s4')">経絡・ツボ</button>
+    </div>
+    <div id="s1" class="yojo-content active"><div class="yojo-card">
+      <div class="yojo-card-title">🌙 睡眠が神を養う最大の機会</div>
+      <div class="yojo-card-subtitle">夜22〜23時には就寝する習慣を</div>
+      <div class="yojo-point"><strong>夜更かしは神を最も消耗させる</strong>心（しん）は血を使って神を養います。深夜の活動は心血を消耗し、神が定まる場所を失わせます。スマホ・動画・SNSの深夜使用を控え、就寝前は静かな時間を作りましょう。</div>
+      <div class="yojo-point"><strong>眠れないときは「暗く・静かに・香りで」</strong>部屋を暗くし、ラベンダー・白檀などの香りで神経系を落ち着かせてから眠りにつきましょう。「眠ろう」と頑張るより「からだを横にして暗い部屋で目を閉じる」ことを目標にしてください。</div>
+    </div></div>
+    <div id="s2" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🧠 「今ここ」に意識を向ける</div>
+      <div class="yojo-card-subtitle">神はこころを静めることで安定する</div>
+      <div class="yojo-point"><strong>過去の後悔・未来の不安から離れる練習</strong>神が乱れているとき、思考は過去と未来を行き来します。「今この瞬間」に意識を向ける瞑想・深呼吸・静かにお茶を飲む時間が神を安定させます。</div>
+      <div class="yojo-point"><strong>美しいものを見る・静かな空間で過ごす</strong>目に入る情報が神に直接影響します。自然の風景・絵画・静かな音楽——美しいものに触れる時間を意識的に作りましょう。人混みや騒音は神を消耗させます。</div>
+      <div class="yojo-point"><strong>反応の前に一呼吸置く習慣を</strong>神が不安定なとき、言葉や行動が早くなります。「少し間を置いてから返答する」習慣が神を守り、人間関係も穏やかにします。</div>
+    </div></div>
+    <div id="s3" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🌿 香りで神を整える</div>
+      <div class="yojo-card-subtitle">嗅覚は神に最も直接届く感覚</div>
+      <div class="yojo-point"><strong>白檀（サンダルウッド）・沈香</strong>心を深く鎮め、神を安定させる東洋の伝統的な香り。瞑想・就寝前に焚くと神の安定に効果的。</div>
+      <div class="yojo-point"><strong>ラベンダー・ネロリ</strong>不安・緊張・不眠に効く代表的なリラックスの香り。枕元に置いたり、入浴時に使用すると神を整えます。</div>
+    </div></div>
+    <div id="s4" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🧘 経絡・ツボ・運動</div>
+      <div class="yojo-card-subtitle">心経を整え神を安らかにする</div>
+      <div class="yojo-point"><strong>手の少陰心経</strong>腕の内側・小指側を走る経絡。腕を胸の前で広げるストレッチで心経が伸び、神が落ち着きます。</div>
+      <div class="yojo-point"><strong>神門・内関・労宮</strong>不眠・動悸・不安の代表ツボ。神門（手首内側の小指側）を毎日押すだけで神の安定に効果的。</div>
+      <div class="yojo-point"><strong>太極拳・気功・ゆったりしたヨガ</strong>激しい運動は逆効果。ゆっくりした動きで心経を刺激し、神を養います。</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="yakuzen-section">
+  <div class="yakuzen-inner">
+    <div class="yakuzen-title-block">
+      <span class="yakuzen-kanji">養心安神</span>
+      <span class="yakuzen-reading">ようしんあんしん｜神の薬膳施治</span>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.8;">心（しん）を養い、神（精神）を安らかに宿らせる。<br>これが「神」を整える食養生の根本です。</p>
+    </div>
+    <div class="section-eyebrow">RECOMMENDED FOODS</div>
+    <h3 style="font-family:'Shippori Mincho',serif;font-size:20px;color:var(--c1);margin-bottom:24px;">おすすめ食材・薬膳食材</h3>
+    <div class="food-grid reveal">
+      <div class="food-card"><div class="food-emoji">🔴</div><div class="food-name">なつめ</div><div class="food-desc">補気養血。神を養う最重要薬膳食材</div></div>
+      <div class="food-card"><div class="food-emoji">⚪</div><div class="food-name">百合（ゆり）</div><div class="food-desc">清心安神。不眠・不安・夜の焦燥に</div></div>
+      <div class="food-card"><div class="food-emoji">🟤</div><div class="food-name">竜眼</div><div class="food-desc">補血安神。心の血を補い神を落ち着かせる</div></div>
+      <div class="food-card"><div class="food-emoji">⚪</div><div class="food-name">蓮の実</div><div class="food-desc">養心安神。不眠・動悸・下痢が重なるときに</div></div>
+      <div class="food-card"><div class="food-emoji">🟡</div><div class="food-name">金針菜</div><div class="food-desc">清熱安神。忘憂草とも呼ばれ、不安を鎮める</div></div>
+      <div class="food-card"><div class="food-emoji">🟣</div><div class="food-name">桑の実</div><div class="food-desc">補血滋陰。血虚・陰虚を伴う神の失調に</div></div>
+    </div>
+    <div class="yakuzen-detail-list reveal">
+      <div class="yakuzen-item"><div class="yakuzen-item-name">菊花</div><div class="yakuzen-item-info"><div class="yakuzen-item-property">微寒・甘・苦｜肺・肝</div><div class="yakuzen-item-effect">清肝明目・平肝解毒。神の失調で目の充血・頭痛・のぼせが出るときに。毎日お茶として飲むと効果的</div></div></div>
+      <div class="yakuzen-item"><div class="yakuzen-item-name">枸杞の実</div><div class="yakuzen-item-info"><div class="yakuzen-item-property">平・甘｜肝・腎・肺</div><div class="yakuzen-item-effect">滋補肝腎・益精明目。神の失調に伴う目の疲れ・めまい・腰のだるさをケア</div></div></div>
+      <div class="yakuzen-item"><div class="yakuzen-item-name">茉莉花（ジャスミン）</div><div class="yakuzen-item-info"><div class="yakuzen-item-property">温・辛・甘｜脾・胃</div><div class="yakuzen-item-effect">理気止痛・開鬱醒脾。気滞を伴う神の失調に。香りそのものが神を整える働きを持つ</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="products-section">
+  <div class="products-inner">
+    <div class="section-eyebrow" style="color:#f0a0a0;">KYOTO RAKURAKUDO</div>
+    <h2 class="section-title" style="color:var(--paper);">「神」を整える<br>京都 楽楽堂おすすめ薬膳</h2>
+    <div class="products-intro reveal">「神」の養生に必要なのは、<strong style="color:var(--gold-lt);">「養う・鎮める・安らかにする」</strong>の三原則。<br>心血を補い神を安定させる薬膳茶・食材を毎日継続しましょう。</div>
+    <div class="products-grid reveal">
+      <div class="product-category">薬膳茶</div>
+      <a href="https://www.kyotorakurakudo.com/categories/6583396" class="product-link"><span>🔴 なつめ薬膳茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583396" class="product-link"><span>🌿 桑の実 養眠茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583396" class="product-link"><span>💧 蓮の葉 涼心茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583392" class="product-link"><span>🌀 気血巡茶</span><span class="product-arrow">→</span></a>
+      <div class="product-category">薬膳食材</div>
+      <a href="https://www.kyotorakurakudo.com/categories/6583410" class="product-link"><span>🔴 なつめ</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583420" class="product-link"><span>⚪ 百合</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583415" class="product-link"><span>🟤 竜眼</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583416" class="product-link"><span>⚪ 蓮の実</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583414" class="product-link"><span>🟡 金針菜</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583423" class="product-link"><span>⚪ 菊花</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583411" class="product-link"><span>🟠 枸杞の実</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583435" class="product-link"><span>🌸 茉莉花（ジャスミン）</span><span class="product-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="advice-section">
+  <div class="advice-inner">
+    <div class="section-eyebrow">FROM THE DOCTOR</div>
+    <h2 class="section-title">国際中医師から<br>あなたへ</h2>
+    <div class="advice-card reveal">
+      <div class="advice-badge">京都伝統中医学研究所｜国際中医師</div>
+      <div class="advice-text">
+        出来るだけ静かな環境で、<em>こころ安らぐ音楽やアロマを焚いて</em>、<br>
+        リラックスできる時間の中で心（しん）を穏やかに保つことが必要です。<br><br>
+        焦らず「今ここ」に意識を向けること。<br>
+        瞑想や、静かにお茶を飲む習慣が心神を安定させます。<br><br>
+        <em>美しいものを見る、静かな空間で過ごすこと</em>で心神が安定し、<br>
+        少し間を置いてから返答する習慣が、<br>
+        あなたの魅力をより引き立てます。
+      </div>
+      <div class="advice-author">京都伝統中医学研究所｜京都 楽楽堂</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-message">体質との連動も確認しましょう。<br>「神」の失調は複数の体質と関係します。</div>
+    <a href="taishitsu_diagnosis.html" class="cta-btn">← 診断に戻る</a>
+    <a href="https://www.kyotorakurakudo.com/p/00002" class="cta-btn outline">今のカラダを知るへ</a>
+  </div>
+</div>
+<script>
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const score=parseInt(params.get('score')||'0');
+  const maxScore=parseInt(params.get('max')||'100');
+  const rank=parseInt(params.get('rank')||'0');
+  if(score>0){
+    const pct=Math.round((score/maxScore)*100);
+    setTimeout(()=>{
+      document.getElementById('scoreBar').style.width=pct+'%';
+      document.getElementById('scoreNum').textContent=pct+'%';
+    },600);
+    const rankTexts=['','最も影響を受けている','次に影響を受けている'];
+    if(rank>0&&rank<=2){
+      document.getElementById('rankText').textContent=`今のあなたの五神では ${rankTexts[rank]}`;
+    }
+  }else{
+    document.getElementById('scoreDisplay').style.display='none';
+    document.getElementById('rankBadge').innerHTML='<span>✨</span><span>神（しん）について</span>';
+  }
+})();
+function showTab(id){
+  document.querySelectorAll('.yojo-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.yojo-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>

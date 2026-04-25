@@ -1,161 +1,376 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>志（し）タイプ - 五神診断</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
-      background-image: url('taishitsu_common_bg.jpg');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      color: #333;
-      line-height: 1.8;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.96);
-      padding: 2em;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    }
-    h1 {
-      font-size: 28px;
-      text-align: center;
-      color: #6c1e2d;
-      margin-bottom: 0.8em;
-    }
-    h2 {
-      font-size: 20px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.2em;
-      margin-top: 1.5em;
-      color: #444;
-    }
-    p, li {
-      font-size: 16.5px;
-    }
-    .banner-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 1.5em;
-    }
-</style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>志（し）｜五神診断｜京都伝統中医学研究所</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>:root{--c1:#0a1025;--c2:#151830;--c3:#2a3870;--c4:#7080c0;--c5:#b0c0e8;--cream:#f5f2ea;--paper:#fdfbf6;--ink:#1c1a16;--charcoal:#3a3630;--muted:#8a8278;--gold:#b8962a;--gold-lt:#d4b84a;--red:#8b2020;--washi:#ede8dc;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:"Noto Serif JP",serif;background:var(--cream);color:var(--ink);line-height:1.8;overflow-x:hidden;}
+.hero{min-height:100vh;background:var(--c1);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:40px 20px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(180,140,80,0.25) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(180,140,80,0.1) 0%,transparent 50%);}
+.hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(200,180,120,0.04) 60px,rgba(200,180,120,0.04) 61px);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;text-align:center;max-width:600px;width:100%;}
+.site-badge{display:inline-block;font-size:10px;letter-spacing:4px;color:rgba(240,230,200,0.6);border:1px solid rgba(240,230,200,0.2);padding:6px 16px;border-radius:20px;margin-bottom:32px;}
+.type-emblem{width:110px;height:110px;border-radius:50%;border:2px solid rgba(184,150,42,0.5);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho",serif;font-size:56px;color:var(--gold-lt);position:relative;background:rgba(180,140,80,0.12);animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,150,42,0.2);}50%{box-shadow:0 0 0 24px rgba(184,150,42,0);}}
+.type-emblem::before{content:"";position:absolute;inset:7px;border:1px solid rgba(184,150,42,0.25);border-radius:50%;}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--c4);margin-bottom:6px;}
+.hero-title{font-family:"Shippori Mincho",serif;font-size:clamp(28px,7vw,48px);font-weight:700;color:var(--paper);line-height:1.4;margin-bottom:6px;}
+.hero-title .reading{font-size:clamp(14px,3.5vw,20px);display:block;color:var(--c4);letter-spacing:4px;font-weight:400;margin-bottom:4px;}
+.hero-subtitle{font-size:13px;color:rgba(240,230,200,0.7);letter-spacing:2px;margin-bottom:32px;}
+.score-display{background:rgba(255,255,255,0.06);border:1px solid rgba(184,150,42,0.2);border-radius:12px;padding:20px 24px;margin-bottom:24px;text-align:left;}
+.score-label{font-size:10px;letter-spacing:3px;color:var(--c4);margin-bottom:12px;}
+.score-bar-wrap{display:flex;align-items:center;gap:12px;}
+.score-bar-bg{flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;}
+.score-bar-fill{height:100%;background:linear-gradient(90deg,var(--c3),var(--gold-lt));border-radius:3px;width:0%;transition:width 1.5s ease;}
+.score-num{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--gold-lt);min-width:40px;text-align:right;}
+.rank-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(184,150,42,0.2),rgba(184,150,42,0.05));border:1px solid rgba(184,150,42,0.4);border-radius:8px;padding:10px 20px;font-family:"Shippori Mincho",serif;font-size:14px;color:var(--gold-lt);}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(240,230,200,0.4);font-size:10px;letter-spacing:2px;animation:scrollHint 2s ease-in-out infinite;}
+@keyframes scrollHint{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+section{padding:80px 20px;max-width:720px;margin:0 auto;}
+.section-eyebrow{font-size:10px;letter-spacing:4px;color:var(--c3);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.section-eyebrow::before{content:"";width:24px;height:1px;background:var(--c3);}
+.section-title{font-family:"Shippori Mincho",serif;font-size:clamp(22px,5vw,32px);font-weight:700;color:var(--c1);line-height:1.5;margin-bottom:32px;}
+.personal-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.personal-section::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(180,140,80,0.1) 0%,transparent 60%);}
+.personal-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.personal-message{background:rgba(255,255,255,0.05);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:28px 32px;margin-bottom:32px;}
+.personal-message p{font-family:"Shippori Mincho",serif;font-size:clamp(15px,3.5vw,18px);color:rgba(253,251,246,0.9);line-height:2;}
+.personal-message .highlight{color:var(--gold-lt);font-weight:600;}
+.three-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.pillar-card{background:rgba(255,255,255,0.06);border:1px solid rgba(240,230,200,0.15);border-radius:12px;padding:20px 16px;text-align:center;}
+.pillar-icon{font-size:28px;margin-bottom:10px;}
+.pillar-title{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--c5);font-weight:600;margin-bottom:6px;}
+.pillar-desc{font-size:11px;color:rgba(240,230,200,0.6);line-height:1.7;}
+.nature-section{background:var(--paper);}
+.state-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
+.state-card{border-radius:16px;padding:28px 24px;}
+.state-card.healthy{background:linear-gradient(135deg,rgba(var(--rgb3),0.08),rgba(var(--rgb3),0.04));border:1px solid rgba(var(--rgb3),0.2);}
+.state-card.weak{background:rgba(139,32,32,0.05);border:1px solid rgba(139,32,32,0.15);}
+.state-card-title{font-family:"Shippori Mincho",serif;font-size:15px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.state-card.healthy .state-card-title{color:var(--c3);}
+.state-card.weak .state-card-title{color:var(--red);}
+.state-list{list-style:none;}
+.state-list li{font-size:13px;color:var(--charcoal);padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:flex-start;gap:10px;line-height:1.7;}
+.state-list li:last-child{border-bottom:none;}
+.state-card.healthy li::before{content:"✦";color:var(--c3);font-size:9px;margin-top:4px;flex-shrink:0;}
+.state-card.weak li::before{content:"▼";color:var(--red);font-size:9px;margin-top:4px;flex-shrink:0;}
+.organ-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.organ-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.organ-card{background:rgba(255,255,255,0.06);border:1px solid rgba(240,230,200,0.2);border-radius:20px;padding:36px 32px;margin-bottom:32px;}
+.organ-title{font-family:"Shippori Mincho",serif;font-size:22px;color:var(--gold-lt);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.organ-desc{font-size:14px;color:rgba(240,230,200,0.85);line-height:2.2;}
+.organ-desc strong{color:var(--gold-lt);}
+.taishitsu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.taishitsu-card{background:rgba(255,255,255,0.05);border:1px solid rgba(240,230,200,0.12);border-radius:12px;padding:16px;text-align:center;text-decoration:none;transition:all 0.2s;display:block;}
+.taishitsu-card:hover{background:rgba(184,150,42,0.15);transform:translateY(-2px);}
+.taishitsu-name{font-family:"Shippori Mincho",serif;font-size:16px;color:var(--gold-lt);font-weight:700;margin-bottom:4px;}
+.taishitsu-rel{font-size:11px;color:rgba(240,230,200,0.6);}
+.yojo-section{background:var(--paper);padding:80px 20px;}
+.yojo-inner{max-width:720px;margin:0 auto;}
+.yojo-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+.yojo-tab{flex-shrink:0;padding:10px 20px;border-radius:24px;border:1.5px solid rgba(180,140,80,0.3);background:transparent;font-family:"Noto Serif JP",serif;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.3s;white-space:nowrap;}
+.yojo-tab.active{background:var(--c1);border-color:var(--c1);color:var(--c5);}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.yojo-card{background:var(--cream);border-radius:16px;padding:32px;border:1px solid rgba(180,140,80,0.12);}
+.yojo-card-title{font-family:"Shippori Mincho",serif;font-size:18px;color:var(--c1);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.yojo-card-subtitle{font-size:12px;color:var(--muted);margin-bottom:20px;padding-left:28px;}
+.yojo-point{background:white;border-radius:10px;padding:16px 20px;margin-bottom:12px;border-left:3px solid var(--c3);font-size:13px;color:var(--charcoal);line-height:1.8;}
+.yojo-point strong{color:var(--c1);display:block;margin-bottom:4px;font-size:13px;}
+.yakuzen-section{background:linear-gradient(180deg,var(--washi),var(--cream));padding:80px 20px;}
+.yakuzen-inner{max-width:720px;margin:0 auto;}
+.yakuzen-title-block{text-align:center;margin-bottom:40px;}
+.yakuzen-kanji{font-family:"Shippori Mincho",serif;font-size:40px;color:var(--c1);letter-spacing:4px;display:block;margin-bottom:8px;}
+.yakuzen-reading{font-size:12px;letter-spacing:3px;color:var(--muted);}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:32px;}
+.food-card{background:white;border-radius:12px;padding:16px 12px;text-align:center;border:1px solid rgba(180,140,80,0.12);transition:all 0.2s;}
+.food-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(180,140,80,0.1);}
+.food-emoji{font-size:28px;margin-bottom:8px;}
+.food-name{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--c1);font-weight:600;margin-bottom:4px;}
+.food-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.yakuzen-detail-list{margin-bottom:32px;}
+.yakuzen-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(180,140,80,0.1);}
+.yakuzen-item-name{font-family:"Shippori Mincho",serif;font-size:15px;color:var(--c1);font-weight:600;min-width:80px;flex-shrink:0;}
+.yakuzen-item-info{flex:1;}
+.yakuzen-item-property{font-size:11px;color:var(--c3);margin-bottom:4px;font-family:"Shippori Mincho",serif;}
+.yakuzen-item-effect{font-size:12px;color:var(--charcoal);line-height:1.6;}
+.products-section{background:var(--c1);padding:80px 20px;position:relative;overflow:hidden;}
+.products-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.products-intro{font-family:"Shippori Mincho",serif;font-size:15px;color:rgba(240,230,200,0.8);line-height:2;margin-bottom:32px;padding:20px 24px;background:rgba(255,255,255,0.04);border-left:2px solid var(--gold);border-radius:0 8px 8px 0;}
+.products-grid{display:grid;gap:12px;}
+.product-category{font-size:10px;letter-spacing:3px;color:var(--c4);margin:24px 0 12px;text-transform:uppercase;display:flex;align-items:center;gap:12px;}
+.product-category::after{content:"";flex:1;height:1px;background:rgba(240,230,200,0.15);}
+.product-link{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.05);border:1px solid rgba(240,230,200,0.1);border-radius:10px;padding:14px 18px;text-decoration:none;transition:all 0.2s;color:rgba(253,251,246,0.85);font-size:13px;}
+.product-link:hover{background:rgba(180,140,80,0.2);border-color:rgba(240,230,200,0.25);transform:translateX(4px);}
+.product-arrow{color:var(--gold-lt);font-size:14px;}
+.advice-section{background:var(--paper);padding:80px 20px;}
+.advice-inner{max-width:720px;margin:0 auto;}
+.advice-card{background:linear-gradient(135deg,var(--c1),var(--c2));border-radius:20px;padding:40px 36px;position:relative;overflow:hidden;}
+.advice-badge{font-size:10px;letter-spacing:3px;color:var(--gold-lt);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.advice-badge::before{content:"";width:16px;height:1px;background:var(--gold);}
+.advice-text{font-family:"Shippori Mincho",serif;font-size:clamp(14px,3vw,16px);color:rgba(253,251,246,0.9);line-height:2.2;margin-bottom:24px;}
+.advice-text em{color:var(--gold-lt);font-style:normal;font-weight:600;}
+.advice-author{font-size:12px;color:rgba(240,230,200,0.5);text-align:right;letter-spacing:1px;}
+.cta-section{background:var(--washi);padding:60px 20px;text-align:center;}
+.cta-inner{max-width:480px;margin:0 auto;}
+.cta-message{font-family:"Shippori Mincho",serif;font-size:16px;color:var(--c1);line-height:2;margin-bottom:32px;}
+.cta-btn{display:inline-block;padding:16px 40px;background:var(--c1);color:var(--c5);text-decoration:none;border-radius:8px;font-family:"Noto Serif JP",serif;font-size:13px;letter-spacing:2px;transition:all 0.3s;border:1px solid transparent;margin:6px;}
+.cta-btn:hover{background:var(--c2);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+.cta-btn.outline{background:transparent;border-color:var(--c1);color:var(--c1);}
+.cta-btn.outline:hover{background:rgba(0,0,0,0.04);}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:600px){
+  .three-pillars{grid-template-columns:1fr;}
+  .state-grid{grid-template-columns:1fr;}
+  .taishitsu-grid{grid-template-columns:1fr;}
+  .food-grid{grid-template-columns:repeat(2,1fr);}
+  .advice-card{padding:28px 20px;}
+}</style>
 </head>
 <body>
-  <div class="container">
-    <img src="banner_shi.jpg" alt="志（シ）タイプバナー" class="banner-image">
-    <div class="tagline">静けさの中に燃える意志力</div>
-
-    <h2>1. 五臓と五神の関係</h2>
-    <p>「志（し）」は五臓のうちの「腎（じん）」に宿る精神であり、「意志」や「生命の根源的な力」をつかさどります。腎は“精”を蔵し、成長・発育・生殖・老化と深く関係します。志（し）はこの“精”から生まれ、長期的な目標や持続力、根気強さといった精神的特性の源です。</p>
-
-    <h2>2. 精神的特徴（長所と短所）</h2>
-    <p><strong>長所</strong><br>意志が強く、目標達成力が高い／辛抱強く、ストイック／自分の信念を貫く</p>
-    <ul>
-    <li><strong>持続力・忍耐力：</strong> 長期的な努力を重ね、困難を乗り越える粘り強さ。</li>
-    <li><strong>決断力・意志の強さ：</strong> 方向性を定め、決めたことを最後までやり遂げる胆力。</li>
-    <li><strong>集中力・探究心：</strong> 心を一つのことに注ぎ込み、深く追求して成果を出す力。</li>
-    <li><strong>逆境への耐性：</strong> プレッシャーや困難でも芯を失わずに進める安定感。</li>
-    <li><strong>人生の方向性を示す羅針盤：</strong> 生きる意味や根本的な目標を定め、人生の軸を与える。</li>
-    </ul>
-    <p><strong>✅ まとめ：</strong> 持続力・意志の強さ・集中力・逆境耐性・人生の軸などが強くなる。</p>
-    <p><strong>短所・乱れやすい傾向</strong><br>頑固、融通が利かない／孤立しやすく、感情表現が乏しくなる／極端な完璧主義に陥りがち</p>
-    <p>※「志（し）」が弱まると、意志薄弱・不安感・優柔不断・途中で投げ出す傾向が出やすくなる。</p>
-
-    <h2>3. 中医学的背景</h2>
-    <p>中医学では、腎は「先天の本」とされ、生命エネルギーの源と位置づけられます。腎精の充実は、精神の安定や学習・記憶力の持続にも寄与します。志（し）が安定していると、困難に直面してもぶれず、静かなエネルギーで物事を成し遂げることができます。</p>
-
-    <h2>4. 志（し）が失調したときのサイン</h2>
-    <p><strong>◉ 精神的サイン</strong><br>無気力・夢が持てない／途中であきらめてしまう／気分が落ち込みやすい／やる気はあるのに身体がついてこない</p>
-    <p><strong>◉ 身体的サイン</strong><br>腰や膝のだるさ・冷え／むくみや頻尿／白髪や抜け毛の増加／耳鳴りや聴力の低下／性機能の低下</p>
-
-    <h2>5. 養生のポイント</h2>
-    <p><strong>「温補腎陽」</strong><br>腎陽とは腎がもつ温める力（生命活動の原動力）のことで生命活動の根本でもあります。腎陽が不足すると腎陽虚となり、生命活動が弱くなります。腎陽は冷えに弱いため、からだを温めながら、足りない「陽気」を補うことが大切です。</p>
-
-    <h3>💤 生活習慣・睡眠</h3>
-    <ul>
-      <li>寒さから身を守る（特に腰〜足元を冷やさない）</li>
-      <li>睡眠時間をしっかりとり、腎精を蓄える</li>
-      <li>無理な努力や過労は控え、バランス重視</li>
-      <li>23時までに就寝し、腎精の回復を助ける</li>
-      <li>長く眠るより、質のよい深い睡眠を意識する</li>
-    </ul>
-    <h3>🧠 心の使い方（養心・調情）</h3>
-    <ul>
-      <li>明確な目標を小さなステップに分けて達成感を得る</li>
-      <li>自分だけで抱え込まず、時には相談することも大切</li>
-      <li>「今ここ」に意識を向ける瞑想的習慣を取り入れる</li>
-    </ul>
-    <h3>🌿 癒しの香り</h3>
-    <ul>
-      <li>パチュリ／サンダルウッド／ベチバー</li>
-    </ul>
-    <h3>🧘‍♀️ 経絡と運動処方</h3>
-    <ul>
-      <li>腎経：足裏から内くるぶし、膝裏にかけて</li>
-      <li>足裏マッサージやツボ押し（湧泉）</li>
-      <li>呼吸を深く意識するストレッチや太極拳など</li>
-    </ul>
-
-    <h3>🫂 周囲との接し方のヒント</h3>
-    <p>「がんばり屋さん」な印象を与えやすいため、無理をせず心の声を伝えること。<br>
-    長期的な信頼関係を築けるが、感情表現を怠ると誤解されることも。<br>
-    人の弱さにも共感し、柔軟性を持った対応を心がけるとより良い関係が築けます。</p>
-
-    <h2>🍙 志（し）におすすめの食材</h2>
-    <p>黒豆／くるみ／栗／黒ゴマ／山芋／鶏卵／豚肉／鮭／イワシ／海老／昆布／ひじき／納豆／ブロッコリー／里芋／椎茸／黒米</p>
-
-    <h2>🫖 志（し）タイプにおすすめの薬膳食材</h2>
-    <ul>
-     <li>蓮の実（平・甘・渋／心・腎・脾）：補脾止瀉・養心安神・益腎固精</li>
-     <li>なつめ（温・甘／脾・胃）：補気・健脾・養血</li>
-     <li>枸杞の実（平・甘／肝・腎・肺）：滋補肝腎・益精明目</li>
-     <li>かぼちゃの種（平・甘／胃・大腸）：補中益気・殺虫</li>
-     <li>松の実（温・甘／肺・大腸）：潤肺止咳・潤腸通便</li>
-    </ul>
-
-    <h2>⑧ 京都 楽楽堂のおすすめ商品</h2>
-     <h3>◉ 薬膳茶</h3>
-     <ul>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">なつめ薬膳茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">肝腎かなめ茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">からだを温める黒のお茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">なつめと生姜のチャイ ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583395">黒薔薇茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">バラとクコ 養眠茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-      <li><a href="https://www.kyotorakurakudo.com/categories/6583396">全部食べる薬膳茶　桂棗黒豆茶 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-     </ul>
-
-    <h3>◉ 薬膳食材</h3>
-    <ul>
-     <li><a href="https://www.kyotorakurakudo.com/categories/6583410">なつめ ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-     <li><a href="https://www.kyotorakurakudo.com/categories/6583411">枸杞の実 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-     <li><a href="https://www.kyotorakurakudo.com/categories/6583412">黒きくらげ ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-     <li><a href="https://www.kyotorakurakudo.com/categories/6583415">竜眼 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-     <li><a href="https://www.kyotorakurakudo.com/categories/6583414">金針菜 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    </ul>
-
-   <h3>◉ 薬膳スィーツ、薬膳鍋・スープ</h3>
-   <ul>
-    <li><a href="https://www.kyotorakurakudo.com/categories/6583405">四物湯スープセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    <li><a href="https://www.kyotorakurakudo.com/categories/6583405">手脚氷凍鍋スープセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    <li><a href="https://www.kyotorakurakudo.com/categories/6583405">薬膳火鍋紅白2種スープセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-    <li><a href="https://www.kyotorakurakudo.com/categories/6583404">いろいろお豆のスィーツセット ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-   </ul>
-
-  <h3>◉ その他</h3>
-  <ul>
-   <li><a href="https://www.kyotorakurakudo.com/categories/6583408">ほっこりポカポカあたため乃湯 ▶︎この商品のページを見る（京都 楽楽堂）</a></li>
-  </ul>
- <div class="back-button">
-      <a href="https://www.kyotorakurakudo.com/p/00002">← 今のカラダを知るに戻る</a>
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="site-badge">京都伝統中医学研究所｜五神診断</div>
+    <div class="type-emblem">志</div>
+    <div class="hero-label">GOSHIN — KIDNEY・WATER</div>
+    <h1 class="hero-title"><span class="reading">し</span>志（し）</h1>
+    <div class="hero-subtitle">腎（じん）に宿る｜意志・生命力・持続力・人生の軸を主る</div>
+    <div class="score-display" id="scoreDisplay">
+      <div class="score-label">志（し）の失調スコア</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-bg"><div class="score-bar-fill" id="scoreBar"></div></div>
+        <div class="score-num" id="scoreNum">—</div>
+      </div>
+    </div>
+    <div class="rank-badge" id="rankBadge">
+      <span>🗻</span><span id="rankText">今のあなたの五神で最も影響を受けています</span>
     </div>
   </div>
+  <div class="hero-scroll"><span>SCROLL</span><span>↓</span></div>
+</div>
+
+<div class="personal-section">
+  <div class="personal-inner">
+    <div class="section-eyebrow" style="color:#8090c0;">あなたの今</div>
+    <h2 class="section-title" style="color:var(--paper);">「志」が示す<br>こころの状態</h2>
+    <div class="personal-message reveal"><p>
+      将来のことを考えると、希望より不安が先に来る。<br>
+      以前は情熱を持っていたことに、興味がわかなくなった。<br>
+      「どうせ」という言葉が、自然と口をついて出る——<br><br>
+      それは弱さではありません。<br>
+      <span class="highlight">腎（じん）に宿る「志」が弱まり、生命力と意志の根が揺れている</span>サインです。<br><br>
+      志は腎に蓄えられた「精（せい）」から生まれる、<br>
+      長期的な目標・持続力・根気・生きる意欲の源です。<br>
+      充実していれば、困難を乗り越える胆力があり、人生の方向性が定まる。<br>
+      弱まると、無気力・諦め・恐れ・意志薄弱が現れます。<br><br>
+      今必要なのは、腎の精を養い、<br>
+      <span class="highlight">志が静かに、確かに、根を張れる状態を取り戻すこと</span>から始めることです。
+    </p></div>
+    <div class="three-pillars reveal">
+      <div class="pillar-card"><div class="pillar-icon">🗻</div><div class="pillar-title">志が主るもの</div><div class="pillar-desc">意志・生命力・持続力・人生の軸・目標への粘り強さ</div></div>
+      <div class="pillar-card"><div class="pillar-icon">⚠️</div><div class="pillar-title">失調のサイン</div><div class="pillar-desc">無気力・諦め・恐れ・途中で投げ出す・希望が持てない</div></div>
+      <div class="pillar-card"><div class="pillar-icon">🌱</div><div class="pillar-title">養生の方向</div><div class="pillar-desc">腎陽を補い志を育てる。睡眠・温め・継続できる小さな目標設定</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="nature-section reveal">
+  <div class="section-eyebrow">STATE OF SHI</div>
+  <h2 class="section-title">「志」が充実しているときと<br>失調しているときのサイン</h2>
+  <div class="state-grid">
+    <div class="state-card" style="background:rgba(40,60,120,0.08);border:1px solid rgba(40,60,120,0.2);">
+      <div class="state-card-title" style="color:#4060a0;">✦ 志が充実しているとき</div>
+      <ul class="state-list">
+        <li>長期的な目標に向かって粘り強く進める</li>
+        <li>困難でも諦めない胆力がある</li>
+        <li>自分の信念を持って生きられる</li>
+        <li>集中力が長く続く</li>
+        <li>逆境にも芯を失わない安定感がある</li>
+        <li>人生に意味と方向性を感じられる</li>
+      </ul>
+    </div>
+    <div class="state-card weak">
+      <div class="state-card-title">▼ 志が失調しているとき</div>
+      <ul class="state-list">
+        <li>「どうせ無理」と諦めが先に来る</li>
+        <li>将来への希望が持てない</li>
+        <li>恐れ・不安が慢性的にある</li>
+        <li>途中で投げ出してしまう</li>
+        <li>腰や膝のだるさ・白髪・耳鳴り</li>
+        <li>やる気はあるのに身体がついてこない</li>
+      </ul>
+    </div>
+  </div>
+  <div style="background:var(--washi);border-radius:16px;padding:28px 32px;" class="reveal">
+    <div class="section-eyebrow" style="margin-bottom:16px;">中医学的背景</div>
+    <p style="font-size:13px;color:var(--charcoal);line-height:2;">
+      中医学では腎は「先天の本」とされ、生命エネルギーの源と位置づけられます。腎精の充実は精神の安定や学習・記憶力の持続にも寄与します。志（し）が安定していると困難に直面してもぶれず、静かなエネルギーで物事を成し遂げられます。<strong>「温補腎陽」</strong>——腎の陽気を温め補うことが志の養生の基本です。
+    </p>
+  </div>
+</section>
+
+<div class="organ-section">
+  <div class="organ-inner">
+    <div class="section-eyebrow" style="color:#8090c0;">RELATED TAISHITSU</div>
+    <h2 class="section-title" style="color:var(--paper);">「志」の失調と<br>つながる体質タイプ</h2>
+    <div class="taishitsu-grid reveal">
+      <a href="yangxu.html" class="taishitsu-card"><div class="taishitsu-name">❄️ 陽虚タイプ</div><div class="taishitsu-rel">腎陽の不足が志を最も弱める。無気力・諦め・冷えが重なる</div></a>
+      <a href="kikyo.html" class="taishitsu-card"><div class="taishitsu-name">🌿 気虚タイプ</div><div class="taishitsu-rel">気の不足で志を支えるエネルギーが枯渇。やる気が続かない</div></a>
+      <a href="yinxu.html" class="taishitsu-card"><div class="taishitsu-name">🌙 陰虚タイプ</div><div class="taishitsu-rel">腎陰の不足が志の根を枯らす。焦りの中での無力感</div></a>
+      <a href="xuexu.html" class="taishitsu-card"><div class="taishitsu-name">🌸 血虚タイプ</div><div class="taishitsu-rel">血の不足で志を養う栄養が届かず、意欲・持続力が低下</div></a>
+    </div>
+  </div>
+</div>
+
+<div class="yojo-section">
+  <div class="yojo-inner">
+    <div class="section-eyebrow">HEALTH CARE</div>
+    <h2 class="section-title">「志」を養う<br>養生ポイント</h2>
+    <div class="yojo-tabs">
+      <button class="yojo-tab active" onclick="showTab('z1')">睡眠・生活</button>
+      <button class="yojo-tab" onclick="showTab('z2')">こころの使い方</button>
+      <button class="yojo-tab" onclick="showTab('z3')">温め・運動</button>
+      <button class="yojo-tab" onclick="showTab('z4')">経絡・ツボ</button>
+    </div>
+    <div id="z1" class="yojo-content active"><div class="yojo-card">
+      <div class="yojo-card-title">🌙 腎精を蓄える睡眠</div>
+      <div class="yojo-card-subtitle">23時までの就寝が腎と志を守る</div>
+      <div class="yojo-point"><strong>深夜の活動は腎精を最も消耗させる</strong>志の源である腎精は、深い睡眠の中で蓄えられます。夜更かしは腎精を消耗させ、志を弱める最大の原因です。23時には就寝し、腎精の回復を助けましょう。</div>
+      <div class="yojo-point"><strong>長く眠るより「質の良い深い睡眠」を</strong>睡眠時間より睡眠の質が重要です。就寝前の入浴・スマホを控える・部屋を暗くするなど、深い眠りのための環境を整えましょう。</div>
+    </div></div>
+    <div id="z2" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🧠 目標を小さなステップに分ける</div>
+      <div class="yojo-card-subtitle">志は「完遂の積み重ね」で育つ</div>
+      <div class="yojo-point"><strong>大きな目標を小さな達成感に分割する</strong>志が弱まっているとき、大きな目標は圧倒的に感じられます。「今日できる一つのこと」だけに集中し、達成感を積み重ねることが志を少しずつ回復させます。</div>
+      <div class="yojo-point"><strong>一人で抱え込まず相談する習慣を</strong>志が弱まると孤独に抱え込みやすくなります。信頼できる人に状況を話すだけで、腎気が動き、志が少し回復することがあります。</div>
+    </div></div>
+    <div id="z3" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🔥 腰・腎を温めて志の火を育てる</div>
+      <div class="yojo-card-subtitle">腎は冷えに最も弱い臓腑</div>
+      <div class="yojo-point"><strong>腰・足元を常に温める</strong>腎は腰部に位置し、冷えに弱い臓腑です。腹巻・湯たんぽ・温かい靴下で腰と足元を温めましょう。お灸（命門・腎兪）は志の回復に特に効果的です。</div>
+      <div class="yojo-point"><strong>筋力アップで腎の底力を引き出す</strong>大きな筋肉（太腿・腹筋・背筋）を鍛えることで基礎代謝が上がり、腎を助けます。ゆっくりスクワット・壁に向かっての腕立て伏せから始めましょう。</div>
+    </div></div>
+    <div id="z4" class="yojo-content"><div class="yojo-card">
+      <div class="yojo-card-title">🧘 経絡・ツボ</div>
+      <div class="yojo-card-subtitle">腎経を整え志を活性化させる</div>
+      <div class="yojo-point"><strong>足の少陰腎経（足裏〜内くるぶし〜膝裏）</strong>足裏マッサージや湧泉（足裏の中央）への刺激が腎気を高め志を育てます。</div>
+      <div class="yojo-point"><strong>腎兪・命門・太谿</strong>腎の代表ツボ。特に命門（腰椎2番、腹帯の背中側）への温灸は腎陽を補い志を回復させる最強の養生法です。</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="yakuzen-section">
+  <div class="yakuzen-inner">
+    <div class="yakuzen-title-block">
+      <span class="yakuzen-kanji">温補腎陽</span>
+      <span class="yakuzen-reading">おんほじんよう｜志の薬膳施治</span>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.8;">腎を温め補い、意志と生命力の根を育てる。<br>これが「志」を整える食養生の根本です。</p>
+    </div>
+    <div class="food-grid reveal">
+      <div class="food-card"><div class="food-emoji">⚫</div><div class="food-name">黒ゴマ・黒豆</div><div class="food-desc">補腎滋陰。腎を補い志を根本から育てる</div></div>
+      <div class="food-card"><div class="food-emoji">🌰</div><div class="food-name">栗・くるみ</div><div class="food-desc">温腎補精。腎陽を補い冷えからくる志の弱まりに</div></div>
+      <div class="food-card"><div class="food-emoji">🦐</div><div class="food-name">エビ・なまこ</div><div class="food-desc">補腎壮陽。腎精を補い生命力・意志を回復させる</div></div>
+      <div class="food-card"><div class="food-emoji">🔴</div><div class="food-name">なつめ</div><div class="food-desc">補気養血。気と血を補い志の栄養源を作る</div></div>
+      <div class="food-card"><div class="food-emoji">🟠</div><div class="food-name">枸杞の実</div><div class="food-desc">滋補肝腎。腎から志を養う代表薬膳食材</div></div>
+      <div class="food-card"><div class="food-emoji">⚫</div><div class="food-name">黒きくらげ</div><div class="food-desc">養血潤肺。腎を補いながら血も養う</div></div>
+    </div>
+    <div class="yakuzen-detail-list reveal">
+      <div class="yakuzen-item"><div class="yakuzen-item-name">蓮の実</div><div class="yakuzen-item-info"><div class="yakuzen-item-property">平・甘・渋｜心・腎・脾</div><div class="yakuzen-item-effect">補脾止瀉・養心安神・益腎固精。腎と脾を同時に補う。志の失調による下痢・頻尿・不眠が重なるときに特に有効</div></div></div>
+      <div class="yakuzen-item"><div class="yakuzen-item-name">かぼちゃの種</div><div class="yakuzen-item-info"><div class="yakuzen-item-property">平・甘｜胃・大腸</div><div class="yakuzen-item-effect">補中益気。脾と胃を補い、腎への栄養補給を助ける。スナック感覚で毎日食べられる</div></div></div>
+      <div class="yakuzen-item"><div class="yakuzen-item-name">竜眼</div><div class="yakuzen-item-info"><div class="yakuzen-item-property">温・甘｜心・脾</div><div class="yakuzen-item-effect">補血安神。志が弱まり不眠・不安が重なるタイプに。温性で冷えを悪化させない補血食材</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="products-section">
+  <div class="products-inner">
+    <div class="section-eyebrow" style="color:#8090c0;">KYOTO RAKURAKUDO</div>
+    <h2 class="section-title" style="color:var(--paper);">「志」を整える<br>京都 楽楽堂おすすめ薬膳</h2>
+    <div class="products-intro reveal">「志」の養生に必要なのは、<strong style="color:var(--gold-lt);">「補腎・温める・根を張る」</strong>の三原則。<br>腎を温め補う薬膳茶と食材が、志の回復を支えます。</div>
+    <div class="products-grid reveal">
+      <div class="product-category">薬膳茶</div>
+      <a href="https://www.kyotorakurakudo.com/categories/6583395" class="product-link"><span>🌿 肝腎かなめ茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583395" class="product-link"><span>🖤 からだを温める黒のお茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583395" class="product-link"><span>🌶️ なつめと生姜のチャイ</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583396" class="product-link"><span>🌹 バラとクコ 養眠茶</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583398" class="product-link"><span>🌰 全部食べる薬膳茶 桂棗黒豆茶</span><span class="product-arrow">→</span></a>
+      <div class="product-category">薬膳食材</div>
+      <a href="https://www.kyotorakurakudo.com/categories/6583410" class="product-link"><span>🔴 なつめ</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583411" class="product-link"><span>🟠 枸杞の実</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583412" class="product-link"><span>⚫ 黒きくらげ</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583415" class="product-link"><span>🟤 竜眼</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583416" class="product-link"><span>⚪ 蓮の実</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6721680" class="product-link"><span>🟢 かぼちゃの種</span><span class="product-arrow">→</span></a>
+      <div class="product-category">薬膳スープ・入浴剤</div>
+      <a href="https://www.kyotorakurakudo.com/categories/6583405" class="product-link"><span>🍲 手脚氷凍鍋スープセット</span><span class="product-arrow">→</span></a>
+      <a href="https://www.kyotorakurakudo.com/categories/6583408" class="product-link"><span>🛁 ほっこりポカポカあたため乃湯</span><span class="product-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="advice-section">
+  <div class="advice-inner">
+    <div class="section-eyebrow">FROM THE DOCTOR</div>
+    <h2 class="section-title">国際中医師から<br>あなたへ</h2>
+    <div class="advice-card reveal">
+      <div class="advice-badge">京都伝統中医学研究所｜国際中医師</div>
+      <div class="advice-text">
+        「がんばり屋さん」な印象を与えやすいため、<br>
+        <em>無理をせず、こころの声を伝えることが大切です。</em><br><br>
+        長期的な信頼関係を築けるのが志の強みですが、<br>
+        感情表現を怠ると誤解されることも。<br><br>
+        明確な目標を<em>小さなステップに分けて達成感を得ましょう。</em><br>
+        「今ここ」に意識を向ける瞑想的習慣を取り入れ、<br>
+        <em>人の弱さにも共感しながら</em>、柔軟性を持った対応を心がけてみてください。
+      </div>
+      <div class="advice-author">京都伝統中医学研究所｜京都 楽楽堂</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-message">体質との連動も確認しましょう。</div>
+    <a href="taishitsu_diagnosis.html" class="cta-btn">← 診断に戻る</a>
+    <a href="https://www.kyotorakurakudo.com/p/00002" class="cta-btn outline">今のカラダを知るへ</a>
+  </div>
+</div>
+<script>
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const score=parseInt(params.get('score')||'0');
+  const maxScore=parseInt(params.get('max')||'100');
+  const rank=parseInt(params.get('rank')||'0');
+  if(score>0){
+    const pct=Math.round((score/maxScore)*100);
+    setTimeout(()=>{
+      document.getElementById('scoreBar').style.width=pct+'%';
+      document.getElementById('scoreNum').textContent=pct+'%';
+    },600);
+    const rankTexts=['','最も影響を受けている','次に影響を受けている'];
+    if(rank>0&&rank<=2){
+      document.getElementById('rankText').textContent=`今のあなたの五神では ${rankTexts[rank]}`;
+    }
+  }else{
+    document.getElementById('scoreDisplay').style.display='none';
+    document.getElementById('rankBadge').innerHTML='<span>🗻</span><span>志（し）について</span>';
+  }
+})();
+function showTab(id){
+  document.querySelectorAll('.yojo-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.yojo-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
