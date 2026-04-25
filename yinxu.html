@@ -111,8 +111,8 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
 .yojo-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
 .yojo-tab{flex-shrink:0;padding:10px 20px;border-radius:24px;border:1.5px solid rgba(138,90,32,0.3);background:transparent;font-family:"Noto Serif JP",serif;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.3s;white-space:nowrap;}
 .yojo-tab.active{background:var(--amber-dark);border-color:var(--amber-dark);color:var(--sand);}
-.yojo-content{display:none;width:100%;}
-.yojo-content.active{display:block;width:100%;animation:fadeUp 0.4s ease;}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .yojo-card{background:var(--cream);border-radius:16px;padding:32px;border:1px solid rgba(138,90,32,0.12);}
 .yojo-card-title{font-family:"Shippori Mincho",serif;font-size:18px;color:var(--amber-dark);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
@@ -350,7 +350,7 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
       眠れない・不安・乾いた悲しみが重なるのが陰虚の特徴です。
     </p>
     <div class="goshin-connection reveal">
-      <div class="goshin-box" onclick="location.href='goshin.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='goshin.html'" style="cursor:pointer;">
         <div class="goshin-char">神</div>
         <div class="goshin-reading">しん</div>
         <div class="goshin-organ">心（しん）に宿る</div>
@@ -361,7 +361,7 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
         <span>連動</span>
         <div class="arrow-line"></div>
       </div>
-      <div class="goshin-box" onclick="location.href='gohaku.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='gohaku.html'" style="cursor:pointer;">
         <div class="goshin-char">魄</div>
         <div class="goshin-reading">はく</div>
         <div class="goshin-organ">肺（はい）に宿る</div>
@@ -401,24 +401,64 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
   <div class="yojo-inner">
     <div class="section-eyebrow">HEALTH CARE</div>
     <h2 class="section-title">陰虚タイプの<br>養生ポイント</h2>
-    <div class="yojo-tabs">
+        <div class="yojo-tabs">
       <button class="yojo-tab active" onclick="showTab('mibyou1')">未病先防①</button>
       <button class="yojo-tab" onclick="showTab('mibyou2')">未病先防②</button>
       <button class="yojo-tab" onclick="showTab('kibyou')">既病防変</button>
       <button class="yojo-tab" onclick="showTab('meridian')">経絡・ツボ</button>
       <button class="yojo-tab" onclick="showTab('life')">生活習慣</button>
     </div>
-    <div id="mibyou1" class="yojo-content active"><div class="yojo-card"><div class="yojo-card-title">🌙 陰を削る行為をやめることが第一歩</div><div class="yojo-card-subtitle">消耗を止めなければ補っても追いつかない</div><div class="yojo-point"><strong>不自然な発汗が津液（陰）を大量消耗させる</strong>汗は体内の「津液」——陰の一部が体外に出たものです。サウナ・岩盤浴・ホットヨガなど急激で不自然な発汗は、陰虚タイプの陰をさらに消耗させます。運動による自然な発汗は問題ありませんが、過剰な人工的発汗は避けましょう。</div><div class="yojo-point"><strong>夜更かしが「腎陰」を根底から削る</strong>日常的に深夜まで活動し続けると、最後は生命の根源である「腎陰」からエネルギーを引き出さざるを得なくなります。表面的な元気の裏で、根本的な陰の枯渇が進行するのです。睡眠を最優先にすることが陰虚の最重要養生です。</div><div class="yojo-point"><strong>外からの熱だけでなく内からの熱も陰を削る</strong>ストレス・強壮剤・香辛料・アルコールは体内で「相火（虚熱）」を起こし、陰をさらに消耗させます。エナジードリンクや朝鮮人参なども、一時的な活力の裏で陰を削ります。</div></div></div>
-      <div class="food-card"><div class="food-emoji">🦆</div><div class="food-name">鴨肉・豆腐</div><div class="food-desc">滋陰補血。涼性でほてりを静め陰を補う</div></div>
-      <div class="food-card"><div class="food-emoji">🌾</div><div class="food-name">小麦・あわ</div><div class="food-desc">養心安神。陰虚からの不眠・不安を和らげる</div></div>
-      <div class="food-card"><div class="food-emoji">🍯</div><div class="food-name">蜂蜜・山芋</div><div class="food-desc">潤腸補陰。乾燥便秘・肌の乾燥に有効</div></div>
-      <div class="food-card"><div class="food-emoji">🦑</div><div class="food-name">イカ・くらげ</div><div class="food-desc">滋陰補血。海の食材は陰を補う優れた食材</div></div>
-      <div class="food-card"><div class="food-emoji">🫐</div><div class="food-name">ぶどう・黒ゴマ</div><div class="food-desc">補血滋陰。腎陰を補い白髪・脱毛にも有効</div></div>
+    <div id="mibyou1" class="yojo-content active">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌙 陰を削り取る習慣を手放す</div>
+        <div class="yojo-card-subtitle">消耗を止めることが陰虚養生の第一歩</div>
+        <div class="yojo-point"><strong>不自然な過度の発汗は陰を一気に消耗させる</strong>サウナ・岩盤浴・ホットヨガなど急激で不自然な発汗は避けましょう。</div>
+        <div class="yojo-point"><strong>夜更かしと過労は「腎陰」を根底から削る</strong>睡眠を最優先にすることが陰虚の最重要養生です。</div>
+        <div class="yojo-point"><strong>からだの中に熱を作る行為を避ける</strong>強壮剤・香辛料・アルコールは陰をさらに消耗させます。</div>
+      </div>
+    </div>
+    <div id="mibyou2" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌙 こころの熱をコントロールする</div>
+        <div class="yojo-card-subtitle">精神的な消耗も陰を削る</div>
+        <div class="yojo-point"><strong>精神的な消耗が「内熱」を生み出す</strong>過度な思い悩みや精神疲労も「相火」を起こし陰を消耗させます。</div>
+        <div class="yojo-point"><strong>脂っこい食事と飲酒は体内に湿熱を作る</strong>こってりした食事とアルコールは陰虚をさらに悪化させます。</div>
+      </div>
+    </div>
+    <div id="kibyou" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">💫 陰を育てる睡眠と食養生</div>
+        <div class="yojo-card-subtitle">「陰の時間」を味方につける</div>
+        <div class="yojo-point"><strong>夜間の深い睡眠が陰を積み重ねる</strong>22〜23時には就寝し、夕方以降はゆったりと過ごしましょう。</div>
+        <div class="yojo-point"><strong>滋陰食材を少量ずつ毎日続ける</strong>白きくらげ・百合・山芋・黒ゴマ・蜂蜜——少量を毎日続けることで効果が現れます。</div>
+      </div>
+    </div>
+    <div id="meridian" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
+        <div class="yojo-card-subtitle">陰虚タイプに効く経絡処方</div>
+        <div class="meridian-grid">
+          <div class="meridian-item"><div class="meridian-icon">⚡</div><div class="meridian-name">脾経・肝経・腎経・心経</div><div class="meridian-detail">陰を主る四経絡。陰を補い熱を抑える根本ケア</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">合谷・三陰交</div><div class="meridian-detail">陰虚の代表ツボ。ほてり・乾燥・不眠の緩和に有効</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">太渓・照海・復留</div><div class="meridian-detail">腎陰を補うツボ。腰のだるさ・寝汗・更年期症状に</div></div>
+          <div class="meridian-item"><div class="meridian-icon">🧘</div><div class="meridian-name">おすすめヨガ</div><div class="meridian-detail">呼吸法（プラーナヤーマ）・陰ヨガ。静的な動きで陰を育てる</div></div>
+        </div>
+      </div>
+    </div>
+    <div id="life" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌙 生活習慣の養生</div>
+        <div class="yojo-card-subtitle">陰を育てる日常の作り方</div>
+        <div class="yojo-point"><strong>夕方以降はゆったりと過ごす</strong>運動・精神活動の刺激を夜に持ち込まない。夜は静かに過ごすことが陰を育てます。</div>
+        <div class="yojo-point"><strong>目の使い過ぎを避ける</strong>スマホ・パソコンは就寝2時間前に切る習慣を。</div>
+        <div class="yojo-point"><strong>清涼感のある香りで心を冷ます</strong>白檀・ユーカリ・ネロリの香りで心身の熱を静めましょう。</div>
+      </div>
     </div>
 
-    <div class="section-eyebrow" style="margin-top:40px;">HERBAL MEDICINE INGREDIENTS</div>
-    <h3 style="font-family:'Shippori Mincho',serif;font-size:20px;color:var(--amber-dark);margin-bottom:24px;">おすすめ薬膳食材</h3>
-    <div class="yakuzen-detail-list reveal">
+  </div>
+</div>
+
+<div class="yakuzen-detail-list reveal">
       <div class="yakuzen-item">
         <div class="yakuzen-item-name">白きくらげ</div>
         <div class="yakuzen-item-info">

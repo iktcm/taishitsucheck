@@ -78,8 +78,8 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
 .yojo-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
 .yojo-tab{flex-shrink:0;padding:10px 20px;border-radius:24px;border:1.5px solid rgba(100,50,80,0.3);background:transparent;font-family:"Noto Serif JP",serif;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.3s;white-space:nowrap;}
 .yojo-tab.active{background:var(--c1);border-color:var(--c1);color:var(--c5);}
-.yojo-content{display:none;width:100%;}
-.yojo-content.active{display:block;width:100%;animation:fadeUp 0.4s ease;}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .yojo-card{background:var(--cream);border-radius:16px;padding:32px;border:1px solid rgba(100,50,80,0.12);}
 .yojo-card-title{font-family:"Shippori Mincho",serif;font-size:18px;color:var(--c1);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
@@ -209,9 +209,9 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
 血の滞りは五神にも影響します。特に<strong style="color:var(--gold-lt);">魂（こん）</strong>と<strong style="color:var(--gold-lt);">魄（はく）</strong>が血瘀で乱れ、<br>過去への執着・手放せない感情・身体感覚の鈍化が起きやすくなります。
 </p>
 <div class="goshin-connection reveal">
-<div class="goshin-box" onclick="location.href='gokon.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''"><div class="goshin-char">魂</div><div class="goshin-reading">こん</div><div class="goshin-organ">肝（かん）に宿る</div><div class="goshin-desc">創造・決断・夢を主る。血瘀で肝血が滞ると「魂」が固まり、過去の執着・怒り・古い感情が手放せなくなる</div></div>
+<div class="goshin-box" onclick="location.href='gokon.html'" style="cursor:pointer;"><div class="goshin-char">魂</div><div class="goshin-reading">こん</div><div class="goshin-organ">肝（かん）に宿る</div><div class="goshin-desc">創造・決断・夢を主る。血瘀で肝血が滞ると「魂」が固まり、過去の執着・怒り・古い感情が手放せなくなる</div></div>
 <div class="connection-arrow"><div class="arrow-line"></div><span>連動</span><div class="arrow-line"></div></div>
-<div class="goshin-box" onclick="location.href='gohaku.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''"><div class="goshin-char">魄</div><div class="goshin-reading">はく</div><div class="goshin-organ">肺（はい）に宿る</div><div class="goshin-desc">本能・感覚・身体反応を主る。血瘀で肺の気血が滞ると「魄」が鈍り、悲しみの停滞・身体感覚の低下が起きる</div></div>
+<div class="goshin-box" onclick="location.href='gohaku.html'" style="cursor:pointer;"><div class="goshin-char">魄</div><div class="goshin-reading">はく</div><div class="goshin-organ">肺（はい）に宿る</div><div class="goshin-desc">本能・感覚・身体反応を主る。血瘀で肺の気血が滞ると「魄」が鈍り、悲しみの停滞・身体感覚の低下が起きる</div></div>
 </div>
 <div class="goshin-detail reveal"><div class="goshin-detail-title">血瘀で乱れる「魂」と「魄」のサイン</div>
 <div class="goshin-state-grid">
@@ -224,33 +224,40 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
 <div class="yojo-section"><div class="yojo-inner">
 <div class="section-eyebrow">HEALTH CARE</div>
 <h2 class="section-title">血瘀タイプの<br>養生ポイント</h2>
-<div class="yojo-tabs">
-<button class="yojo-tab active" onclick="showTab('b1')">未病先防①</button>
-<button class="yojo-tab" onclick="showTab('b2')">未病先防②</button>
-<button class="yojo-tab" onclick="showTab('b3')">既病防変</button>
-<button class="yojo-tab" onclick="showTab('b4')">経絡・ツボ</button>
-<button class="yojo-tab" onclick="showTab('b5')">生活習慣</button>
-</div>
-<div id="mibyou1" class="yojo-content active"><div class="yojo-card"><div class="yojo-card-title">🌸 血を滞らせる三つの原因を断つ</div><div class="yojo-card-subtitle">冷え・気の停滞・血の不足を同時に対処する</div><div class="yojo-point"><strong>冷えがからだ全体の血の流れを止める</strong>「寒さは血を凝らす」——冷えが続くと血の流れは遅くなり、やがて停滞します。冷たい飲食物・薄着・冷房の当たりすぎはすべて血瘀の直接的な原因です。腹部・腰・足元を常に温めることが血瘀養生の根本です。</div><div class="yojo-point"><strong>感情の停滞が必ず血の停滞を引き起こす</strong>「気が止まれば血も止まる」——くよくよとした後ろ向きな思考、消えないイライラ、過去への執着は肝の気の流れを乱し、血瘀を悪化させます。気滞タイプの養生法を参考にして、感情を流す練習を続けましょう。</div><div class="yojo-point"><strong>血虚の状態も血瘀を招く</strong>血が不足すると、少ない血が滞りやすくなります。血虚と血瘀はセットで起きることが多いため、補血の養生法も組み合わせることが重要です。</div></div></div>
-<div id="mibyou2" class="yojo-content"><div class="yojo-card"><div class="yojo-card-title">🌸 余分な水分が血の動きを妨げる</div><div class="yojo-card-subtitle">湿痰養生が血瘀改善にも効く</div><div class="yojo-point"><strong>不必要な水分の摂取をやめる</strong>余分な水分はからだの中で血の流れを妨げる障害物になります。喉も渇いていないのにミネラルウォーターやお茶を頻繁に飲む習慣は、血瘀タイプには逆効果。水の動きを整えることが血の動きを取り戻すことにもつながります。</div><div class="yojo-point"><strong>湿を取り除く食材で血の通り道を整える</strong>はと麦・小豆・緑豆など水分代謝を助ける食材を積極的に取り入れ、血の流れを妨げる余分な湿を除きましょう。湿痰タイプの養生法も参考にしてください。</div></div></div>
-<div id="kibyou" class="yojo-content"><div class="yojo-card"><div class="yojo-card-title">💫 血を動かすことが最善の対処法</div><div class="yojo-card-subtitle">運動・温め・明るい気持ちで瘀血を解放する</div><div class="yojo-point"><strong>有酸素運動が停滞した血を一気に動かす</strong>「滞っている血を強制的に巡らせる最善策は動くこと」——ウォーキングなどの有酸素運動は血行を促進しながら体重管理にも効果があります。毎日30分を目安に続けましょう。</div><div class="yojo-point"><strong>入浴とマッサージで全身の血行を促す</strong>37〜40度のお湯にゆっくりつかる入浴は、血管を拡張させ血瘀の解消を助けます。入浴後にストレッチやマッサージを加えると効果がさらに高まります。</div><div class="yojo-point"><strong>明るく前向きな気持ちが気と血を動かす</strong>「気が巡れば血も巡る」——楽しい時間・笑い・伸びやかな気分で過ごすことが血瘀の養生になります。過去を手放し、今を生きることを意識しましょう。</div></div></div>
-<div id="b4" class="yojo-content"><div class="yojo-card">
-<div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
+    <div class="yojo-tabs">
+      <button class="yojo-tab active" onclick="showTab('mibyou1')">未病先防①</button>
+      <button class="yojo-tab" onclick="showTab('mibyou2')">未病先防②</button>
+      <button class="yojo-tab" onclick="showTab('kibyou')">既病防変</button>
+      <button class="yojo-tab" onclick="showTab('b4')">経絡・ツボ</button>
+      <button class="yojo-tab" onclick="showTab('b5')">生活習慣</button>
+    </div>
+    <div id="mibyou1" class="yojo-content active"><div class="yojo-card"><div class="yojo-card-title">🌸 血を滞らせる三つの原因を断つ</div><div class="yojo-card-subtitle">冷え・気の停滞・血の不足を同時に対処する</div>
+      <div class="yojo-point"><strong>冷えがからだ全体の血の流れを止める</strong>腹部・腰・足元を常に温めることが血瘀養生の根本です。</div>
+      <div class="yojo-point"><strong>感情の停滞が必ず血の停滞を引き起こす</strong>くよくよとした後ろ向きな思考、抑えきれないイライラは肝の気を乱し血瘀を悪化させます。</div>
+      <div class="yojo-point"><strong>血虚の状態も血瘀を招く</strong>補血の養生法も組み合わせることが重要です。</div>
+    </div></div>
+    <div id="mibyou2" class="yojo-content"><div class="yojo-card"><div class="yojo-card-title">🌸 余分な水が血の動きを妨げる</div><div class="yojo-card-subtitle">湿痰養生も血瘀改善に効く</div>
+      <div class="yojo-point"><strong>不必要な水分の摂取をやめる</strong>余分な水分はからだの中で血の流れを妨げる障害物になります。</div>
+      <div class="yojo-point"><strong>湿を取り除く食材で血の通り道を整える</strong>はと麦・小豆・緑豆など水分代謝を助ける食材を積極的に取り入れましょう。</div>
+    </div></div>
+    <div id="kibyou" class="yojo-content"><div class="yojo-card"><div class="yojo-card-title">💫 血を動かすことが最善の対処法</div><div class="yojo-card-subtitle">運動・温め・明るい気持ちで瘀血を解放する</div>
+      <div class="yojo-point"><strong>有酸素運動が停滞した血を一気に動かす</strong>ウォーキングなどの有酸素運動は血行を促進します。毎日30分を目安に。</div>
+      <div class="yojo-point"><strong>入浴とマッサージで全身の血行を促す</strong>37〜40度のお湯にゆっくりつかる入浴が血瘀を解消します。</div>
+      <div class="yojo-point"><strong>明るく前向きな気持ちが気と血を動かす</strong>楽しい時間・笑い・伸びやかな気分が血瘀の養生になります。</div>
+    </div></div>
+    <div id="b4" class="yojo-content"><div class="yojo-card"><div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div><div class="yojo-card-subtitle">血瘀タイプに効く経絡処方</div><div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
 <div class="yojo-card-subtitle">血瘀タイプに効く経絡処方</div>
 <div class="meridian-grid">
 <div class="meridian-item"><div class="meridian-icon">⚡</div><div class="meridian-name">肝経・心経・膀胱経</div><div class="meridian-detail">血を貯蔵・循環させる経絡。血瘀の根本をケア</div></div>
-<div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">血海・膈兪</div><div class="meridian-detail">「血を補い血を活かす」代表ツボ。生理痛・シミ・肩こりに特に有効</div></div>
-<div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">肝兪・三陰交</div><div class="meridian-detail">肝の血を巡らせ、女性の体調全般をケア</div></div>
-<div class="meridian-item"><div class="meridian-icon">🧘</div><div class="meridian-name">おすすめヨガ</div><div class="meridian-detail">開脚前屈・腹式呼吸。血行を促進し気と血を同時に動かす</div></div>
-</div></div></div>
-<div id="b5" class="yojo-content"><div class="yojo-card">
-<div class="yojo-card-title">🌙 生活習慣の養生</div>
+    <div id="b5" class="yojo-content"><div class="yojo-card"><div class="yojo-card-title">🌙 生活習慣の養生</div><div class="yojo-card-subtitle">血を流す日常の作り方</div><div class="yojo-card-title">🌙 生活習慣の養生</div>
 <div class="yojo-card-subtitle">血を流す日常の作り方</div>
 <div class="yojo-point"><strong>長時間同じ姿勢を避ける</strong>デスクワークや同じ姿勢が続くと血が滞ります。1時間に1回は立ち上がり、軽くストレッチや深呼吸を。</div>
 <div class="yojo-point"><strong>喫煙を控える</strong>煙草は血管を収縮させ血瘀を最も悪化させる習慣の一つ。血の巡りを根本から改善するために禁煙を強くおすすめします。</div>
-<div class="yojo-point"><strong>過去を手放す練習をする</strong>感情の「手放し」は血瘀の養生。日記に書き出す・誰かに話す・許しの瞑想——感情を流す習慣が血の滞りを解消します。</div>
-</div></div>
-</div></div>
+<div class="yojo-point"><strong>過去を手放す練習をする</strong>感情の「手放し」は血瘀の養生。日記に書き出す・誰かに話す・許しの瞑想——感情を流す習慣が血の滞りを解消します。</div></div>
+  </div>
+</div>
+
+
 
 <div class="yakuzen-section"><div class="yakuzen-inner">
 <div class="yakuzen-title-block">

@@ -110,8 +110,8 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
 .yojo-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
 .yojo-tab{flex-shrink:0;padding:10px 20px;border-radius:24px;border:1.5px solid rgba(138,58,90,0.3);background:transparent;font-family:"Noto Serif JP",serif;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.3s;white-space:nowrap;}
 .yojo-tab.active{background:var(--burgundy);border-color:var(--burgundy);color:var(--blush);}
-.yojo-content{display:none;width:100%;}
-.yojo-content.active{display:block;width:100%;animation:fadeUp 0.4s ease;}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .yojo-card{background:var(--cream);border-radius:16px;padding:32px;border:1px solid rgba(138,58,90,0.12);}
 .yojo-card-title{font-family:"Shippori Mincho",serif;font-size:18px;color:var(--burgundy);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
@@ -350,7 +350,7 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
       特に<strong style="color:var(--gold-lt);">神（しん）</strong>と<strong style="color:var(--gold-lt);">魂（こん）</strong>が血の不足で不安定になります。
     </p>
     <div class="goshin-connection reveal">
-      <div class="goshin-box" onclick="location.href='goshin.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='goshin.html'" style="cursor:pointer;">
         <div class="goshin-char">神</div>
         <div class="goshin-reading">しん</div>
         <div class="goshin-organ">心（しん）に宿る</div>
@@ -361,7 +361,7 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
         <span>連動</span>
         <div class="arrow-line"></div>
       </div>
-      <div class="goshin-box" onclick="location.href='gokon.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='gokon.html'" style="cursor:pointer;">
         <div class="goshin-char">魂</div>
         <div class="goshin-reading">こん</div>
         <div class="goshin-organ">肝（かん）に宿る</div>
@@ -401,24 +401,65 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
   <div class="yojo-inner">
     <div class="section-eyebrow">HEALTH CARE</div>
     <h2 class="section-title">血虚タイプの<br>養生ポイント</h2>
-    <div class="yojo-tabs">
+        <div class="yojo-tabs">
       <button class="yojo-tab active" onclick="showTab('mibyou1')">未病先防①</button>
       <button class="yojo-tab" onclick="showTab('mibyou2')">未病先防②</button>
       <button class="yojo-tab" onclick="showTab('kibyou')">既病防変</button>
       <button class="yojo-tab" onclick="showTab('meridian')">経絡・ツボ</button>
       <button class="yojo-tab" onclick="showTab('life')">生活習慣</button>
     </div>
-    <div id="mibyou1" class="yojo-content active"><div class="yojo-card"><div class="yojo-card-title">🌸 「血を作る食材」を毎日の習慣に組み込む</div><div class="yojo-card-subtitle">補血は量より継続が効く</div><div class="yojo-point"><strong>なつめ・金針菜・枸杞の実——この三つから始める</strong>血虚の食養生の出発点となる食材がこの三つです。特になつめは脾の機能を高めながら血も養う優れた補血食材。生理中・妊娠中・産後には毎日取り入れる習慣を。ただし過剰摂取は胃腸への負担になるので、少量を継続することを心がけてください。</div><div class="yojo-point"><strong>「黒い食材」で腎と肝から血を育てる</strong>「黒い食材は腎を補う」——黒ゴマ・黒きくらげ・黒豆・くるみは、腎と肝の両方から血の生成を根本的に助けます。毎日少量を食卓に加えるだけで効果があります。</div><div class="yojo-point"><strong>血の材料となる食材を消化しやすい形で摂る</strong>鉄分・たんぱく質も血虚には欠かせません。レバー・ほうれん草・にんじん・豚肉・スッポン——これらを生ではなく加熱調理して消化しやすい形で摂ることが血虚タイプには重要です。</div></div></div>
-      <div class="food-card"><div class="food-emoji">🥕</div><div class="food-name">にんじん</div><div class="food-desc">補血・養肝。目の疲れや皮膚の乾燥にも</div></div>
-      <div class="food-card"><div class="food-emoji">🍖</div><div class="food-name">レバー</div><div class="food-desc">「以臓補臓」——肝で血を補う最強食材</div></div>
-      <div class="food-card"><div class="food-emoji">🦪</div><div class="food-name">牡蠣・なまこ</div><div class="food-desc">滋陰補血。血虚・陰虚が重なるタイプに</div></div>
-      <div class="food-card"><div class="food-emoji">🌰</div><div class="food-name">くるみ・栗</div><div class="food-desc">腎を補い血を養う。貧血・疲労に有効</div></div>
-      <div class="food-card"><div class="food-emoji">🍇</div><div class="food-name">ぶどう・ライチ</div><div class="food-desc">補血生津。血虚の口の乾きや貧血に</div></div>
+    <div id="mibyou1" class="yojo-content active">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌸 血を積極的に補う食材を毎日取り入れる</div>
+        <div class="yojo-card-subtitle">補血は継続が命</div>
+        <div class="yojo-point"><strong>なつめ・金針菜・枸杞の実が補血の三柱</strong>なつめは脾を補いながら血も養う万能食材。少量を継続することが大切です。</div>
+        <div class="yojo-point"><strong>「黒い食材」で腎から血を育てる</strong>黒ゴマ・黒きくらげ・黒豆・くるみは腎と肝の両方を養い、血の生成を根本から助けます。</div>
+        <div class="yojo-point"><strong>鉄分とたんぱく質を消化しやすい形で摂る</strong>レバー・ほうれん草・にんじんなど。よく加熱して消化しやすい形で摂ることが重要です。</div>
+      </div>
+    </div>
+    <div id="mibyou2" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌸 夜の睡眠こそ最大の補血の機会</div>
+        <div class="yojo-card-subtitle">血は夜に養われる</div>
+        <div class="yojo-point"><strong>12時前の就寝を最優先の習慣にする</strong>特に生理中・妊娠期・授乳期は夜更かしが直接的に血の消耗につながります。</div>
+        <div class="yojo-point"><strong>昼間の活動が夜の血の補充を助ける</strong>日中にしっかり体を動かすことで夜の「陰（血の補充）」の効果が高まります。</div>
+      </div>
+    </div>
+    <div id="kibyou" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">💫 少ない血でも「巡り」を高めれば充足する</div>
+        <div class="yojo-card-subtitle">量より流れを改善する</div>
+        <div class="yojo-point"><strong>「血は気とともに動く」——気の流れが血を運ぶ</strong>軽い運動・入浴・マッサージで気と血の循環を促しましょう。</div>
+        <div class="yojo-point"><strong>サウナ・激しい運動で汗をかき過ぎない</strong>血虚タイプは軽い全身運動を継続することが基本です。</div>
+        <div class="yojo-point"><strong>出血の原因があるなら根本から対処する</strong>慢性的な出血がある場合、専門家に診てもらうことが最優先です。</div>
+      </div>
+    </div>
+    <div id="meridian" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
+        <div class="yojo-card-subtitle">血虚タイプに効く経絡処方</div>
+        <div class="meridian-grid">
+          <div class="meridian-item"><div class="meridian-icon">⚡</div><div class="meridian-name">脾経・肝経・心経</div><div class="meridian-detail">血を生成・貯蔵・循環させる三経絡。血虚の根本をケア</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">三陰交・血海</div><div class="meridian-detail">補血の代表ツボ。生理不順・貧血・不眠に特に有効</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">膈兪・肝兪・脾兪</div><div class="meridian-detail">血の生成と貯蔵を高める背部三穴</div></div>
+          <div class="meridian-item"><div class="meridian-icon">🧘</div><div class="meridian-name">おすすめヨガ</div><div class="meridian-detail">太陽礼拝A。ゆっくり丁寧に。血を育てる動きで</div></div>
+        </div>
+      </div>
+    </div>
+    <div id="life" class="yojo-content">
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌙 生活習慣の養生</div>
+        <div class="yojo-card-subtitle">血を消耗させない日常の作り方</div>
+        <div class="yojo-point"><strong>目を使いすぎない</strong>スマホ・パソコンの長時間使用は血虚の大敵。1時間に1回は目を休める習慣を。</div>
+        <div class="yojo-point"><strong>思い悩みすぎない</strong>心配・くよくよ・反芻思考は脾を傷め血の生成を妨げます。「70点でOK」という思考習慣を。</div>
+        <div class="yojo-point"><strong>冷えに気をつける</strong>血は冷えると固まり動かなくなります。足元・腹部を温め、冷たいものの摂り過ぎに注意しましょう。</div>
+      </div>
     </div>
 
-    <div class="section-eyebrow" style="margin-top:40px;">HERBAL MEDICINE INGREDIENTS</div>
-    <h3 style="font-family:'Shippori Mincho',serif;font-size:20px;color:var(--burgundy);margin-bottom:24px;">おすすめ薬膳食材</h3>
-    <div class="yakuzen-detail-list reveal">
+  </div>
+</div>
+
+<div class="yakuzen-detail-list reveal">
       <div class="yakuzen-item">
         <div class="yakuzen-item-name">竜眼</div>
         <div class="yakuzen-item-info">

@@ -596,7 +596,7 @@ section{
 /* ══════════ 養生法 ══════════ */
 .yojo-section{background:var(--paper);padding:80px 20px;}
 
-.yojo-inner{max-width:720px;margin:0 auto;}
+.yojo-inner{max-width:720px;margin:0 auto;overflow:hidden;}
 
 .yojo-tabs{
   display:flex;
@@ -627,8 +627,8 @@ section{
   color:var(--pale);
 }
 
-.yojo-content{display:none;width:100%;}
-.yojo-content.active{display:block;width:100%;animation:fadeUp 0.4s ease;}
+.yojo-content{display:none;width:100%;max-width:100%;box-sizing:border-box;}
+.yojo-content.active{display:block;width:100%;max-width:100%;box-sizing:border-box;animation:fadeUp 0.4s ease;}
 
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(10px);}
@@ -1300,7 +1300,6 @@ section{
       <button class="yojo-tab" onclick="showTab('meridian')">経絡・ツボ</button>
       <button class="yojo-tab" onclick="showTab('life')">生活習慣</button>
     </div>
-
     <div id="mibyou1" class="yojo-content active">
       <div class="yojo-card">
         <div class="yojo-card-title">🌿 からだが求めるサインを読み取る</div>
@@ -1317,10 +1316,7 @@ section{
           <strong>消化しにくいものを遠ざける習慣を</strong>
           繊維の多い生野菜・生魚・脂っこいもの・甘すぎるものは、弱った脾にとって重い負担です。「消化しやすいかどうか」を食材選びの最初の基準にしてみてください。
         </div>
-      </div>
     </div>
-    </div>
-
     <div id="mibyou2" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">🌿 脾の温かさを外から奪わない</div>
@@ -1333,10 +1329,7 @@ section{
           <strong>食欲がないときこそ「消化しやすいもの」を選ぶ</strong>
           食欲がない日に無理して食べる必要はありません。お粥・やわらかく煮た野菜・スープなど、胃腸に優しい温かいものを少量摂りましょう。薄着・冷房の当たり過ぎにも注意して、からだを外側から冷やさないことも養生です。
         </div>
-      </div>
     </div>
-    </div>
-
     <div id="kibyou" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">💪 からだを動かして気の循環を取り戻す</div>
@@ -1349,10 +1342,7 @@ section{
           <strong>睡眠が「後天の気」の補充源になる</strong>
           中医学では肺が夜間に気血を集めて新しい気を生み出すと考えます。夜更かしはこの回復の機会を失うことになります。22〜23時を目安に就寝することが気虚回復の最も重要な養生法です。
         </div>
-      </div>
     </div>
-    </div>
-
     <div id="meridian" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
@@ -1378,10 +1368,7 @@ section{
             <div class="meridian-name">おすすめヨガ</div>
             <div class="meridian-detail">合せき・コブラ・ラクダのポーズ。脾経を刺激し気を巡らせる</div>
           </div>
-        </div>
-      </div>
     </div>
-
     <div id="life" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">🌙 生活習慣の養生</div>
@@ -1397,9 +1384,8 @@ section{
         <div class="yojo-point">
           <strong>体を冷やす環境を見直す</strong>
           薄着・冷房の使い過ぎ・冷たい床への素足は気虚の大敵。腹部・腰部・足元を温める習慣を。
-        </div>
-      </div>
     </div>
+
   </div>
 </div>
 
