@@ -627,8 +627,8 @@ section{
   color:var(--pale);
 }
 
-.yojo-content{display:none;}
-.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
+.yojo-content{display:none;width:100%;}
+.yojo-content.active{display:block;width:100%;animation:fadeUp 0.4s ease;}
 
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(10px);}
@@ -639,6 +639,7 @@ section{
   background:var(--cream);
   border-radius:16px;
   padding:32px;
+  width:100%;
   border:1px solid rgba(74,124,89,0.12);
 }
 
