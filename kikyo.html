@@ -596,7 +596,7 @@ section{
 /* ══════════ 養生法 ══════════ */
 .yojo-section{background:var(--paper);padding:80px 20px;}
 
-.yojo-inner{max-width:720px;margin:0 auto;overflow:hidden;}
+.yojo-inner{max-width:720px;margin:0 auto;}
 
 .yojo-tabs{
   display:flex;
@@ -627,8 +627,8 @@ section{
   color:var(--pale);
 }
 
-.yojo-content{display:none;width:100%;max-width:100%;box-sizing:border-box;}
-.yojo-content.active{display:block;width:100%;max-width:100%;box-sizing:border-box;animation:fadeUp 0.4s ease;}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
 
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(10px);}
@@ -639,7 +639,6 @@ section{
   background:var(--cream);
   border-radius:16px;
   padding:32px;
-  width:100%;
   border:1px solid rgba(74,124,89,0.12);
 }
 
@@ -1240,7 +1239,7 @@ section{
     </p>
 
     <div class="goshin-connection reveal">
-      <div class="goshin-box" onclick="location.href='goi.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='goi.html'" style="cursor:pointer;">
         <div class="goshin-char">意</div>
         <div class="goshin-reading">い</div>
         <div class="goshin-organ">脾（ひ）に宿る</div>
@@ -1251,7 +1250,7 @@ section{
         <span>連動</span>
         <div class="arrow-line"></div>
       </div>
-      <div class="goshin-box" onclick="location.href='goshi.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='goshi.html'" style="cursor:pointer;">
         <div class="goshin-char">志</div>
         <div class="goshin-reading">し</div>
         <div class="goshin-organ">腎（じん）に宿る</div>
@@ -1293,7 +1292,7 @@ section{
     <div class="section-eyebrow">HEALTH CARE</div>
     <h2 class="section-title">気虚タイプの<br>養生ポイント</h2>
 
-    <div class="yojo-tabs">
+        <div class="yojo-tabs">
       <button class="yojo-tab active" onclick="showTab('mibyou1')">未病先防①</button>
       <button class="yojo-tab" onclick="showTab('mibyou2')">未病先防②</button>
       <button class="yojo-tab" onclick="showTab('kibyou')">既病防変</button>
@@ -1304,92 +1303,51 @@ section{
       <div class="yojo-card">
         <div class="yojo-card-title">🌿 からだが求めるサインを読み取る</div>
         <div class="yojo-card-subtitle">まず「脾（胃腸）」という製造機を整えることから</div>
-        <div class="yojo-point">
-          <strong>食べる量より消化できる量を優先する</strong>
-          疲れを感じるほど栄養を摂ろうとする方が多いですが、脾（胃腸）が弱いときほど消化への負担を減らすことが先決です。肉・魚・乳製品など消化に時間がかかる食材は脾の働きをさらに消耗させます。旬のものを柔らかく温めて、少量ずつ丁寧に食べることから始めましょう。
-        </div>
-        <div class="yojo-point">
-          <strong>偏った食事法は脾をさらに傷める</strong>
-          「ファスティングで体をリセットしよう」「ビーガン食で健康になろう」——善意の健康法も、気虚の体質には逆効果になることがあります。今の自分の体質に本当に必要かどうかを見極めてから取り入れることが大切です。
-        </div>
-        <div class="yojo-point">
-          <strong>消化しにくいものを遠ざける習慣を</strong>
-          繊維の多い生野菜・生魚・脂っこいもの・甘すぎるものは、弱った脾にとって重い負担です。「消化しやすいかどうか」を食材選びの最初の基準にしてみてください。
-        </div>
+      <div class="yojo-point"><strong>食べる量より消化できる量を優先する</strong>脾（胃腸）が弱いときほど消化への負担を減らすことが先決です。旬のものを柔らかく温めて、少量ずつ丁寧に食べることから始めましょう。</div>
+      <div class="yojo-point"><strong>偏った食事法は脾をさらに傷める</strong>今の自分の体質に本当に必要かどうかを見極めてから取り入れることが大切です。</div>
+      <div class="yojo-point"><strong>消化しにくいものを遠ざける習慣を</strong>繊維の多い生野菜・生魚・脂っこいものは弱った脾にとって重い負担です。</div>
+      </div>
     </div>
     <div id="mibyou2" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">🌿 脾の温かさを外から奪わない</div>
         <div class="yojo-card-subtitle">冷えは気虚の最大の加速因子</div>
-        <div class="yojo-point">
-          <strong>冷たい飲食物が脾の熱を奪う</strong>
-          脾は温かい環境で最もよく機能します。冷たい飲み物・生野菜・刺身・果物の摂り過ぎは、脾が持つ「温める力」を少しずつ奪います。夏場でも冷たい料理を摂るときは、生姜・ネギ・みょうがなど温性の薬味と一緒に食べる工夫を。
-        </div>
-        <div class="yojo-point">
-          <strong>食欲がないときこそ「消化しやすいもの」を選ぶ</strong>
-          食欲がない日に無理して食べる必要はありません。お粥・やわらかく煮た野菜・スープなど、胃腸に優しい温かいものを少量摂りましょう。薄着・冷房の当たり過ぎにも注意して、からだを外側から冷やさないことも養生です。
-        </div>
+      <div class="yojo-point"><strong>冷たい飲食物が脾の熱を奪う</strong>冷たい飲み物・生野菜・刺身・果物の摂り過ぎは脾が持つ「温める力」を奪います。夏場も温性の薬味と一緒に食べる工夫を。</div>
+      <div class="yojo-point"><strong>食欲がないときこそ「消化しやすいもの」を選ぶ</strong>お粥・やわらかく煮た野菜など、胃腸に優しい温かいものを少量摂りましょう。</div>
+      </div>
     </div>
     <div id="kibyou" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">💪 からだを動かして気の循環を取り戻す</div>
         <div class="yojo-card-subtitle">脾気は「使って→回復する」サイクルで強くなる</div>
-        <div class="yojo-point">
-          <strong>動くことで気の必要性をからだに教える</strong>
-          「疲れるから動かない」では脾気は育ちません。軽くからだを動かして疲労感を感じ、しっかり眠って回復し、また翌日動く——この穏やかなサイクルを積み重ねることで、脾が気を作る力が少しずつ高まります。
-        </div>
-        <div class="yojo-point">
-          <strong>睡眠が「後天の気」の補充源になる</strong>
-          中医学では肺が夜間に気血を集めて新しい気を生み出すと考えます。夜更かしはこの回復の機会を失うことになります。22〜23時を目安に就寝することが気虚回復の最も重要な養生法です。
-        </div>
+      <div class="yojo-point"><strong>動くことで気の必要性をからだに教える</strong>軽くからだを動かして疲労感を感じ、しっかり眠って回復し、また翌日動く——この穏やかなサイクルを積み重ねることで脾気が育ちます。</div>
+      <div class="yojo-point"><strong>睡眠が「後天の気」の補充源になる</strong>22〜23時を目安に就寝することが気虚回復の最も重要な養生法です。</div>
+      </div>
     </div>
     <div id="meridian" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
         <div class="yojo-card-subtitle">気虚タイプに効く経絡処方</div>
         <div class="meridian-grid">
-          <div class="meridian-item">
-            <div class="meridian-icon">⚡</div>
-            <div class="meridian-name">脾経・胃経</div>
-            <div class="meridian-detail">メインの経絡。脾と胃の働きを高め、気の生成を促す</div>
-          </div>
-          <div class="meridian-item">
-            <div class="meridian-icon">📍</div>
-            <div class="meridian-name">足三里</div>
-            <div class="meridian-detail">膝下4横指。気を補う最重要ツボ。毎日押すだけで効果的</div>
-          </div>
-          <div class="meridian-item">
-            <div class="meridian-icon">📍</div>
-            <div class="meridian-name">脾兪・陰陵泉</div>
-            <div class="meridian-detail">脾の気を補い湿を取る。倦怠感・むくみに有効</div>
-          </div>
-          <div class="meridian-item">
-            <div class="meridian-icon">🧘</div>
-            <div class="meridian-name">おすすめヨガ</div>
-            <div class="meridian-detail">合せき・コブラ・ラクダのポーズ。脾経を刺激し気を巡らせる</div>
-          </div>
+          <div class="meridian-item"><div class="meridian-icon">⚡</div><div class="meridian-name">脾経・胃経</div><div class="meridian-detail">気を生み出す二大経絡。気虚の根本をケア</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">足三里・気海・関元</div><div class="meridian-detail">補気の代表ツボ。特に足三里は脾気を補う最重要ツボ</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">脾兪・胃兪</div><div class="meridian-detail">背部のツボ。消化機能を高め気の生成を助ける</div></div>
+          <div class="meridian-item"><div class="meridian-icon">🧘</div><div class="meridian-name">おすすめヨガ</div><div class="meridian-detail">太陽礼拝A（ゆっくり）。激しくせず気を育てる動きで</div></div>
+        </div>
+      </div>
     </div>
     <div id="life" class="yojo-content">
       <div class="yojo-card">
         <div class="yojo-card-title">🌙 生活習慣の養生</div>
-        <div class="yojo-card-subtitle">こころとからだの整え方</div>
-        <div class="yojo-point">
-          <strong>睡眠を22〜23時までに</strong>
-          気血は夜に再生されます。深夜の活動は回復の機会を奪います。
-        </div>
-        <div class="yojo-point">
-          <strong>心配・くよくよを手放す</strong>
-          「思傷脾（思いすぎは脾を傷る）」——悩みすぎ・考えすぎは脾気を消耗します。悩みは紙に書き出して頭から出し、今できることだけに集中しましょう。
-        </div>
-        <div class="yojo-point">
-          <strong>体を冷やす環境を見直す</strong>
-          薄着・冷房の使い過ぎ・冷たい床への素足は気虚の大敵。腹部・腰部・足元を温める習慣を。
+        <div class="yojo-card-subtitle">気を守る日常の作り方</div>
+      <div class="yojo-point"><strong>腹八分目を徹底する</strong>食べ過ぎは脾の大敵。「まだ食べられるな」と感じるところで止める習慣が脾気を守ります。</div>
+      <div class="yojo-point"><strong>食後はすぐ横にならない</strong>食後の消化時間に横になると脾の働きが低下します。軽く歩くか座って過ごしましょう。</div>
+      <div class="yojo-point"><strong>冷えから守る</strong>薄着・冷房の使い過ぎ・冷たい床への素足は気虚の大敵。腹部・腰部・足元を温める習慣を。</div>
+      </div>
     </div>
-
   </div>
 </div>
 
-<!-- ══════ 薬膳 ══════ -->
 <div class="yakuzen-section">
   <div class="yakuzen-inner">
     <div class="yakuzen-title-block">

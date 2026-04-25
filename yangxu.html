@@ -87,12 +87,12 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
 .goshin-state-card.healthy li::before{content:"✦";color:var(--c4);font-size:8px;margin-top:4px;flex-shrink:0;}
 .goshin-state-card.weak li::before{content:"▼";color:#e88080;font-size:8px;margin-top:4px;flex-shrink:0;}
 .yojo-section{background:var(--paper);padding:80px 20px;}
-.yojo-inner{max-width:720px;margin:0 auto;overflow:hidden;}
+.yojo-inner{max-width:720px;margin:0 auto;}
 .yojo-tabs{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
 .yojo-tab{flex-shrink:0;padding:10px 20px;border-radius:24px;border:1.5px solid rgba(100,100,120,0.3);background:transparent;font-family:"Noto Serif JP",serif;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.3s;white-space:nowrap;}
 .yojo-tab.active{background:var(--c1);border-color:var(--c1);color:var(--c5);}
-.yojo-content{display:none;width:100%;max-width:100%;box-sizing:border-box;}
-.yojo-content.active{display:block;width:100%;max-width:100%;box-sizing:border-box;animation:fadeUp 0.4s ease;}
+.yojo-content{display:none;}
+.yojo-content.active{display:block;animation:fadeUp 0.4s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .yojo-card{background:var(--cream);border-radius:16px;padding:32px;border:1px solid rgba(100,100,120,0.12);}
 .yojo-card-title{font-family:"Shippori Mincho",serif;font-size:18px;color:var(--c1);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
@@ -275,13 +275,13 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
       意志・生命力・希望が同時に弱まるのが陽虚の特徴です。
     </p>
     <div class="goshin-connection reveal">
-      <div class="goshin-box" onclick="location.href='goshi.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='goshi.html'" style="cursor:pointer;">
         <div class="goshin-char">志</div><div class="goshin-reading">し</div>
         <div class="goshin-organ">腎（じん）に宿る</div>
         <div class="goshin-desc">意志・生命力・根を主る。腎陽が不足すると「志」が弱まり、無気力・諦め・恐れが強まる</div>
       </div>
       <div class="connection-arrow"><div class="arrow-line"></div><span>連動</span><div class="arrow-line"></div></div>
-      <div class="goshin-box" onclick="location.href='goi.html'" style="cursor:pointer;" onmouseover="this.style.borderColor='rgba(184,150,42,0.5)';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='';this.style.background=''">
+      <div class="goshin-box" onclick="location.href='goi.html'" style="cursor:pointer;">
         <div class="goshin-char">意</div><div class="goshin-reading">い</div>
         <div class="goshin-organ">脾（ひ）に宿る</div>
         <div class="goshin-desc">思慮・集中・記憶を主る。陽虚で脾が冷えると「意」も鈍り、ぼんやり・決断力低下・物忘れが増える</div>
@@ -319,7 +319,7 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
   <div class="yojo-inner">
     <div class="section-eyebrow">HEALTH CARE</div>
     <h2 class="section-title">陽虚タイプの<br>養生ポイント</h2>
-    <div class="yojo-tabs">
+        <div class="yojo-tabs">
       <button class="yojo-tab active" onclick="showTab('a1')">未病先防①</button>
       <button class="yojo-tab" onclick="showTab('a2')">未病先防②</button>
       <button class="yojo-tab" onclick="showTab('a3')">既病防変</button>
@@ -327,34 +327,51 @@ section{padding:80px 20px;max-width:720px;margin:0 auto;}
       <button class="yojo-tab" onclick="showTab('a5')">生活習慣</button>
     </div>
     <div id="a1" class="yojo-content active">
-      <div class="yojo-card"><div class="yojo-card-title">🌡️ 体内の熱を外に逃がさない工夫をする</div><div class="yojo-card-subtitle">冷えからからだを守ることが陽虚養生の基本</div><div class="yojo-point"><strong>衣服・食事・環境で「熱」を守る</strong>陽虚タイプにとって最も大切なのは、からだが作り出した熱を外に逃がさないことです。薄着をやめ、冷たい飲食物を避け、冷房の当たり過ぎにも注意しましょう。手で触れて冷たく感じる食材や、涼性・寒性の食べ物はできるだけ口にしないことを心がけてください。</div><div class="yojo-point"><strong>冷えを引き起こす食材の見直しを</strong>ビール・牛乳・生魚・生野菜・果物はからだを冷やす食材です。夏でも冷たいままで食べるのでなく、温めるか、生姜・ネギ・みょうが・わさびなど温性の薬味を添える工夫が、陽虚タイプには欠かせません。</div>
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌡️ 体内の熱を外に逃がさない工夫をする</div>
+        <div class="yojo-card-subtitle">冷えからからだを守ることが陽虚養生の基本</div>
+      <div class="yojo-point"><strong>衣服・食事・環境で「熱」を守る</strong>陽虚タイプにとって最も大切なのは、からだが作り出した熱を外に逃がさないことです。薄着をやめ、冷たい飲食物を避け、冷房の当たり過ぎにも注意しましょう。</div>
+      <div class="yojo-point"><strong>冷えを引き起こす食材の見直しを</strong>ビール・牛乳・生魚・生野菜・果物はからだを冷やす食材です。温めるか、温性の薬味を添える工夫を。</div>
+      </div>
     </div>
     <div id="a2" class="yojo-content">
-      <div class="yojo-card"><div class="yojo-card-title">🌡️ 腎を消耗させる生活習慣を改める</div><div class="yojo-card-subtitle">先天の気は有限——丁寧に使い、丁寧に回復させる</div><div class="yojo-point"><strong>疲労の蓄積が腎の陽気を削る</strong>肉体的な酷使・精神的な消耗・慢性的な睡眠不足は「腎」を傷め、陽気を消耗させます。「使わない」というより「使った分をしっかり回復させる」ことが大切です。疲れを翌日に持ち越さないよう、睡眠時間を確実に確保しましょう。</div><div class="yojo-point"><strong>回復の時間を養生と捉え直す</strong>「休むのは怠け」という考え方は陽虚を悪化させます。病後・手術後・出産後は特に、腎陽の回復に十分な時間をかけましょう。過剰な性生活も腎精を消耗させることを覚えておいてください。</div>
+      <div class="yojo-card">
+        <div class="yojo-card-title">🌡️ 腎を消耗させる生活習慣を改める</div>
+        <div class="yojo-card-subtitle">先天の気は有限——丁寧に使い、丁寧に回復させる</div>
+      <div class="yojo-point"><strong>疲労の蓄積が腎の陽気を削る</strong>肉体的な酷使・精神的な消耗・慢性的な睡眠不足は腎を傷め陽気を消耗させます。使った分をしっかり回復させることが大切です。</div>
+      <div class="yojo-point"><strong>回復の時間を養生と捉え直す</strong>「休むのは怠け」という考え方は陽虚を悪化させます。病後・手術後・出産後は特に充分な休養を。</div>
+      </div>
     </div>
     <div id="a3" class="yojo-content">
-      <div class="yojo-card"><div class="yojo-card-title">🔥 からだを動かして内側から熱を生み出す</div><div class="yojo-card-subtitle">筋肉が作る熱が陽虚を改善する</div><div class="yojo-point"><strong>じんわり汗をかく程度の運動を習慣にする</strong>体を動かすことで筋肉が熱を発生させ、全身に循環します。激しい運動は不要——じんわり温まる程度の運動を毎日続けることが陽虚には最適です。太腿・腹筋・背筋など大きな筋肉を鍛えることで基礎代謝と体温を高めましょう。</div><div class="yojo-point"><strong>適度な空腹感を活かして食べる</strong>食物を消化する際にも体内で熱が発生します。少しお腹が空いてからしっかり食べることがポイント。ただし、無理に食べると脾（胃腸）を傷めるので、消化できる量を意識して食べましょう。</div><div class="yojo-point"><strong>腹部・腰を温める習慣を日常に取り入れる</strong>腹巻・湯たんぽ・半身浴でお腹と腰を外から温めることも有効な陽虚養生。特に命門・腎兪へのお灸は陽気を補う効果的な方法として古くから用いられています。</div>
+      <div class="yojo-card">
+        <div class="yojo-card-title">🔥 からだを動かして内側から熱を生み出す</div>
+        <div class="yojo-card-subtitle">筋肉が作る熱が陽虚を改善する</div>
+      <div class="yojo-point"><strong>じんわり汗をかく程度の運動を習慣にする</strong>じんわり温まる程度の運動を毎日続けることが陽虚には最適です。大きな筋肉を鍛えることで基礎代謝と体温を高めましょう。</div>
+      <div class="yojo-point"><strong>適度な空腹感を活かして食べる</strong>少しお腹が空いてからしっかり食べることがポイント。消化できる量を意識して食べましょう。</div>
+      <div class="yojo-point"><strong>腹部・腰を温める習慣を日常に取り入れる</strong>腹巻・湯たんぽ・半身浴でお腹と腰を外から温めることも有効な陽虚養生です。</div>
+      </div>
     </div>
     <div id="a4" class="yojo-content">
       <div class="yojo-card">
-      <div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
-      <div class="yojo-card-subtitle">陽虚タイプに効く経絡処方</div>
-      <div class="meridian-grid">
-        <div class="meridian-item"><div class="meridian-icon">⚡</div><div class="meridian-name">腎経・心経・心包経</div><div class="meridian-detail">陽虚の根本をケアする三経絡。腎陽を補い全身を温める</div></div>
-        <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">腎兪・命門</div><div class="meridian-detail">腎陽を補う最重要ツボ。腰に手を当てて温めるだけでも効果的</div></div>
-        <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">三陰交・太谿・復留</div><div class="meridian-detail">冷え・夜間尿・生殖機能低下に。お灸が特に効果的</div></div>
-        <div class="meridian-item"><div class="meridian-icon">🧘</div><div class="meridian-name">おすすめヨガ</div><div class="meridian-detail">上向き犬・弓のポーズ。体幹・背中を温め腎陽を高める</div></div>
+        <div class="yojo-card-title">🧘 経絡・ツボ・ヨガ</div>
+        <div class="yojo-card-subtitle">陽虚タイプに効く経絡処方</div>
+        <div class="meridian-grid">
+          <div class="meridian-item"><div class="meridian-icon">⚡</div><div class="meridian-name">腎経・心経・心包経</div><div class="meridian-detail">陽虚の根本をケアする三経絡。腎陽を補い全身を温める</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">腎兪・命門</div><div class="meridian-detail">腎陽を補う最重要ツボ。腰に手を当てて温めるだけでも効果的</div></div>
+          <div class="meridian-item"><div class="meridian-icon">📍</div><div class="meridian-name">三陰交・太谿・復留</div><div class="meridian-detail">冷え・夜間尿・生殖機能低下に。お灸が特に効果的</div></div>
+          <div class="meridian-item"><div class="meridian-icon">🧘</div><div class="meridian-name">おすすめヨガ</div><div class="meridian-detail">上向き犬・弓のポーズ。体幹・背中を温め腎陽を高める</div></div>
+        </div>
       </div>
     </div>
     <div id="a5" class="yojo-content">
       <div class="yojo-card">
-      <div class="yojo-card-title">🌙 生活習慣の養生</div>
-      <div class="yojo-card-subtitle">陽を守る日常の作り方</div>
-      <div class="yojo-point"><strong>23時までに就寝する</strong>夜更かしは腎陽を最も消耗させます。深夜の活動は翌日以降の活力を奪います。陽虚タイプは特に「早寝・早起き」が命の養生。</div>
-      <div class="yojo-point"><strong>腹部・腰・足元を常に温める</strong>腹巻・レッグウォーマー・靴下。外出時も必ず。夏の冷房対策も必須。直接床に素足でいることは避けましょう。</div>
-      <div class="yojo-point"><strong>半身浴・お灸で陽気を補う</strong>38〜40度のぬるめのお湯に長くつかる半身浴。命門・腎兪へのお灸は陽虚の最強養生法の一つです。
+        <div class="yojo-card-title">🌙 生活習慣の養生</div>
+        <div class="yojo-card-subtitle">陽を守る日常の作り方</div>
+      <div class="yojo-point"><strong>23時までに就寝する</strong>夜更かしは腎陽を最も消耗させます。陽虚タイプは特に「早寝・早起き」が命の養生。</div>
+      <div class="yojo-point"><strong>腹部・腰・足元を常に温める</strong>腹巻・レッグウォーマー・靴下。外出時も必ず。夏の冷房対策も必須です。</div>
+      <div class="yojo-point"><strong>半身浴・お灸で陽気を補う</strong>38〜40度のぬるめのお湯に長くつかる半身浴。命門・腎兪へのお灸は陽虚の最強養生法の一つです。</div>
+      </div>
     </div>
-
   </div>
 </div>
 
