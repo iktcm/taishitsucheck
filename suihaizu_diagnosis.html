@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>推背図 循環フェーズ診断</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0b0a;--ink2:#1a1612;--ink3:#252018;
+  --gold:#c9a05a;--gold-lt:#e8c88a;--gold-dk:#8a6a2a;
+  --cream:#f0e8d8;--cream2:#d8cebf;--cream3:#a09080;
+  --起:#7dba6a;--盛:#d4634a;--偏:#c8982a;--滞:#5a85a0;--転:#8a6aaa;
+  --r:12px;
+}
+body{background:var(--ink);color:var(--cream);font-family:'Noto Sans JP',sans-serif;font-weight:300;min-height:100vh;padding:20px}
+h1,h2,h3{font-family:'Noto Serif JP',serif}
+.screen{display:none;max-width:800px;margin:0 auto}
+.screen.active{display:block}
+
+/* Cover */
+.cover-wrap{text-align:center;padding:60px 20px 40px}
+.cover-emblem{width:120px;height:120px;margin:0 auto 32px;position:relative}
+.cover-emblem svg{width:100%;height:100%}
+.cover-title{font-size:clamp(22px,4vw,34px);font-weight:300;letter-spacing:0.15em;color:var(--gold-lt);margin-bottom:8px}
+.cover-subtitle{font-size:clamp(12px,2vw,15px);letter-spacing:0.2em;color:var(--cream3);margin-bottom:40px}
+.cover-desc{font-size:14px;line-height:2;color:var(--cream2);max-width:540px;margin:0 auto 48px;text-align:left;padding:24px;background:rgba(201,160,90,0.05);border:1px solid rgba(201,160,90,0.15);border-radius:var(--r)}
+.btn-start{display:inline-block;padding:14px 48px;background:transparent;border:1px solid var(--gold);color:var(--gold-lt);font-family:'Noto Serif JP',serif;font-size:15px;letter-spacing:0.2em;cursor:pointer;border-radius:40px;transition:all 0.3s}
+.btn-start:hover{background:rgba(201,160,90,0.1);color:var(--gold-lt)}
+
+/* Progress */
+.progress-bar{height:2px;background:rgba(201,160,90,0.15);margin-bottom:32px;border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);transition:width 0.4s ease;border-radius:2px}
+.page-info{text-align:right;font-size:12px;color:var(--cream3);margin-bottom:8px;letter-spacing:0.1em}
+
+/* Questions */
+.q-header{margin-bottom:32px}
+.q-header p{font-size:13px;color:var(--gold);letter-spacing:0.15em;margin-bottom:6px}
+.q-header h2{font-size:clamp(15px,2.5vw,19px);font-weight:300;color:var(--cream);letter-spacing:0.05em;line-height:1.6}
+.question-block{margin-bottom:28px;padding:20px;background:rgba(255,255,255,0.02);border:1px solid rgba(201,160,90,0.1);border-radius:var(--r)}
+.question-text{font-size:14px;line-height:1.8;color:var(--cream2);margin-bottom:16px}
+.q-num{font-size:11px;color:var(--gold-dk);margin-right:8px;font-family:'Noto Serif JP',serif}
+.scale-wrap{display:flex;gap:6px;align-items:center}
+.scale-label{font-size:10px;color:var(--cream3);white-space:nowrap;line-height:1.3;text-align:center}
+.scale-label:first-child{text-align:left}
+.scale-label:last-child{text-align:right}
+.scale-btns{display:flex;gap:5px;flex:1;justify-content:center}
+.scale-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,160,90,0.3);background:transparent;color:var(--cream3);font-size:12px;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;flex-shrink:0}
+.scale-btn:hover{border-color:var(--gold);color:var(--gold)}
+.scale-btn.selected{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:500}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.btn-nav{padding:10px 28px;background:transparent;border:1px solid rgba(201,160,90,0.4);color:var(--cream2);font-family:'Noto Sans JP',sans-serif;font-size:13px;cursor:pointer;border-radius:24px;transition:all 0.2s;letter-spacing:0.08em}
+.btn-nav:hover{border-color:var(--gold);color:var(--gold-lt)}
+.btn-nav:disabled{opacity:0.3;cursor:default}
+.btn-nav.primary{border-color:var(--gold);color:var(--gold-lt)}
+.unanswered-msg{font-size:12px;color:#d4634a;text-align:center;margin-top:12px;display:none}
+
+/* Results */
+.result-wrap{padding:20px 0 60px}
+.result-phase-badge{text-align:center;margin-bottom:40px}
+.result-phase-badge .phase-name{font-family:'Noto Serif JP',serif;font-size:clamp(42px,8vw,72px);font-weight:300;letter-spacing:0.1em;line-height:1}
+.result-phase-badge .phase-sub{font-size:13px;letter-spacing:0.25em;margin-top:10px;color:var(--cream3)}
+.result-phase-badge .phase-desc{font-size:14px;line-height:1.9;color:var(--cream2);margin-top:24px;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* Radar chart */
+.radar-section{margin:40px 0;text-align:center}
+.radar-section h3{font-size:13px;letter-spacing:0.2em;color:var(--cream3);margin-bottom:20px}
+canvas#radarChart{max-width:300px;max-height:300px}
+
+/* Score bars */
+.score-bars{max-width:480px;margin:0 auto 40px}
+.score-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.score-bar-label{width:24px;font-family:'Noto Serif JP',serif;font-size:13px;text-align:right;flex-shrink:0}
+.score-bar-track{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:3px;transition:width 1s ease}
+.score-bar-val{width:32px;font-size:11px;color:var(--cream3);text-align:right;flex-shrink:0}
+
+/* Symbol cards */
+.symbol-section{margin-top:40px}
+.symbol-section h3{font-size:13px;letter-spacing:0.2em;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(201,160,90,0.15)}
+.symbol-card{background:rgba(255,255,255,0.025);border:1px solid rgba(201,160,90,0.12);border-radius:var(--r);padding:24px;margin-bottom:16px}
+.symbol-card-header{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.symbol-number{font-family:'Noto Serif JP',serif;font-size:11px;color:var(--gold-dk);letter-spacing:0.1em}
+.symbol-name{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:400;color:var(--gold-lt)}
+.symbol-ganzhi{font-size:12px;color:var(--cream3);letter-spacing:0.1em}
+.symbol-phase-tag{font-size:10px;padding:3px 10px;border-radius:20px;letter-spacing:0.1em;font-weight:400}
+.symbol-body{font-size:13px;line-height:1.9;color:var(--cream2);margin-bottom:16px}
+.symbol-prescription{border-top:1px solid rgba(201,160,90,0.1);padding-top:16px;margin-top:16px}
+.symbol-prescription h4{font-size:11px;letter-spacing:0.2em;color:var(--gold);margin-bottom:8px}
+.symbol-prescription p{font-size:13px;line-height:1.8;color:var(--cream3)}
+.symbol-signs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.sign-box{padding:14px;border-radius:8px;font-size:12px;line-height:1.7}
+.sign-box h4{font-size:10px;letter-spacing:0.15em;margin-bottom:6px}
+.sign-yang{background:rgba(125,186,106,0.06);border:1px solid rgba(125,186,106,0.2)}
+.sign-yang h4{color:var(--起)}
+.sign-yin{background:rgba(90,133,160,0.06);border:1px solid rgba(90,133,160,0.2)}
+.sign-yin h4{color:var(--滞)}
+
+/* Retry */
+.retry-wrap{text-align:center;margin-top:48px}
+.btn-retry{display:inline-block;padding:12px 36px;background:transparent;border:1px solid rgba(201,160,90,0.3);color:var(--cream3);font-family:'Noto Sans JP',sans-serif;font-size:13px;cursor:pointer;border-radius:24px;transition:all 0.2s;letter-spacing:0.1em}
+.btn-retry:hover{border-color:var(--gold);color:var(--gold)}
+.divider{text-align:center;font-size:20px;color:var(--gold-dk);letter-spacing:0.3em;margin:32px 0}
+
+@media(max-width:520px){
+  .scale-label{display:none}
+  .scale-btns{gap:4px}
+  .scale-btn{width:32px;height:32px;font-size:11px}
+  .symbol-signs{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div id="screen-cover" class="screen active">
+<div class="cover-wrap">
+<div class="cover-emblem">
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="60" cy="60" r="56" stroke="#c9a05a" stroke-width="0.8" opacity="0.4"/>
+<circle cx="60" cy="60" r="44" stroke="#c9a05a" stroke-width="0.5" opacity="0.25"/>
+<circle cx="60" cy="60" r="32" stroke="#c9a05a" stroke-width="0.5" opacity="0.15"/>
+<path d="M60 16 L60 104" stroke="#c9a05a" stroke-width="0.5" opacity="0.2"/>
+<path d="M16 60 L104 60" stroke="#c9a05a" stroke-width="0.5" opacity="0.2"/>
+<path d="M27.6 27.6 L92.4 92.4" stroke="#c9a05a" stroke-width="0.5" opacity="0.15"/>
+<path d="M92.4 27.6 L27.6 92.4" stroke="#c9a05a" stroke-width="0.5" opacity="0.15"/>
+<circle cx="60" cy="60" r="6" fill="#c9a05a" opacity="0.6"/>
+<circle cx="60" cy="16" r="3" fill="#c9a05a" opacity="0.4"/>
+<circle cx="60" cy="104" r="3" fill="#c9a05a" opacity="0.4"/>
+<circle cx="16" cy="60" r="3" fill="#c9a05a" opacity="0.4"/>
+<circle cx="104" cy="60" r="3" fill="#c9a05a" opacity="0.4"/>
+<text x="60" y="64" text-anchor="middle" font-family="serif" font-size="13" fill="#c9a05a" opacity="0.8">循</text>
+</svg>
+</div>
+<h1 class="cover-title">推背図 循環フェーズ診断</h1>
+<p class="cover-subtitle">起 ・ 盛 ・ 偏 ・ 滞 ・ 転</p>
+<div class="cover-desc">
+<p>推背図が示す六十象は、文明と人生が辿る循環の記録です。</p>
+<p style="margin-top:12px">あなたは今、その循環のどこにいるのか——</p>
+<p style="margin-top:12px">40の問いに答えることで、現在のフェーズと最も近い象を導き出します。五相（起・盛・偏・滞・転）のどこにいるかを知ることが、未病先防の最初の一歩となります。</p>
+<p style="margin-top:16px;font-size:12px;color:var(--cream3)">所要時間：約8分　回答数：40問</p>
+</div>
+<button class="btn-start" onclick="startDiagnosis()">診断を始める</button>
+</div>
+</div>
+
+<!-- QUESTIONS -->
+<div id="screen-questions" class="screen">
+<div class="page-info" id="pageInfo"></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="q-header">
+<p id="sectionLabel"></p>
+<h2 id="sectionTitle"></h2>
+</div>
+<div id="questionBlocks"></div>
+<div class="unanswered-msg" id="unansweredMsg">未回答の設問があります。すべてお答えください。</div>
+<div class="nav-row">
+<button class="btn-nav" id="btnPrev" onclick="prevPage()">← 前へ</button>
+<button class="btn-nav primary" id="btnNext" onclick="nextPage()">次へ →</button>
+</div>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen">
+<div class="result-wrap" id="resultContent"></div>
+</div>
+
+<script>
+const QUESTIONS = [
+  // 起 (0-7)
+  {text:"最近、新しいことを始めたい、または実際に動き始めた感覚がある", phase:"起"},
+  {text:"先のことを想像すると、不安より期待や楽しみのほうが大きい", phase:"起"},
+  {text:"長い間止まっていたものが、ようやく動き始めている感覚がある", phase:"起"},
+  {text:"こころの中に、新しいものへの衝動や好奇心が生まれている", phase:"起"},
+  {text:"過去の失敗や停滞から、少しずつ立ち直れている感じがある", phase:"起"},
+  {text:"まだ形にはなっていないが、何かが始まろうとしている予感がある", phase:"起"},
+  {text:"朝目が覚めたとき、「さあ、やろう」という気持ちになれる", phase:"起"},
+  {text:"からだに活力があり、気が軽やかに動いている感じがある", phase:"起"},
+  // 盛 (8-15)
+  {text:"仕事や活動が順調に広がっており、自信とエネルギーがある", phase:"盛"},
+  {text:"人とのつながりが豊かで、社会的な充実感を感じている", phase:"盛"},
+  {text:"目標に向かって、毎日エネルギーを持って動けている", phase:"盛"},
+  {text:"忙しいが、その忙しさが心地よく感じられる", phase:"盛"},
+  {text:"自分の力で物事を動かしている感覚が強い", phase:"盛"},
+  {text:"成功や評価が積み重なり、次のステップが見えている", phase:"盛"},
+  {text:"今の状態をこのまま続けたいと強く思っている", phase:"盛"},
+  {text:"仕事・人間関係・健康のいずれをとっても、充実していると感じる", phase:"盛"},
+  // 偏 (16-23)
+  {text:"「自分が正しい」という気持ちが以前より強くなっている気がする", phase:"偏"},
+  {text:"特定のことに強くこだわり、視野が狭くなっていると感じる", phase:"偏"},
+  {text:"忙しさが「心地よい」ではなく「追われている」感覚になっている", phase:"偏"},
+  {text:"同じパターンを繰り返しているのに、なかなか変えられない", phase:"偏"},
+  {text:"頭の中で同じことがぐるぐると回り続け、なかなか止まらない", phase:"偏"},
+  {text:"充実しているのに、なぜか満たされない空虚感がある", phase:"偏"},
+  {text:"からだのどこかに、慢性的な熱感・緊張・のぼせがある", phase:"偏"},
+  {text:"周囲の意見に耳を傾ける余裕が、少なくなっている気がする", phase:"偏"},
+  // 滞 (24-31)
+  {text:"何をすればよいか分からず、動き出せないでいる", phase:"滞"},
+  {text:"気力・体力が落ちており、以前と比べて疲れやすい", phase:"滞"},
+  {text:"先のことを考えると、不安や恐れのほうが大きくなっている", phase:"滞"},
+  {text:"人に会うのが億劫で、引きこもりたい気持ちがある", phase:"滞"},
+  {text:"以前は好きだったことへの興味が薄れている", phase:"滞"},
+  {text:"変わりたいとは思うが、どこから手をつければよいか分からない", phase:"滞"},
+  {text:"からだが重く、冷えや倦怠感を感じることが多い", phase:"滞"},
+  {text:"今の状況から抜け出せない、という閉塞感がある", phase:"滞"},
+  // 転 (32-39)
+  {text:"長い停滞の後、「変わろう」という気持ちが静かに生まれてきた", phase:"転"},
+  {text:"過去の自分の在り方を見直し、新しい軸を見つけつつある", phase:"転"},
+  {text:"何か大切なものを手放して、身軽になろうとしている", phase:"転"},
+  {text:"「これからどう生きるか」を、深いところで問い直している", phase:"転"},
+  {text:"かつてのやり方では通じなくなったという認識がはっきりしてきた", phase:"転"},
+  {text:"小さな決意が、静かに自分の中で固まってきた感覚がある", phase:"転"},
+  {text:"新しい自分への扉が、ゆっくりと開き始めている感じがある", phase:"転"},
+  {text:"まだ「始まり」ではないが、冬が終わりを迎えようとしている予感がある", phase:"転"}
+];
+
+const SECTIONS = [
+  {label:"第一部　こころの動き", title:"最近のこころの状態についてお聞きします"},
+  {label:"第二部　充実と活力", title:"仕事・活動・人とのつながりについてお聞きします"},
+  {label:"第三部　こころのゆがみ", title:"偏りや固執について正直にお答えください"},
+  {label:"第四部　停滞と重さ", title:"からだとこころの重さについてお聞きします"},
+  {label:"第五部　転換の胎動", title:"変化への意志と静かな決意についてお聞きします"}
+];
+
+const PHASE_INFO = {
+  起:{
+    color:"#7dba6a", name:"起", label:"起のフェーズ",
+    desc:"新しい何かが動き始めようとしている時期です。まだ形は定まっていませんが、確かに気が動いています。肝の発陳、一陽来復——春の芽吹きのような、小さくても本物の力が宿っています。魂（こん）が目覚めようとしている時、焦らず、しかし止まらずに。"
+  },
+  盛:{
+    color:"#d4634a", name:"盛", label:"盛のフェーズ",
+    desc:"充実と拡大の時期です。エネルギーが満ちあふれ、人とのつながりが豊かになり、物事が順調に動いています。心（しん）の神（しん）が輝く季節——しかし「盛」の絶頂には、すでに次の「偏」の種が宿っています。充実の中に、静かな点検を忘れずに。"
+  },
+  偏:{
+    color:"#c8982a", name:"偏", label:"偏のフェーズ",
+    desc:"バランスが崩れ始めている時期です。成功していても満たされない、動いているのに方向が定まらない——意（い）の固執が強まり、視野が狭くなっています。これは失敗ではなく、循環の自然な一局面。偏りに気づいたことそのものが、次への入口です。"
+  },
+  滞:{
+    color:"#5a85a0", name:"滞", label:"滞のフェーズ",
+    desc:"動けない、先が見えない、力が出ない——腎の蔵、魄（はく）が重くなる冬の時期です。しかし滞は、次の転換のための「準備の時」でもあります。何もしないことが最善の養生となることがあります。静かに力を蓄えながら、機を待つことが今の智慧です。"
+  },
+  転:{
+    color:"#8a6aaa", name:"転", label:"転のフェーズ",
+    desc:"静かな転換の時期です。長い停滞の後、志（し）が腎の深いところで固まり始めています。革命は外側から来るのではなく、内側の静かな決意から始まります。転は終わりではなく、次の起の入口——あなたはすでに、新しい循環の始点に立っています。"
+  }
+};
+
+const SYMBOLS = {
+  起:{
+    転:{
+      title:"転から起へ——一陽来復",
+      symbols:[
+        {num:"第三十象",gz:"癸巳",hexagram:"復（地雷復）",
+         body:"六十四卦の中でも最も希望に満ちた卦のひとつ。雷が大地の下に潜み、春を待っています。長い冬の後に陽気がわずかに戻ってくる——一陽来復の象です。",
+         prescription:"焦らず、静かに育てることが今のすべきことです。小さな回復の芽を踏みにじらないように。あなたの中に戻ってきた光を大切に守ってください。",
+         yang:"回復の兆しを素早く感じ取れるなら、次の動きへの準備を早めに始められます",
+         yin:"芽吹きを「もう完全に回復した」と勘違いして急ぎすぎると、また停滞に戻ることがあります"},
+        {num:"第四十四象",gz:"丁未",hexagram:"未済（火水未済）",
+         body:"まだ完成していない状態。しかしこれは欠陥ではなく、すべての可能性が開いたままという意味です。未済は六十四卦の最後の卦——終わりの形が、次の始まりの形でもあります。",
+         prescription:"未完成を恐れないでください。今のあなたの「まだ定まっていない」状態こそ、最も豊かな可能性を秘めています。",
+         yang:"方向が定まる前だからこそ、どの道も選べます",
+         yin:"完成を焦りすぎると、可能性を早く閉じてしまいます"}
+      ]
+    },
+    盛:{
+      title:"起から盛へ——天地が交わる",
+      symbols:[
+        {num:"第五十二象",gz:"乙卯",hexagram:"泰（地天泰）",
+         body:"天と地が交わり、陰陽が調和する象。「小往き大来る」——小さなものが去り、大きなものが来る時です。天地の気が自然に交流し、万物が生長するこの卦は、最も「良い流れの中にいる」ことを示します。",
+         prescription:"今は流れに乗ってください。無理に押し進めなくても、人との調和を大切にすれば自然に道が開けます。",
+         yang:"今の流れを信頼すれば、思った以上の展開があります",
+         yin:"泰を「永遠に続くもの」と思い込むと、次の変化への準備が遅れます"},
+        {num:"第五十一象",gz:"甲寅",hexagram:"臨（地沢臨）",
+         body:"「臨む」——大いなるものが近づいてきます。春分が近づくように、チャンスや変化が迫ってきている時です。今こそ動く準備をする時。",
+         prescription:"チャンスは近づいています。今のうちに態勢を整えることが、次の盛への道を作ります。",
+         yang:"準備が整っているほど、来たるチャンスを最大限に活かせます",
+         yin:"準備なく臨もうとすると、良い機会を逃します"}
+      ]
+    },
+    起:{
+      title:"純粋な起——新しい命の始まり",
+      symbols:[
+        {num:"第四十五象",gz:"戊申",hexagram:"蒙（山水蒙）",
+         body:"「蒙を啓く」——学びの始まりを示す卦です。子どもが初めて世界を知るような、謙虚な好奇心。知らないことを知ることが、すべての始まりです。",
+         prescription:"今は師を求め、謙虚に学ぶ時です。自分が知らないことを正直に認め、新しい知識や視点を積極的に取り入れてください。",
+         yang:"学びへの素直な姿勢が、予想外の扉を開きます",
+         yin:"知ったかぶりは、学びの機会を自ら閉ざします"},
+        {num:"第三十七象",gz:"庚子",hexagram:"益（風雷益）",
+         body:"益を加える——上が失い下が得る、という意味の卦です。着実に積み重ねることで、力が増していきます。地味に見えても、この積み上げは本物の力になります。",
+         prescription:"今の小さな努力を惜しまないでください。積み重ねは必ず実を結びます。焦らず、淡々と続けることが最善の処方箋です。",
+         yang:"地道な積み上げが、後の大きな力の源になります",
+         yin:"早い成果を求めすぎると、根のない成長になります"}
+      ]
+    }
+  },
+  盛:{
+    起:{
+      title:"盛の初期——志と連帯の充実",
+      symbols:[
+        {num:"第三象",gz:"丙寅",hexagram:"同人（天火同人）",
+         body:"志を同じくする人々が天の下に集う象。理念と連帯が力の源となっています。「野に於いて人に同ず」——広大な野原で志を共にする——これが真の盛の姿です。",
+         prescription:"仲間との理念のつながりを大切にしてください。連帯こそが盛の土台であり、そこを失ったとき、盛は偏に転じます。",
+         yang:"仲間との絆を深めるほど、盛の力は本物になります",
+         yin:"成功に慣れると、連帯より競争を優先しはじめます"},
+        {num:"第六象",gz:"己巳",hexagram:"晋（火地晋）",
+         body:"晋は「進む」。日が出て大地を照らすように、明快に上昇する時です。光が増し、道が開けています。",
+         prescription:"今は前に進んでください。過度な慎重さは逆効果です。明るい光を持って前に進む時です。",
+         yang:"積極的に進むほど、この時期は道が開けます",
+         yin:"謙遜を装った消極性が、チャンスを逃させます"}
+      ]
+    },
+    偏:{
+      title:"盛から偏へ——絶頂と陰の始まり",
+      symbols:[
+        {num:"第四象",gz:"丁卯",hexagram:"大壮（雷天大壮）",
+         body:"力が最も充実した時。雷が天に鳴り響き、勢いは最高潮に達しています。しかし「壮しては利ろしからず」——壮大すぎると、正しい道を踏み外す危険があります。",
+         prescription:"今の力の大きさを自覚してください。力があるからこそ、礼を忘れずに。力の使い方が、この時期の最大のテーマです。",
+         yang:"今の充実した力を正しく使えば、大きな仕事を成し遂げられます",
+         yin:"力に任せて突き進むと、重要な人間関係や信頼を損ないます"},
+        {num:"第十二象",gz:"乙亥",hexagram:"豊（雷火豊）",
+         body:"豊かさの頂点。「豊、大なり」——しかし同時に「其の亢きを憂うべし」とも言われます。豊かさの絶頂には、すでに陰の兆しが宿っています。",
+         prescription:"充実の中に感謝を忘れないでください。「豊かさが永遠に続く」という錯覚こそが最大の罠です。",
+         yang:"今の豊かさを次の種まきに活かせれば、循環は続きます",
+         yin:"豊かさを「当然のもの」と感じ始めたとき、偏への転換が始まっています"}
+      ]
+    },
+    盛:{
+      title:"盛の頂点——充実の極致",
+      symbols:[
+        {num:"第五十五象",gz:"戊午",hexagram:"大有（火天大有）",
+         body:"大いに所有する象。天に火が輝き、すべてが照らされています。あらゆる面で充実し、豊かさが満ちています。",
+         prescription:"充実の中で、持っているものを分かち合うことを考えてください。「大有」の真の意味は、大いに受け取ることではなく、大いに与える力を持つことです。",
+         yang:"この充実を社会や人のために使うとき、本当の盛が完成します",
+         yin:"充実が自己完結した時点で、偏への扉が開きます"},
+        {num:"第二十五象",gz:"戊子",hexagram:"恒（雷風恒）",
+         body:"恒常・持続。変わらずに続けることそのものが力になっている状態です。恒は「久しい道」——長く続けることの中に真の盛があります。",
+         prescription:"派手さより継続を選んでください。今のあなたの力の源は「長く続けてきたこと」の中にあります。",
+         yang:"続けることで信頼が積み上がり、盛の本質が深まります",
+         yin:"飽きや刺激への渇望が、恒を壊す最大の敵です"}
+      ]
+    }
+  },
+  偏:{
+    盛:{
+      title:"盛から偏へ——陽の衰えの始まり",
+      symbols:[
+        {num:"第二象",gz:"乙丑",hexagram:"姤（天風姤）",
+         body:"「姤は遇うなり」——一陰が生じ、陽の衰えが始まった象です。六十四卦の中で、偏の開始を最も鮮明に示す卦。まだ軽いうちに気づけるかどうかが分かれ目です。",
+         prescription:"小さな陰の兆しを見逃さないでください。今ならまだ流れを変えられます。「偏りに気づく」だけで、すでに次の起への扉が開き始めています。",
+         yang:"今気づいたことが、最大のチャンスです",
+         yin:"気づいていても「まだ大丈夫」と先延ばしにすると、偏が深まります"},
+        {num:"第十一象",gz:"甲戌",hexagram:"離（火為離）",
+         body:"離は火の卦。明るく燃え盛るが、同時に「離れる」という意味も持ちます。光が過剰になり、影が濃くなっています。エネルギーが高すぎて、燃え尽きに近づいているサインかもしれません。",
+         prescription:"燃え尽きる前に休んでください。光が強すぎると影が濃くなります。意図的に陰の時間を作ることが今の養生です。",
+         yang:"明るさを保ちながらも、休息を取れれば、長く輝き続けられます",
+         yin:"「もっと輝けるはずだ」という焦りが、燃え尽きを早めます"}
+      ]
+    },
+    偏:{
+      title:"偏の深部——固執と矯正の時",
+      symbols:[
+        {num:"第七象",gz:"庚午",hexagram:"噬嗑（火雷噬嗑）",
+         body:"「噬嗑は亨る」——噛み砕くことで道が開く象。しかし何かが邪魔して、口が閉じられない状態でもあります。障害を力で押しのけようとしている——今こそ立ち止まって問い直す時です。",
+         prescription:"無理に押し進めることをやめ、障害そのものと向き合ってください。何が本当に邪魔しているのかを静かに問い直すことが、最善の処方です。",
+         yang:"障害の本質に気づけたとき、一気に道が開きます",
+         yin:"力で突破しようとするほど、障害は大きくなります"},
+        {num:"第十六象",gz:"己卯",hexagram:"既済（水火既済）",
+         body:"すべてが完成した象。しかし易経は「既済は亨るも小さく、初め吉にして終わりは乱れ有り」と説きます——完成の直後から、すでに乱れが始まっているということです。",
+         prescription:"「完成した」と感じているなら、むしろ次の変化への準備を始めてください。完成は出発点であり、終着点ではありません。",
+         yang:"完成を「次の起点」と見られるなら、循環は自然に続きます",
+         yin:"完成を「終点」と思い込んだ瞬間、停滞が始まります"}
+      ]
+    },
+    滞:{
+      title:"偏から滞へ——漂流と深化",
+      symbols:[
+        {num:"第四十二象",gz:"乙巳",hexagram:"旅（火山旅）",
+         body:"旅人の象。根を失い、どこにも定住できない状態。華やかに動いているように見えても、その実は根無し草——どこに帰るべきかを見失っています。",
+         prescription:"今こそ自分の「根」を問い直してください。どこに戻るべきか。何が本当の自分の拠り所なのか。旅を終えて帰る場所を見つけることが今の課題です。",
+         yang:"根を見つけた瞬間、すべての漂流が意味を持ち始めます",
+         yin:"漂流を「自由」と混同すると、根を失ったままになります"},
+        {num:"第十九象",gz:"壬午",hexagram:"賁（山火賁）",
+         body:"「賁は亨る」——文飾・装飾の象。表面は美しく整っているが、その内実が問われています。見た目の華やかさと内実のギャップが生まれています。",
+         prescription:"表面の整え方ではなく、内実を問い直してください。今の状況の「本質」は何かを、静かに見つめ直す時です。",
+         yang:"内実を整えることができれば、外見の美しさも本物になります",
+         yin:"表面だけを整え続けると、内と外のギャップが広がっていきます"}
+      ]
+    }
+  },
+  滞:{
+    偏:{
+      title:"偏から滞へ——削ぎ落とされる時",
+      symbols:[
+        {num:"第二十一象",gz:"甲申",hexagram:"剥（山地剥）",
+         body:"「剥は剥ぐなり、柔は剛を変ず」——剥ぎ落とされる象。必要なものと不要なものが、容赦なく分けられています。痛みを伴う過程ですが、これは再生への準備です。",
+         prescription:"手放すべきものを手放してください。剥落は喪失ではなく、再生への必要なプロセスです。残るものだけが本物の力です。",
+         yang:"削ぎ落とされた後に残るものが、真に価値あるものです",
+         yin:"すべてを失うまいとしがみつくと、再生のエネルギーが生まれません"},
+        {num:"第十八象",gz:"辛巳",hexagram:"需（水天需）",
+         body:"「需は須つなり」——待つ象。雲が天にあり、雨を待っています。今は動く時ではなく、機を待つ時。焦りが最大の敵です。",
+         prescription:"焦りを手放し、静かに機を待ってください。今は力を蓄え、準備を整える時間です。この待機そのものが、次の動きの礎になります。",
+         yang:"待つことを「動かない力」として活かせれば、機が来た時に一気に動けます",
+         yin:"待ちながら焦ると、機を逃します"}
+      ]
+    },
+    滞:{
+      title:"滞の深部——養いと静止の時",
+      symbols:[
+        {num:"第三十九象",gz:"壬寅",hexagram:"頤（山雷頤）",
+         body:"「頤は養うなり」——養う象。動かず、ただ育てることに集中する時です。顎の象形——口で養い、口を慎む。この静止の時間は、次の動きのための深い準備です。",
+         prescription:"今は動くよりも、養うことに徹してください。食事、睡眠、静かな時間——からだとこころを内側から育てることが今の仕事です。",
+         yang:"深く養った力は、動き出す時に本物の推進力になります",
+         yin:"動けないことを「失敗」と思い込むと、焦りがさらに力を奪います"},
+        {num:"第五十六象",gz:"己未",hexagram:"比（水地比）",
+         body:"「比は吉なり、原くして永貞」——比べ、寄り添う象。他との比較の中で停滞しているかもしれません。しかし比はまた、「寄り添う」という意味でもあります。",
+         prescription:"他との比較を手放し、自分の中心に立ち返ってください。あなたのペースと軸を信頼することが、この停滞を抜け出す鍵です。",
+         yang:"自分の軸を取り戻したとき、比較は指針ではなく参考になります",
+         yin:"他との比較を停滞の原因にし続けると、自分の軸が見えなくなります"}
+      ]
+    },
+    転:{
+      title:"滞から転へ——転換の予感",
+      symbols:[
+        {num:"第四十九象",gz:"壬子",hexagram:"坤為地（坤）",
+         body:"純陰の極。すべてが静まり返り、動くものが何もない——しかしその深い静けさの底に、次の動きの種が宿っています。坤は転じて乾を生む。最も暗い瞬間が、夜明けの直前でもあります。",
+         prescription:"この深い静けさを受け入れてください。今は完全に静まり返ることが正しい姿勢です。押さえつけなくても、種は必ず動き始めます。",
+         yang:"この静けさを経た後の動きは、本物の転換の力を持ちます",
+         yin:"静けさに耐えられず早まると、本当の転換の前に動き出してしまいます"},
+        {num:"第六十象",gz:"癸亥",hexagram:"萃（沢地萃）",
+         body:"「萃は聚まるなり」——集まり、そして散じる直前の象。六十象の最後——一巡した循環が、次の甲子へと向かう境界に立っています。終わりと始まりが同時に宿る、特別な象です。",
+         prescription:"集まったものが、そろそろ散じる時が来ています。手放す準備を始めてください。次の循環の始まりは、もうそこにあります。",
+         yang:"手放すことを決意したとき、新しい循環が始まります",
+         yin:"終わりを認めたくないと抵抗すると、次の起への移行が遅れます"}
+      ]
+    }
+  },
+  転:{
+    滞:{
+      title:"滞から転へ——解放と流れへの回帰",
+      symbols:[
+        {num:"第二十六象",gz:"己丑",hexagram:"随（沢雷随）",
+         body:"「随は元いに亨り、貞に利ろし」——流れに随う象。時代の流れ、自然の流れに意識的に乗ることで、転換が起きています。随うことは、流されることではありません。",
+         prescription:"流れに逆らうのをやめてください。しかし流されるのでもなく、意識的に流れに乗ることです。今の転換は、あなたの意志と流れが一致した時に完成します。",
+         yang:"流れに乗る決意が固まるほど、転換が加速します",
+         yin:"流れを信頼できないと、随の恵みを受け取れません"},
+        {num:"第二十八象",gz:"辛卯",hexagram:"解（雷水解）",
+         body:"「解は利ろし、西南」——解放・解消の象。しがらみが解け、縛られていたものが自由になっています。解放には、勇気と決断が必要です。",
+         prescription:"手放すことを恐れないでください。今の転換は、解放によって完成します。縛っていた何かを手放す決意が、次への道を開きます。",
+         yang:"解放した後の身軽さが、次の起の推進力になります",
+         yin:"手放すことへの恐れが、解放を先延ばしにします"}
+      ]
+    },
+    起:{
+      title:"転から起へ——決断と革命",
+      symbols:[
+        {num:"第十象",gz:"癸酉",hexagram:"革（沢火革）",
+         body:"「革は己日に孚ぜられ、元いに亨り、貞に利ろし」——革命の象。天命に従って、根本から変えることが求められています。中途半端な革命は、より深い停滞を生みます。",
+         prescription:"変える時は今です。中途半端は最も危険です。根本から変える決断をしてください。革命は一気に、そして誠実に。",
+         yang:"根本から変える決断が固まったとき、すべての障害が道に変わります",
+         yin:"中途半端に変えようとすると、旧い力と新しい力の間で消耗します"},
+        {num:"第五十四象",gz:"丁巳",hexagram:"夬（沢天夬）",
+         body:"「夬は王庭に揚ぐ」——決断・決裂の象。五陽が一陰を決する——最後の陰を切り捨てる決断の時です。残すべきものと手放すべきものが、今こそはっきりします。",
+         prescription:"迷いを手放してください。今は決断の時です。切り捨てるべきものをはっきりと見定め、勇気を持って実行してください。",
+         yang:"明確な決断が、転換を完成させます",
+         yin:"「まだ迷っている」という状態が続くと、決断の機を逃します"}
+      ]
+    },
+    転:{
+      title:"純粋な転——深い転換の胎動",
+      symbols:[
+        {num:"第三十四象",gz:"丁酉",hexagram:"鼎（火風鼎）",
+         body:"「鼎は元吉にして亨る」——鼎は新しい秩序を確立する象。古いものを溶かし、新しい形を作り出す鼎のように、内側から変革が起きています。",
+         prescription:"新しい枠組みを作ってください。今のあなたの転換は、単なる変化ではなく、新しい秩序の創造です。焦らず、しかし確実に。",
+         yang:"新しい枠組みが定まるほど、転換が本物になります",
+         yin:"形を定めることを恐れると、転換が表面的なものにとどまります"},
+        {num:"第四十九象",gz:"壬子",hexagram:"坤為地（坤）",
+         body:"すべてが静まり、純粋に受け入れる状態。転換は外側ではなく、深い内側から起きています。坤の深い静けさの中で、次の乾が生まれようとしています。",
+         prescription:"今の変容を急かさないでください。深い転換は、静かな時間の中でこそ完成します。内側の変化を信頼してください。",
+         yang:"静かな内側の変容が完成したとき、外側の変化は自然に従います",
+         yin:"外側の変化を急ぐと、内側の転換が追いつかなくなります"}
+      ]
+    }
+  }
+};
+
+let currentPage = 0;
+let answers = new Array(40).fill(0);
+
+function startDiagnosis(){
+  showScreen('questions');
+  renderPage(0);
+}
+
+function showScreen(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+}
+
+function renderPage(page){
+  currentPage = page;
+  const start = page*8, end = start+8;
+  const sec = SECTIONS[page];
+  document.getElementById('sectionLabel').textContent = sec.label;
+  document.getElementById('sectionTitle').textContent = sec.title;
+  document.getElementById('pageInfo').textContent = `${page+1} / 5`;
+  document.getElementById('progressFill').style.width = ((page+1)/5*100)+'%';
+  document.getElementById('btnPrev').disabled = (page===0);
+  document.getElementById('btnNext').textContent = page===4 ? '診断結果を見る →' : '次へ →';
+  const container = document.getElementById('questionBlocks');
+  container.innerHTML = '';
+  for(let i=start;i<end;i++){
+    const q = QUESTIONS[i];
+    const block = document.createElement('div');
+    block.className = 'question-block';
+    block.innerHTML = `<div class="question-text"><span class="q-num">Q${i+1}</span>${q.text}</div>
+<div class="scale-wrap">
+  <div class="scale-label">まったく<br>そうでない</div>
+  <div class="scale-btns" id="btns-${i}">
+    ${[1,2,3,4,5].map(v=>`<button class="scale-btn${answers[i]===v?' selected':''}" onclick="setAnswer(${i},${v})">${v}</button>`).join('')}
+  </div>
+  <div class="scale-label">とても<br>そうだ</div>
+</div>`;
+    container.appendChild(block);
+  }
+  document.getElementById('unansweredMsg').style.display='none';
+  window.scrollTo(0,0);
+}
+
+function setAnswer(idx, val){
+  answers[idx] = val;
+  const btns = document.querySelectorAll(`#btns-${idx} .scale-btn`);
+  btns.forEach((b,i)=>{b.classList.toggle('selected',i+1===val)});
+  document.getElementById('unansweredMsg').style.display='none';
+}
+
+function prevPage(){if(currentPage>0)renderPage(currentPage-1)}
+
+function nextPage(){
+  const start=currentPage*8,end=start+8;
+  const unanswered = answers.slice(start,end).filter(a=>a===0);
+  if(unanswered.length>0){
+    document.getElementById('unansweredMsg').style.display='block';
+    return;
+  }
+  if(currentPage<4){renderPage(currentPage+1)}
+  else{showResults()}
+}
+
+function showResults(){
+  const scores = {起:0,盛:0,偏:0,滞:0,転:0};
+  const phases = ['起','盛','偏','滞','転'];
+  for(let i=0;i<40;i++) scores[QUESTIONS[i].phase]+=answers[i];
+  const sorted = [...phases].sort((a,b)=>scores[b]-scores[a]);
+  const primary = sorted[0], secondary = sorted[1];
+  const info = PHASE_INFO[primary];
+  const symbolData = SYMBOLS[primary][secondary] || SYMBOLS[primary][primary] || SYMBOLS[primary][sorted[2]];
+  const maxScore = 40;
+
+  let html = `<div class="result-phase-badge">
+<p class="phase-sub">あなたの現在のフェーズ</p>
+<p class="phase-name" style="color:${info.color}">${info.name}</p>
+<p class="phase-sub">${info.label}</p>
+<p class="phase-desc">${info.desc}</p>
+</div>
+<div class="divider">・ ・ ・</div>
+<div class="score-bars">
+<p style="font-size:12px;letter-spacing:0.15em;color:var(--cream3);margin-bottom:16px;text-align:center">フェーズスコア</p>
+${phases.map(p=>{
+  const pct = Math.round(scores[p]/maxScore*100);
+  const clr = PHASE_INFO[p].color;
+  return `<div class="score-bar-row">
+<span class="score-bar-label" style="color:${clr}">${p}</span>
+<div class="score-bar-track"><div class="score-bar-fill" style="width:${pct}%;background:${clr}"></div></div>
+<span class="score-bar-val">${pct}%</span>
+</div>`;
+}).join('')}
+</div>`;
+
+  if(symbolData){
+    html += `<div class="symbol-section">
+<h3>あなたに最も近い象</h3>
+<p style="font-size:13px;color:var(--cream3);margin-bottom:20px;line-height:1.8">${symbolData.title}<br>—— ${secondary}フェーズとの関係から導き出された象です。</p>
+${symbolData.symbols.map((s,i)=>`
+<div class="symbol-card">
+<div class="symbol-card-header">
+<span class="symbol-number">${s.num}</span>
+<span class="symbol-name">${s.hexagram}</span>
+<span class="symbol-ganzhi">${s.gz}</span>
+${i===0?`<span class="symbol-phase-tag" style="background:${info.color}22;color:${info.color};border:1px solid ${info.color}44">主象</span>`:''}
+</div>
+<p class="symbol-body">${s.body}</p>
+<div class="symbol-prescription">
+<h4>処方箋</h4>
+<p>${s.prescription}</p>
+</div>
+<div class="symbol-signs">
+<div class="sign-box sign-yang"><h4>陽の兆し（チャンス）</h4>${s.yang}</div>
+<div class="sign-box sign-yin"><h4>陰の兆し（リスク）</h4>${s.yin}</div>
+</div>
+</div>`).join('')}
+</div>`;
+  }
+
+  html += `<div style="margin-top:40px;padding:20px;background:rgba(201,160,90,0.04);border:1px solid rgba(201,160,90,0.12);border-radius:var(--r)">
+<p style="font-size:12px;letter-spacing:0.15em;color:var(--gold);margin-bottom:10px">この診断について</p>
+<p style="font-size:12px;line-height:1.9;color:var(--cream3)">この診断は、推背図の六十象と起・盛・偏・滞・転の五相循環に基づいています。診断結果は現在のフェーズの傾向を示すものであり、占いでも医学的判断でもありません。今の自分の位置を静かに観察し、未病先防の参考としてください。</p>
+<p style="font-size:12px;line-height:1.9;color:var(--cream3);margin-top:8px">松本雅彦著『推背図の教え』（京都伝統中医学研究所）</p>
+</div>
+<div class="retry-wrap"><button class="btn-retry" onclick="restart()">もう一度診断する</button></div>`;
+
+  document.getElementById('resultContent').innerHTML = html;
+  showScreen('results');
+  window.scrollTo(0,0);
+}
+
+function restart(){
+  answers = new Array(40).fill(0);
+  showScreen('cover');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
